@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@300;400;900&display=swap');
+
+body, p, pre {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.app-container {
+  max-width: 1300px;
+  height: 100vh;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: flex;
+}
+
+.sidebar {
+  flex-basis: 440px;
+  background-color: #2D2D2D;
+  color: #C2C2C2;
+}
+
+.sidebar__title {
+  margin: 0px 0 20px 0;
+}
+
+.sidebar__divider {
+  width: 50%;
+  margin: 35px 0 30px 0;
+}
+
+.card-container {
+  background-color: blue;
+  flex-grow: 1;
+}
+
+.about {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__avatar {
+  width: 270px;
+  height: 270px;
+  margin-top: 66px;
+  
+  background-image: url(../images/avatar.png);
+  background-size: 270px;
+  border-radius: 50%;
+}
+
+.about__info {
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase
+}
+
+.about__name::before {
+  content: 'Дронников ';
+  margin-right: 6px;
+  font-weight: 900;
+  color: #E6E6E6;
+}
+
+.about__name {
+  font-weight: 300px;
+  font-size: 35px;
+  line-height: 70px;
+}
+
+.about__position {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.about__summary {  
+  padding: 0 40px;
+  margin-top: 45px;
+  text-align: justify;
+}
+
+.about__summary > p {
+  text-align: justify;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.contacts__item,
+.links_item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts__item:nth-child(3),
+.links_item:nth-child(3) {
+  padding: 18px 0
+}
+
+.item__placeholder,
+.link__placeholder {
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.item__value,
+.link__value {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.link__value > a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+
