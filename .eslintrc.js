@@ -14,6 +14,7 @@ module.exports = {
     'no-console': 'off',
     'no-debugger': 'off',
     "vue/no-multiple-template-root": "off" ,
-    "vue/no-v-model-argument": "off"
+    "vue/no-v-model-argument": "off",
+    "vue/singleline-html-element-content-newline": "off",
   }
 }

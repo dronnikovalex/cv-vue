@@ -50,10 +50,10 @@
 
       <div class="links_item link">
         <span class="link__placeholder">
-          GitHub
+          Project repo
         </span>
         <span class="link__value">
-          <a href="#">https://github.com/dronnikovalex</a>
+          <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
         </span>
       </div>
       <div class="links_item">
@@ -61,7 +61,7 @@
           Cypress e2e tests
         </span>
         <span class="link__value">
-          <a href="#">https://github.com/dronnikovalex/cv-vue/cypress</a>
+          <a href="https://github.com/dronnikovalex/cv-vue/cypress">github.com/dronnikovalex/cv-vue/cypress</a>
         </span>
       </div>
     </div>

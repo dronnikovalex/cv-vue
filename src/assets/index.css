@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Roboto:wght@300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,700,800&family=Roboto:wght@300;400;900&display=swap');
 
-body, p, pre {
-  display: inline;
+body, p, h3, h4 {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 18px;
 }
 
 h2 {
@@ -16,45 +20,54 @@ h2 {
   text-align: center;
 }
 
+.app-container-fluid {
+  background-color: #555555;
+}
+
 .app-container {
-  max-width: 1300px;
-  height: 100vh;
-  border: 1px solid black;
+  width: 1300px;
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
 }
 
 .sidebar {
-  flex-basis: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 460px;
   background-color: #2D2D2D;
   color: #C2C2C2;
 }
 
 .sidebar__title {
   margin: 0px 0 20px 0;
+  color: #BEBEBE
+}
+
+.card__title {  
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  background-color: #242424;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 50px;
 }
 
 .sidebar__divider {
   width: 50%;
   margin: 35px 0 30px 0;
-}
-
-.card-container {
-  background-color: blue;
-  flex-grow: 1;
-}
-
-.about {
-  padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: #828282
 }
 
 .about__avatar {
   width: 270px;
   height: 270px;
-  margin-top: 66px;
+  margin-top: 50px;
   
   background-image: url(../images/avatar.png);
   background-size: 270px;
@@ -62,7 +75,7 @@ h2 {
 }
 
 .about__info {
-  margin-top: 20px;
+  margin-top: 25px;
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase
 }
@@ -71,22 +84,24 @@ h2 {
   content: 'Дронников ';
   margin-right: 6px;
   font-weight: 900;
+  font-size: 27px;
   color: #E6E6E6;
 }
 
 .about__name {
   font-weight: 300px;
-  font-size: 35px;
-  line-height: 70px;
+  font-size: 29px;
+  line-height: 50px;
 }
 
 .about__position {
   font-weight: 400;
   font-size: 18px;
+  color: #B9B9B9
 }
 
 .about__summary {  
-  padding: 0 40px;
+  padding: 0 50px;
   margin-top: 45px;
   text-align: justify;
 }
@@ -115,18 +130,234 @@ h2 {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 20px;
+  color: #C7C7C7
 }
 
 .item__value,
 .link__value {
   font-weight: 300;
   font-size: 16px;
+  color: #BEBEBE
 }
 
 .link__value > a {
   color: #ffffff;
   text-decoration: none;
 }
+
+.card-container {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 70px;
+  background-color: #E4E6E7;
+}
+
+#trapezoid {
+  position: relative;
+  width: 500px;
+  border-top: 100px solid #2D2D2D;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+}
+
+.social-header__item:first-child{
+  position: absolute;
+  top: 2%;
+  left: 21%;
+  color: #E4E6E7;
+}
+
+.social-header__item:nth-child(2){
+  position: absolute;
+  top: 2%;
+  right: 20%;
+  color: #E4E6E7;
+}
+
+.social-header__item:last-child{
+  position: absolute;
+  top: 5%;
+  left: 32%;
+  color: #E4E6E7;
+}
+
+.social-header__item a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.skills,
+.experience,
+.study {
+  margin: 7px 0 15px 0;
+  max-width: 900px;
+}
+
+.study {
+  width: 100%;
+}
+
+.skills__banner {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-image: url(../images/blue_background.png);
+}
+
+.banner__item {
+  display: inline-block;
+  margin-right: 70px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.banner__item:first-child,
+.banner__item:nth-child(5) {
+  margin-left: 55px;
+}
+
+.skills__description {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: justify;
+}
+
+.skills__item,
+.experience__item {
+  flex-basis: 49%;
+  padding-top: 10px;
+}
+
+.experience__item:first-child {
+  padding: 0;
+}
+
+.experience__item:first-child h3 {
+  font-weight: 600;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.skills__item:nth-child(odd) {
+  padding-right: 10px;
+}
+
+.skills__item:last-child {
+  flex-basis: 100%;
+}
+
+.skills__item > p {
+  padding-top: 5px;
+  border-top: 2px solid #000;
+  font-size: 15px;
+}
+
+.experience__container {
+  margin-top: 20px;
+}
+
+.experience__item > p {
+  position: relative;
+  padding-top: 5px;
+}
+
+.experience__item > p::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 2px;
+  background: #000;
+}
+
+.postman {
+  background-image: url(../images/postman.png);
+}
+
+.cypress {
+  background-image: url(../images/cypress.png);
+}
+
+.vue {
+  background-image: url(../images/vue.png);
+}
+
+.postgres {
+  background-image: url(../images/postgres.png);
+}
+
+.html {
+  background-image: url(../images/html.png);
+}
+
+.git {
+  background-image: url(../images/git.png);
+}
+
+.charles {
+  background-image: url(../images/charles.png);
+}
+
+.js {
+  background-image: url(../images/js.png);
+}
+
+.study__container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.study__item {
+  position: relative;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.study__item::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 2px;
+  background: #000;
+}
+
+.study__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.study__years {
+  margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #686767;
+}
+
+.study__description {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.study__more {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
 
 
 
