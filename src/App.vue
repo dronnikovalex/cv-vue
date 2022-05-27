@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app-container-fluid">
+    <div class="app-container">
+      <the-sidebar />
+  
+      <main class="card-container">
+        <main-skills />
+  
+        <main-experience />
+  
+        <main-education />
+      </main>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheSidebar from '@/components/TheSidebar'
+import MainSkills from '@/components/card/MainSkills'
+import MainExperience from '@/components/card/MainExperience'
+import MainEducation from '@/components/card/MainEducation'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { TheSidebar, MainSkills, MainExperience, MainEducation }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
