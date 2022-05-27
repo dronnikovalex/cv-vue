@@ -41,6 +41,16 @@
           +7-(953)-477-31-62
         </span>
       </div>
+      <div class="contacts__item item">
+        <a 
+          href="#"
+          class="contacts__request"
+        >
+          <span class="text">
+            Связаться
+          </span>
+        </a>
+      </div>
     </div>
 
     <hr class="sidebar__divider">
@@ -53,14 +63,19 @@
           Project repo
         </span>
         <span class="link__value">
-          <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
+          <font-awesome-icon :icon="[ 'fab', 'github' ]" /> <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
         </span>
       </div>
       <div class="links_item">
         <span class="link__placeholder">
-          Cypress e2e tests
+          Cypress tests
         </span>
         <span class="link__value">
+          <img 
+            src="../images/cypress.png" 
+            alt="cypress"
+            class="cypress-icon"
+          >
           <a href="https://github.com/dronnikovalex/cv-vue/cypress">github.com/dronnikovalex/cv-vue/cypress</a>
         </span>
       </div>
