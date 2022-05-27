@@ -2,10 +2,15 @@
   <aside class="sidebar about">
     <div class="about__avatar avatar" />
     <div class="about__info">
+<<<<<<< HEAD
       <div class="about__personal personal">
         <span class="about__surname surname">Дронников</span>
         <span class="about__name name">Алексей</span>
       </div>
+=======
+      <span class="about__name">Алексей</span>
+      <br>
+>>>>>>> e5c3b7b (Add HTML layout for AppModal component)
       <span class="about__position">QA engineer</span>
     </div>
     <div class="about__summary">
@@ -133,3 +138,11 @@
     </teleport>
   </aside>
 </template>
+
+<script>
+import AppModal from '@/components/ui/AppModal'
+
+export default {
+  components: { AppModal }
+}
+</script>script

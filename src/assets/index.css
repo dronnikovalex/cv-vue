@@ -25,6 +25,21 @@ h2 {
   text-align: center;
 }
 
+.btn {
+  width: 170px;
+  height: 50px;
+  border: 2px double #fff;
+  background-color: var(--hover-color);
+  color: var(--base-color);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .app-container-fluid {
   background-color: #555555;
   padding: 0 20px;
