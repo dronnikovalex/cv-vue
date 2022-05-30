@@ -1,7 +1,8 @@
 <template>
   <section class="skills">
     <app-caption>
-      Профессиональные навыки
+      <span class="default-size-title">Профессиональные навыки</span>
+      <span class="sm-size-title">Навыки</span>
     </app-caption>
 
     <div class="skills__banner banner">
