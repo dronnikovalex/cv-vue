@@ -47,6 +47,7 @@
         <a 
           href="#"
           class="contacts__request"
+          @click.prevent="$emit('open-modal')"
         >
           <span class="text">
             Связаться
@@ -82,62 +83,14 @@
         </span>
       </div>
     </div>
-
-    <teleport to="body">
-      <app-modal>
-        <template #body>
-          <div class="request-body">
-          
-          <div class="input-field">
-            <label for="name" class="inp">
-              <input type="text" id="name" placeholder="&nbsp;">
-              <span class="label">Имя</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="input-field">
-            <label for="position" class="inp">
-              <input type="text" id="position" placeholder="&nbsp;">
-              <span class="label">Должность</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="input-field">
-            <label for="contacts" class="inp">
-              <input type="text" id="contacts" placeholder="&nbsp;">
-              <span class="label">Контакты</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="desription-field">
-            <label for="description">Описание</label>
-            <textarea id="description" type="text" name="description" />
-          </div>
-          
-          </div>
-        </template>
-        <template #footer>
-          <div class="reuqest-footer">
-            <button 
-              type="submit"
-              class="btn"
-            >
-              Отправить
-            </button>
-          </div>
-        </template>
-      </app-modal>
-    </teleport>
   </aside>
 </template>
 
-<script>
-import AppModal from '@/components/ui/AppModal'
 
+<script>
 export default {
-  components: { AppModal }
+  emits: {
+    'open-modal': null
+  },
 }
-</script>script
+</script>
