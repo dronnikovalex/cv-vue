@@ -1,10 +1,12 @@
 <template>
   <aside class="sidebar about">
-    <div class="about__avatar" />
+    <div class="about__avatar avatar" />
     <div class="about__info">
-      <span class="about__name">Алексей</span>
-      <br>
-      <span class="about__position">QA Engeenier</span>
+      <div class="about__personal personal">
+        <span class="about__surname surname">Дронников</span>
+        <span class="about__name name">Алексей</span>
+      </div>
+      <span class="about__position">QA engineer</span>
     </div>
     <div class="about__summary">
       <h2 class="sidebar__title">Обо мне</h2>
@@ -58,7 +60,7 @@
     <div class="about__links links">
       <h2 class="sidebar__title">Ссылки</h2>
 
-      <div class="links_item link">
+      <div class="link__item link">
         <span class="link__placeholder">
           Project repo
         </span>
@@ -66,7 +68,7 @@
           <font-awesome-icon :icon="[ 'fab', 'github' ]" /> <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
         </span>
       </div>
-      <div class="links_item">
+      <div class="link__item">
         <span class="link__placeholder">
           Cypress tests
         </span>
@@ -80,5 +82,54 @@
         </span>
       </div>
     </div>
+
+    <teleport to="body">
+      <app-modal>
+        <template #body>
+          <div class="request-body">
+          
+          <div class="input-field">
+            <label for="name" class="inp">
+              <input type="text" id="name" placeholder="&nbsp;">
+              <span class="label">Имя</span>
+              <span class="focus-bg"></span>
+            </label>
+          </div>
+
+          <div class="input-field">
+            <label for="position" class="inp">
+              <input type="text" id="position" placeholder="&nbsp;">
+              <span class="label">Должность</span>
+              <span class="focus-bg"></span>
+            </label>
+          </div>
+
+          <div class="input-field">
+            <label for="contacts" class="inp">
+              <input type="text" id="contacts" placeholder="&nbsp;">
+              <span class="label">Контакты</span>
+              <span class="focus-bg"></span>
+            </label>
+          </div>
+
+          <div class="desription-field">
+            <label for="description">Описание</label>
+            <textarea id="description" type="text" name="description" />
+          </div>
+          
+          </div>
+        </template>
+        <template #footer>
+          <div class="reuqest-footer">
+            <button 
+              type="submit"
+              class="btn"
+            >
+              Отправить
+            </button>
+          </div>
+        </template>
+      </app-modal>
+    </teleport>
   </aside>
 </template>
