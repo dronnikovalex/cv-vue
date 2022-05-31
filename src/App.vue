@@ -117,6 +117,7 @@ import MainEducation from '@/components/card/MainEducation'
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
+import { sendFormRequest } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 
@@ -186,12 +187,27 @@ export default {
       this.isEmptyDescription = this.description.length === 0
     },
 
-    sendForm(values) {
+    async sendForm(values) {
       if (this.description.length === 0) {
         return
       }
 
-      console.log({...values, description: this.description})
+      const payload = {
+        id: Date.now(),
+        date: (new Date()).toString(),
+        ...values, 
+        description: this.description,
+      }
+
+      try {
+        await sendFormRequest(payload)
+      } catch (e) {
+        //TODO: Show toast on error
+        console.log(e.message)
+      }
+
+      this.closeForm()
+      
     },
   },
   
