@@ -1,10 +1,12 @@
 <template>
   <aside class="sidebar about">
-    <div class="about__avatar" />
+    <div class="about__avatar avatar" />
     <div class="about__info">
-      <span class="about__name">Алексей</span>
-      <br>
-      <span class="about__position">QA Engeenier</span>
+      <div class="about__personal personal">
+        <span class="about__surname surname">Дронников</span>
+        <span class="about__name name">Алексей</span>
+      </div>
+      <span class="about__position">QA engineer</span>
     </div>
     <div class="about__summary">
       <h2 class="sidebar__title">Обо мне</h2>
@@ -42,14 +44,15 @@
         </span>
       </div>
       <div class="contacts__item item">
-        <a 
+        <button 
           href="#"
           class="contacts__request"
+          @click.prevent="$emit('open-modal')"
         >
           <span class="text">
             Связаться
           </span>
-        </a>
+        </button>
       </div>
     </div>
 
@@ -58,7 +61,7 @@
     <div class="about__links links">
       <h2 class="sidebar__title">Ссылки</h2>
 
-      <div class="links_item link">
+      <div class="link__item link">
         <span class="link__placeholder">
           Project repo
         </span>
@@ -66,7 +69,7 @@
           <font-awesome-icon :icon="[ 'fab', 'github' ]" /> <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
         </span>
       </div>
-      <div class="links_item">
+      <div class="link__item">
         <span class="link__placeholder">
           Cypress tests
         </span>
@@ -82,3 +85,11 @@
     </div>
   </aside>
 </template>
+
+<script>
+export default {
+  emits: {
+    'open-modal': null
+  },
+}
+</script>

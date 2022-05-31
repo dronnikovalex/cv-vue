@@ -1,16 +1,110 @@
 <template>
   <div class="app-container-fluid">
     <div class="app-container">
-      <the-sidebar />
+      <the-sidebar 
+        @open-modal="openModal"
+      />
   
+      <the-header v-if="checkWindowsWidth" />
+
       <main class="card-container">
         <main-skills />
-  
         <main-experience />
   
         <main-education />
       </main>
+
+      <the-footer v-if="checkWindowsWidth" />
     </div>
+
+    <teleport to="body">
+      <app-modal 
+        :modal-visibility="modalVisibility"
+        @close-form="closeForm"
+      >
+        <template #default>
+          <Form
+            class="request-body"
+            :validation-schema="schema"
+            @submit="sendForm"
+          > 
+            <div class="input-field">
+              <label for="name" class="inp">
+                <Field
+                  id="name" 
+                  v-model="name"
+                  type="text"
+                  placeholder="&nbsp;"
+                  name="name"
+                />
+                <span class="label">Имя</span>
+                <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="name" />
+                </small>
+              </label>
+            </div>
+
+            <div class="input-field">
+              <label for="position" class="inp">
+                <Field
+                  id="position" 
+                  v-model="position"
+                  type="text"
+                  placeholder="&nbsp;"
+                  name="position"
+                />
+                <span class="label">Должность</span>
+                <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="position" />
+                </small>
+              </label>
+            </div>
+
+            <div class="input-field">
+              <label for="contacts" class="inp">
+                <Field
+                  id="contacts" 
+                  v-model="contacts"
+                  type="text"
+                  placeholder="&nbsp;"
+                  name="contacts"
+                />
+                <span class="label">Контакт для обратной связи</span>
+                <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="contacts" />
+                </small>
+              </label>
+            </div>
+
+            <div class="desription-field">
+              <label for="description">Описание</label>
+              <textarea 
+                id="description" 
+                v-model="description"
+                type="text" 
+                name="description"
+                @input="checkDescription"
+              />    
+              <small v-if="isEmptyDescription">
+                Введите описание
+              </small>              
+            </div>
+
+            <div class="reuqest-footer">
+              <button 
+                class="btn request-send"
+                @click="checkDescription"
+              >
+                <app-loader />
+              </button>
+            </div>
+          </Form>
+        </template>
+      </app-modal>
+    </teleport>
   </div>
 </template>
 
@@ -19,11 +113,103 @@ import TheSidebar from '@/components/TheSidebar'
 import MainSkills from '@/components/card/MainSkills'
 import MainExperience from '@/components/card/MainExperience'
 import MainEducation from '@/components/card/MainEducation'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+import AppModal from '@/components/ui/AppModal'
+import AppLoader from '@/components/ui/AppLoader'
+import { sendFormRequest } from './api/cvApi'
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
 
 export default {
-  components: { TheSidebar, MainSkills, MainExperience, MainEducation },
-  async mounted() {
-    await fetch('https://vue-crm-fa9af-default-rtdb.europe-west1.firebasedatabase.app/users/QBS5tY1PaNSGSbZJCaQFGOmJH9y2.json?auth=eyJhbGciOiJSUzI1NiIsImtpZCI6IjZmOGUxY2IxNTY0MTQ2M2M2ZGYwZjMzMzk0YjAzYzkyZmNjODg5YWMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vdnVlLWNybS1mYTlhZiIsImF1ZCI6InZ1ZS1jcm0tZmE5YWYiLCJhdXRoX3RpbWUiOjE2NTM2ODgzMTEsInVzZXJfaWQiOiJRQlM1dFkxUGFOU0dTYlpKQ2FRRkdPbUpIOXkyIiwic3ViIjoiUUJTNXRZMVBhTlNHU2JaSkNhUUZHT21KSDl5MiIsImlhdCI6MTY1MzY4ODMxMSwiZXhwIjoxNjUzNjkxOTExLCJlbWFpbCI6ImFwcEBhcHAuYXBwIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFwcEBhcHAuYXBwIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.hy_VYcIEq59VSMHa1gqyZAWA-0x7_kpivTeQXLprC9JoBoN7hb0HM_uq6kzDDeWsA3hgaWmat-5VApzlJqLXN80F2_HC5S-bxXJ69Q10jGzBbZEb9zC3WefbTg9--hwPauUDOe_W96IcaA1j1-cfEzVc0SVxZbTyNUmCLhvnnfgTEnflR0CSgkd7MEN4B6qiizLGEvMaex5v4WF8e_Qz-v1sg4BfhJ6Fswe8bkqiqKdViwRvygRFiL6bO76WoSDG3ikv0zWHohBcBJy7LwXEgL7_XR5wgtm9pcwxis3BPr5FDcUZbdN_7CQ-R4C8lzexxyULpY8NcFRQRdEweP0I-w')
-  }
+  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader },
+
+  data() {
+    const schema = yup.object({
+      name: yup
+        .string()
+        .trim()
+        .required('Введите Имя'),
+      position: yup
+        .string()
+        .matches(/^[A-Za-zА-Яа-я]+$/, "Должность должна содержать только буквы")
+        .trim()
+        .required('Введите предлагаемую должность'),
+      contacts: yup
+        .string()
+        .trim()
+        .required('Введите контакт для связи'),
+    })
+
+    return {
+      wWidth: window.innerWidth,
+      modalVisibility: false,
+      isEmptyDescription: false,
+      name: '',
+      position: '',
+      description: '',
+      contacts: '',
+      schema,
+    }
+  },
+
+  computed: {
+    checkWindowsWidth() {
+      if (this.wWidth <= 992) {
+        return true
+      } else {
+        return false
+      }
+    },
+  },
+  
+  mounted() {
+    window.onresize = () => {
+      this.wWidth = window.innerWidth
+    }
+  },
+
+  methods: {
+    openModal() {
+      this.modalVisibility = true
+    },
+
+    closeForm() {
+      this.modalVisibility = false
+      this.name = ''
+      this.position = ''
+      this.contacts = ''
+      this.description = '',
+      this.isEmptyDescription = false
+    },
+
+    checkDescription() {
+      this.isEmptyDescription = this.description.length === 0
+    },
+
+    async sendForm(values) {
+      if (this.description.length === 0) {
+        return
+      }
+
+      const payload = {
+        id: Date.now(),
+        date: (new Date()).toString(),
+        ...values, 
+        description: this.description,
+      }
+
+      try {
+        await sendFormRequest(payload)
+      } catch (e) {
+        //TODO: Show toast on error
+        console.log(e.message)
+      }
+
+      this.closeForm()
+      
+    },
+  },
+  
 }
 </script>
