@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600,700,800&family=Roboto:wght@300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@300;400;900&display=swap');
 
 :root {
   --base-color: rgba(255, 255, 255, 1);
@@ -41,6 +41,46 @@ h2 {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.btn:disabled {
+  opacity: 0.3;
+}
+
+.request-send {
+  position: relative;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.request-send::after {
+  content: "";
+  background: rgba(45, 45, 45, 1);
+  display: block;
+  position: absolute;
+  padding-top: 180%;
+  padding-left: 300%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.request-send:active {
+  transition: 0s;
+  transform: scale(0.98);
+}
+
+.request-send:active::after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
 }
 
 .app-container-fluid {
@@ -354,6 +394,17 @@ h2 {
   padding-top: 10px;
 }
 
+.banner__item:hover {
+  transition: all .2s linear;
+  transform: scale(1.1)
+}
+
+.banner__item {
+  transition: all .2s ease;
+  transform: scale(1)
+}
+
+
 .experience__item:first-child {
   padding: 0;
 }
@@ -549,9 +600,9 @@ h2 {
 .modal {
   position: fixed;
   top: 15%;
-  width: 600px;
+  width: 700px;
   height: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #fff;
   z-index: 1000;
   left: 55%;
@@ -590,6 +641,14 @@ h2 {
   width: 100%;
 }
 
+small {
+  display: block;
+  margin-top: 5px;
+  margin-left: 2px;
+  color: #e53935;
+  font-size: 13px;
+}
+
 .desription-field {
   display: flex;
   flex-direction: column;
@@ -619,6 +678,10 @@ h2 {
 
 .input-field:first-child {
   margin-top: 20px;
+}
+
+.reuqest-footer {
+  margin-top: 25px;
 }
 
 .inp {

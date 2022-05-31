@@ -44,7 +44,7 @@
         </span>
       </div>
       <div class="contacts__item item">
-        <a 
+        <button 
           href="#"
           class="contacts__request"
           @click.prevent="$emit('open-modal')"
@@ -52,7 +52,7 @@
           <span class="text">
             Связаться
           </span>
-        </a>
+        </button>
       </div>
     </div>
 

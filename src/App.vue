@@ -20,45 +20,63 @@
 
     <teleport to="body">
       <app-modal 
-        :modalVisibility="modalVisibility"
+        :modal-visibility="modalVisibility"
         @close-form="closeForm"
-        @send-form="sendRequest"
       >
-        <template #body>
-          <div class="request-body">
+        <template #default>
+          <Form
+            class="request-body"
+            :validation-schema="schema"
+            @submit="sendForm"
+          > 
             <div class="input-field">
               <label for="name" class="inp">
-                <input
+                <Field
                   id="name" 
+                  v-model="name"
                   type="text"
                   placeholder="&nbsp;"
-                >
+                  name="name"
+                />
                 <span class="label">Имя</span>
                 <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="name" />
+                </small>
               </label>
             </div>
 
             <div class="input-field">
               <label for="position" class="inp">
-                <input
+                <Field
                   id="position" 
+                  v-model="position"
                   type="text"
                   placeholder="&nbsp;"
-                >
+                  name="position"
+                />
                 <span class="label">Должность</span>
                 <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="position" />
+                </small>
               </label>
             </div>
 
             <div class="input-field">
               <label for="contacts" class="inp">
-                <input
+                <Field
                   id="contacts" 
+                  v-model="contacts"
                   type="text"
                   placeholder="&nbsp;"
-                >
-                <span class="label">Контакты</span>
+                  name="contacts"
+                />
+                <span class="label">Контакт для обратной связи</span>
                 <span class="focus-bg" />
+                <small>
+                  <ErrorMessage name="contacts" />
+                </small>
               </label>
             </div>
 
@@ -66,21 +84,25 @@
               <label for="description">Описание</label>
               <textarea 
                 id="description" 
+                v-model="description"
                 type="text" 
-                name="description" 
-              />
+                name="description"
+                @input="checkDescription"
+              />    
+              <small v-if="isEmptyDescription">
+                Введите описание
+              </small>              
             </div>
-          </div>
-        </template>
-        <template #footer="{ send }">
-          <div class="reuqest-footer">
-            <button 
-              class="btn"
-              @click="send"
-            >
-              Отправить
-            </button>
-          </div>
+
+            <div class="reuqest-footer">
+              <button 
+                class="btn request-send"
+                @click="checkDescription"
+              >
+                Отправить
+              </button>
+            </div>
+          </Form>
         </template>
       </app-modal>
     </teleport>
@@ -95,14 +117,38 @@ import MainEducation from '@/components/card/MainEducation'
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
 
 export default {
-  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal },
+  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage },
 
   data() {
+    const schema = yup.object({
+      name: yup
+        .string()
+        .trim()
+        .required('Введите Имя'),
+      position: yup
+        .string()
+        .matches(/^[A-Za-zА-Яа-я]+$/, "Должность должна содержать только буквы")
+        .trim()
+        .required('Введите предлагаемую должность'),
+      contacts: yup
+        .string()
+        .trim()
+        .required('Введите контакт для связи'),
+    })
+
     return {
       wWidth: window.innerWidth,
-      modalVisibility: false
+      modalVisibility: false,
+      isEmptyDescription: false,
+      name: '',
+      position: '',
+      description: '',
+      contacts: '',
+      schema,
     }
   },
 
@@ -113,7 +159,7 @@ export default {
       } else {
         return false
       }
-    }
+    },
   },
   
   mounted() {
@@ -129,11 +175,24 @@ export default {
 
     closeForm() {
       this.modalVisibility = false
+      this.name = ''
+      this.position = ''
+      this.contacts = ''
+      this.description = '',
+      this.isEmptyDescription = false
     },
 
-    sendRequest() {
-      console.log('called')
-    }
+    checkDescription() {
+      this.isEmptyDescription = this.description.length === 0
+    },
+
+    sendForm(values) {
+      if (this.description.length === 0) {
+        return
+      }
+
+      console.log({...values, description: this.description})
+    },
   },
   
 }

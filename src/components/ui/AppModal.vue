@@ -11,7 +11,7 @@
       <h3  
         class="modal__title"
       >
-          Контактная информация
+        Контактная информация
       </h3>
       <span 
         class="modal__close"
@@ -20,11 +20,7 @@
         &times;
       </span>
       
-      <slot name="body" />
-      <slot 
-        name="footer" 
-        :send="sendForm"
-      />
+      <slot />
     </div>
   </div> 
 </template> 
@@ -45,10 +41,6 @@ export default {
   },
 
   methods: {
-    sendForm() {
-      this.$emit('send-form')
-    },
-
     closeForm() {
       this.$emit('close-form')
     }
