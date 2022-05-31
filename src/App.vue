@@ -98,7 +98,8 @@
                 class="btn request-send"
                 @click="checkDescription"
               >
-                <app-loader />
+                <app-loader v-if="loading" />
+                <span v-else>Отправить</span>
               </button>
             </div>
           </Form>
@@ -150,6 +151,7 @@ export default {
       description: '',
       contacts: '',
       schema,
+      loading: false
     }
   },
 
@@ -200,12 +202,15 @@ export default {
       }
 
       try {
+        this.loading = true
         await sendFormRequest(payload)
+        
       } catch (e) {
         //TODO: Show toast on error
         console.log(e.message)
       }
 
+      this.loading = false
       this.closeForm()
       
     },
