@@ -82,6 +82,14 @@
           <a href="https://github.com/dronnikovalex/cv-vue/cypress">github.com/dronnikovalex/cv-vue/cypress</a>
         </span>
       </div>
+      <div class="link__item">
+        <span class="link__placeholder">
+          Habr career
+        </span>
+        <span class="link__value">
+          <font-awesome-icon :icon="[ 'fa', 'h-square' ]" /> <a href="https://career.habr.com/aleksey-dronnikov57">habr.com/aleksey-dronnikov57</a>
+        </span>
+      </div>
     </div>
   </aside>
 </template>

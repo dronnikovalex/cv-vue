@@ -14,7 +14,10 @@
         <main-education />
       </main>
 
-      <the-footer v-if="checkWindowsWidth" />
+      <the-footer 
+        v-if="checkWindowsWidth" 
+        @open-modal="openModal"
+      />
     </div>
 
     <teleport to="body">
@@ -207,7 +210,7 @@ export default {
         
       } catch (e) {
         //TODO: Show toast on error
-        console.log(e.message)
+        console.warn(e.message)
       }
 
       this.loading = false

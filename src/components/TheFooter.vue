@@ -45,6 +45,7 @@
         <a 
           href="#"
           class="contacts__request"
+          @click.prevent="$emit('open-modal')"
         >
           <span class="text">
             Связаться
@@ -54,3 +55,11 @@
     </div>
   </footer>
 </template>
+
+<script>
+export default {
+  emits: {
+    'open-modal': null
+  },
+}
+</script>

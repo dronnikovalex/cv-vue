@@ -159,7 +159,7 @@ h2 {
 .about__personal {
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 
@@ -249,6 +249,11 @@ h2 {
 .link__value > a {
   color: #ffffff;
   text-decoration: none;
+}
+
+.link__value > a:hover {
+  text-shadow: 2px 2px 3px #ffffff;
+  transition: all .3s ease;
 }
 
 .card-container {
@@ -529,14 +534,6 @@ h2 {
   font-size: 16px;
 }
 
-.study__more {
-  display: block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-}
-
 .study__more:active {
   transition: 0.2s all ease;
   opacity: 0.5;
@@ -604,7 +601,7 @@ h2 {
 
 .modal {
   position: fixed;
-  top: 15%;
+  top: 10%;
   width: 700px;
   height: auto;
   padding: 1.5rem;
@@ -804,6 +801,95 @@ small {
   }
 }
 
+.study__details {
+  display: block;
+  padding: 0;
+  margin: 10px auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+.study__details:hover {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: all .5s ease;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  background: -moz-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  background: gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  -webkit-background-size: 125px 100%;
+  -moz-background-size: 125px 100%;
+  background-size: 125px 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: study__details;
+  -moz-animation-name: study__details;
+  animation-name: study__details;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #222;
+}
+@-moz-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@-webkit-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@-o-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
 
 @media only screen and (max-width: 1440px) {
   .app-container {
