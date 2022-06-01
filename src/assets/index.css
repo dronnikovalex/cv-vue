@@ -246,12 +246,14 @@ h2 {
   
 }
 
-.link__value > a {
+.link__value > a,
+.item__value > a {
   color: #ffffff;
   text-decoration: none;
 }
 
-.link__value > a:hover {
+.link__value > a:hover,
+.item__value > a:hover {
   text-shadow: 2px 2px 3px #ffffff;
   transition: all .3s ease;
 }
