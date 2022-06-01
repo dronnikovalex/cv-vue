@@ -90,7 +90,7 @@ h2 {
 
 .app-container {
   min-height: 100vh;
-  max-width: 1300px;
+  max-width: 1130px;
   margin: 0 auto;
   display: flex;
 }
@@ -162,7 +162,7 @@ h2 {
 .about__personal {
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 
@@ -178,12 +178,12 @@ h2 {
 }
 
 .about__surname {
-  margin-right: 16px;
-  font-size: 27px;
+  margin-right: 10px;
+  font-size: 23px;
 } 
 
 .about__name {
-  font-size: 29px;
+  font-size: 25px;
 }
 
 .about__position {
@@ -237,9 +237,16 @@ h2 {
   
 }
 
-.link__value > a {
+.link__value > a,
+.item__value > a {
   color: #ffffff;
   text-decoration: none;
+}
+
+.link__value > a:hover,
+.item__value > a:hover {
+  text-shadow: 2px 2px 3px #ffffff;
+  transition: all .3s ease;
 }
 
 .card-container {
@@ -248,7 +255,7 @@ h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 70px;
+  padding: 0 50px;
   background-color: #E4E6E7;
 }
 
@@ -371,8 +378,8 @@ h2 {
 .banner__item {
   display: inline-block;
   margin-right: 70px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-position: center center;
   background-size: cover;
@@ -520,14 +527,6 @@ h2 {
   font-size: 16px;
 }
 
-.study__more {
-  display: block;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-}
-
 .study__more:active {
   transition: 0.2s all ease;
   opacity: 0.5;
@@ -599,13 +598,13 @@ h2 {
 
 .modal {
   position: fixed;
-  top: 15%;
+  top: 10%;
   width: 700px;
   height: auto;
   padding: 1.5rem;
   background: #fff;
   z-index: 1000;
-  left: 55%;
+  left: 50%;
   border-radius: 2px;
   transform: translateX(-50%);
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
@@ -639,6 +638,7 @@ h2 {
 .input-field {
   margin-bottom: 15px;
   width: 100%;
+  overflow: hidden;
 }
 
 small {
@@ -754,35 +754,158 @@ small {
   transform: translate3d(0, -12px, 0) scale(0.75); 
 }
 
-.inp input:focus + .label + .focus-bg {
+.inp input:focus > .label,
+.inp input:focus > .focus-bg {
   transform: scaleX(1);
   transition: all .1s ease; 
 }
 
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin-top: 6px;
+
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.study__details {
+  display: block;
+  padding: 0;
+  margin: 10px auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+}
+.study__details:hover {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  transition: all .5s ease;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  background: -moz-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  background: gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#222),
+    to(#222),
+    color-stop(0.5, #ffffff)
+  );
+  -webkit-background-size: 125px 100%;
+  -moz-background-size: 125px 100%;
+  background-size: 125px 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: study__details;
+  -moz-animation-name: study__details;
+  animation-name: study__details;
+  -webkit-animation-duration: 3s;
+  -moz-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #222;
+}
+@-moz-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@-webkit-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@-o-keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+@keyframes study__details {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: bottom right;
+  }
+}
+
 @media only screen and (max-width: 1440px) {
+  .app-container {
+    max-width: 1000px;
+  }
   .about__avatar {
     margin-top: 25px;
   }
   .about__info {
     align-items: center;
   }
-  .about__personal {
-    flex-direction: column;
-  }
-  .about__surname {
-    margin-right: 0;
-    margin-bottom: 2px;
-  }
   .about__summary {
     margin-top: 15px;
   }
-  .banner__item {
-    width: 80px;
-    height: 80px;
-  }
-
   .card-container {
-    padding: 0 50px;
+    padding: 0 30px;
+  }
+  .banner__item {
+    margin-right: 60px;
   }
 }
 
@@ -796,7 +919,10 @@ small {
     display: none;
   }
   .card-container {
-    padding: 0 35px;
+    padding: 0 25px;
+  }
+  .about__personal {
+    flex-direction: column;
   }
 }
 
@@ -860,7 +986,7 @@ small {
     display: none;
   }
   .modal {
-    width: 500px;
+    max-width: 80%;
   }
 }
 
@@ -874,27 +1000,21 @@ small {
    margin-left: 0;
    margin-top: 15px;
   }
-
   .contacts__item {
     flex-direction: row;
   }
-
   .contacts__item > span:first-child::after {
     content: '- \00a0';
   }
-
   .default-size-title {
     display: none;
   }
-
   .sm-size-title {
     display: inline;
   }
-
   .skills__item {
     flex-basis: 100%;
   }
-
   .footer {
     flex-direction: column;
     align-items: center;
@@ -904,18 +1024,20 @@ small {
     flex-basis:  none;
     justify-content: center;
   }
-
   .footer_contacts {
     margin: 0;
   }
-
   .modal {
     top: 0;
-    width: 100%;
+    bottom: 0;
+    max-width: 95%;
     height: 100%;
+    padding: 10px;
   }
 
   #description {
     height: 300px;
   }
 }
+
+

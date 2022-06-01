@@ -9,13 +9,15 @@
 
       <main class="card-container">
         <main-skills />
-  
         <main-experience />
   
         <main-education />
       </main>
 
-      <the-footer v-if="checkWindowsWidth" />
+      <the-footer 
+        v-if="checkWindowsWidth" 
+        @open-modal="openModal"
+      />
     </div>
 
     <teleport to="body">
@@ -99,7 +101,8 @@
                 class="btn request-send"
                 @click="checkDescription"
               >
-                Отправить
+                <app-loader v-if="loading" />
+                <span v-else>Отправить</span>
               </button>
             </div>
           </Form>
@@ -117,12 +120,13 @@ import MainEducation from '@/components/card/MainEducation'
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
+import AppLoader from '@/components/ui/AppLoader'
 import { sendFormRequest } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 
 export default {
-  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage },
+  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader },
 
   data() {
     const schema = yup.object({
@@ -150,6 +154,7 @@ export default {
       description: '',
       contacts: '',
       schema,
+      loading: false
     }
   },
 
@@ -200,12 +205,15 @@ export default {
       }
 
       try {
+        this.loading = true
         await sendFormRequest(payload)
+        
       } catch (e) {
         //TODO: Show toast on error
-        console.log(e.message)
+        console.warn(e.message)
       }
 
+      this.loading = false
       this.closeForm()
       
     },
