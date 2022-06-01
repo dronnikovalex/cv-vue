@@ -92,7 +92,7 @@
                 @input="checkDescription"
               />    
               <small v-if="isEmptyDescription">
-                Введите описание
+                {{ $options.requiredFieldText }}
               </small>              
             </div>
 
@@ -128,21 +128,23 @@ import * as yup from 'yup';
 export default {
   components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader },
 
+  requiredFieldText: 'Обязательно для заполнения',
+
   data() {
     const schema = yup.object({
       name: yup
         .string()
         .trim()
-        .required('Введите Имя'),
+        .required('Обязательно для заполнения'),
       position: yup
         .string()
-        .matches(/^[A-Za-zА-Яа-я]+$/, "Должность должна содержать только буквы")
+        .matches(/^[A-Za-zА-Яа-я]+$/, "Поле должно содержать только буквы")
         .trim()
-        .required('Введите предлагаемую должность'),
+        .required('Обязательно для заполнения'),
       contacts: yup
         .string()
         .trim()
-        .required('Введите контакт для связи'),
+        .required('Обязательно для заполнения'),
     })
 
     return {
