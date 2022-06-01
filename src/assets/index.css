@@ -600,7 +600,7 @@ h2 {
   position: fixed;
   top: 10%;
   width: 700px;
-  height: auto;
+  height: fit-content;
   padding: 1.5rem;
   background: #fff;
   z-index: 1000;
@@ -959,9 +959,6 @@ small {
     font-size: 15px;
     font-weight: 600;
   } 
-  .modal {
-    left: 50%
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1028,15 +1025,10 @@ small {
     margin: 0;
   }
   .modal {
-    top: 0;
+    top: 7%;
     bottom: 0;
     max-width: 95%;
-    height: 100%;
-    padding: 10px;
-  }
-
-  #description {
-    height: 300px;
+    padding: 15px 10px 10px 10px;
   }
 }
 
