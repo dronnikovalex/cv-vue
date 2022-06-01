@@ -109,6 +109,12 @@
         </template>
       </app-modal>
     </teleport>
+
+    <teleport to="body">
+      <app-toast v-if="hasError">
+        {{ toastMessage }}
+      </app-toast>
+    </teleport>
   </div>
 </template>
 
@@ -121,12 +127,14 @@ import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
+import AppToast from '@/components/ui/AppToast'
 import { sendFormRequest } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
+import codes from './codes'
 
 export default {
-  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader },
+  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader, AppToast },
 
   requiredFieldText: 'Обязательно для заполнения',
 
@@ -151,12 +159,14 @@ export default {
       wWidth: window.innerWidth,
       modalVisibility: false,
       isEmptyDescription: false,
-      name: '',
-      position: '',
-      description: '',
-      contacts: '',
+      name: 'a',
+      position: 'a',
+      description: 'a',
+      contacts: 'a',
       schema,
-      loading: false
+      loading: false,
+      hasError: false,
+      toastMessage: '',
     }
   },
 
@@ -208,15 +218,18 @@ export default {
 
       try {
         this.loading = true
+
         await sendFormRequest(payload)
-        
+
+        this.closeForm()   
       } catch (e) {
-        //TODO: Show toast on error
-        console.warn(e.message)
+        this.hasError = true
+        this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
+
+        setTimeout(() => this.hasError= false, 5000)
       }
 
       this.loading = false
-      this.closeForm()
       
     },
   },

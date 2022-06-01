@@ -9,6 +9,7 @@
 }
 
 body, p, h3, h4 {
+  position: relative;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -888,6 +889,85 @@ small {
   }
 }
 
+.toast {
+  position: fixed;
+  z-index: 1;
+  right: 5%;
+  top: 5%;
+  height: 50px;
+  width: fit-content;
+  padding: 0 30px;
+  background-color: var(--hover-color);
+  color: var(--base-color);
+  font-size: 16px;
+  line-height: 50px;
+  font-weight: 600;
+  animation: fadein 0.7s, fadeout 0.5s 2.5s; 
+}
+
+@keyframes fadein {
+  0% {
+    top: -100%;
+    visibility: visible;
+  }
+  100% {
+    top: 5%;
+    visibility: visible;
+  }
+}
+
+@-moz-keyframes fadein {
+  0% {
+    top: -100%;
+    visibility: visible;
+  }
+  100% {
+    top: 5%;
+    visibility: visible;
+  }
+}
+@-webkit-keyframes fadein {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 5%;
+  }
+}
+
+@-o-keyframes fadein {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 5%;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+@-moz-keyframes fadeout {
+  from {top: 7%; opacity: 1;}
+  from {top: 7%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 7%; opacity: 1;}
+  from {top: 7%; opacity: 1;}
+}
+
+@-o-keyframes fadeout {
+  from {top: 7%; opacity: 1;}
+  from {top: 7%; opacity: 1;}
+}
+
 @media only screen and (max-width: 1440px) {
   .app-container {
     max-width: 1000px;
@@ -958,7 +1038,10 @@ small {
   .item__placeholder {
     font-size: 15px;
     font-weight: 600;
-  } 
+  }
+  .toast {
+    top: 5%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1029,6 +1112,9 @@ small {
     bottom: 0;
     max-width: 95%;
     padding: 15px 10px 10px 10px;
+  }
+  .toast {
+    top: 3%;
   }
 }
 
