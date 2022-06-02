@@ -337,18 +337,18 @@ button:disabled:active  {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .footer__links {
-  flex-basis: 55%;
+  flex-basis: 60%;
   display: flex;
   flex-wrap: wrap;
-  margin: 12px 0 20px 20px;
+  margin: 12px 0 20px 0;
 }
 
 .footer__links > .link__item {
-  flex-basis: 35%;
+  flex-basis: 50%;
 }
 
 .footer__links .link__item {
@@ -357,10 +357,6 @@ button:disabled:active  {
 
 .footer__links .link__item {
   padding: 8px 0 0 0;
-}
-
-.footer_contacts {
-  margin-right: 50px;
 }
 
 .footer__links .link__item .link__value {
@@ -457,7 +453,7 @@ button:disabled:active  {
 }
 
 .experience__container {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .experience__item > .experience__position::before {

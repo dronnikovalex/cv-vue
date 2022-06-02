@@ -14,7 +14,7 @@
       <app-contacts 
         class="header__contacts"
         :contacts="contacts"
-        :source="header" 
+        source="header" 
       />
     </div>
   </header>
