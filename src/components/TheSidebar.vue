@@ -67,6 +67,20 @@
           </a>
         </span>
       </div>
+      <div class="link__item">
+        <span class="link__placeholder">
+          VK
+        </span>
+        <span class="link__value">
+          <font-awesome-icon :icon="[ 'fab', 'vk' ]" />
+          <a 
+            href="https://vk.com/id38394670"
+            target="_blank"
+          >
+            vk.com/id38394670
+          </a>
+        </span>
+      </div>
     </div>
   </aside>
 </template>
