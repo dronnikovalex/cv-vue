@@ -14,6 +14,9 @@
       class="app-container"
     >
       <the-sidebar 
+        :about="profile.about"
+        :contacts="profile.contacts"
+        :links="profile.links"
         @open-modal="openModal"
       />
   
@@ -145,7 +148,7 @@ import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
-import { sendFormRequest } from './api/cvApi'
+import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import * as yup from 'yup';
 import codes from './codes'
@@ -176,12 +179,13 @@ export default {
       wWidth: window.innerWidth,
       modalVisibility: false,
       isEmptyDescription: false,
+      profile: {},
       name: '',
       position: '',
       description: '',
       contacts: '',
       loading: false,
-      formSending: false,
+      formSending: true,
       toastVisibility: false,
       toastMessage: '',
       schema,
@@ -201,8 +205,8 @@ export default {
   async mounted() {
     try {
       this.loading = true
-
-      // async request to fetch profile data
+      this.profile = await fetchProfileInfo()
+      console.log(this.profile)
     }
     catch(e) {
       this.toastVisibility = true
@@ -266,4 +270,6 @@ export default {
   },
   
 }
+
+
 </script>

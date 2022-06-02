@@ -11,65 +11,12 @@
     <div class="about__summary">
       <h2 class="sidebar__title">Обо мне</h2>
       
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, pariatur? Quas corporis libero quos eius, adipisci porro ea distinctio consequuntur! amet consectetur adipisicing elit. Reiciendis, pariatur? Quas corporis libero quos eius, adipisci porro ea distinctio consequuntur!</p>
+      <p>{{ about }}</p>
     </div>
 
     <hr class="sidebar__divider">
 
-    <div class="about__contacts contacts">
-      <h2 class="sidebar__title">Контакты</h2>
-      <!-- TODO: Add icons and styling to links -->
-      <div class="contacts__item item">
-        <span class="item__placeholder">
-          Email
-        </span>
-        <span class="item__value">
-          <a 
-            href="mailto:@hoock57@gmail.com"
-            target="_blank"
-          >
-            hoock57@gmail.com
-          </a>
-        </span>
-      </div>
-      <div class="contacts__item item">
-        <span class="item__placeholder">
-          Telegram
-        </span>
-        <span class="item__value">
-          <a 
-            href="https://telegram.me/aldronnikov"
-            target="_blank"
-          >
-            t.me/aldronnikov
-          </a>
-        </span>
-      </div>
-      <div class="contacts__item item">
-        <span class="item__placeholder">
-          Телефон
-        </span>
-        <span class="item__value">
-          <a 
-            href="tel:+79534773162"
-            target="_blank"
-          >
-            +7-(953)-477-31-62
-          </a>
-        </span>
-      </div>
-      <div class="contacts__item item">
-        <button 
-          href="#"
-          class="contacts__request"
-          @click.prevent="$emit('open-modal')"
-        >
-          <span class="text">
-            Связаться
-          </span>
-        </button>
-      </div>
-    </div>
+    <app-contacts :contacts="contacts" />
 
     <hr class="sidebar__divider">
 
@@ -120,12 +67,52 @@
           </a>
         </span>
       </div>
+      <div class="link__item">
+        <span class="link__placeholder">
+          VK
+        </span>
+        <span class="link__value">
+          <font-awesome-icon :icon="[ 'fab', 'vk' ]" />
+          <a 
+            href="https://vk.com/id38394670"
+            target="_blank"
+          >
+            vk.com/id38394670
+          </a>
+        </span>
+      </div>
     </div>
   </aside>
 </template>
 
 <script>
+import AppContacts from '@/components/ui/AppContacts'
+
 export default {
+  components: { AppContacts },
+
+  props: {
+    about: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    contacts: {
+      type: Object,
+      required: true,
+      default: function() {
+        return {}
+      }
+    },
+    links: {
+      type: Object,
+      required: true,
+      default: function() {
+        return {}
+      }
+    },
+  },
+
   emits: {
     'open-modal': null
   },
