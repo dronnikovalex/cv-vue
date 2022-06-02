@@ -1089,13 +1089,16 @@ small {
   .toast {
     top: 5%;
   }
+  .contacts__item {
+    padding: 0;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .header__contacts {
     justify-content: space-around;
   }
-  .header__phone {
+  .contacts__item:last-child {
     display: none;
   }
   .header__personal {
@@ -1131,7 +1134,7 @@ small {
     flex-direction: row;
   }
   .contacts__item > span:first-child::after {
-    content: '- \00a0';
+    content: '\00a0 - \00a0';
   }
   .default-size-title {
     display: none;

@@ -20,7 +20,10 @@
         @open-modal="openModal"
       />
   
-      <the-header v-if="checkWindowsWidth" />
+      <the-header 
+        v-if="checkWindowsWidth" 
+        :contacts="profile.contacts"
+      />
 
       <main class="card-container">
         <main-skills />
@@ -191,7 +194,7 @@ export default {
       schema,
     }
   },
-
+  //TODO: Use css display with media-query instead of this
   computed: {
     checkWindowsWidth() {
       if (this.wWidth <= 992) {

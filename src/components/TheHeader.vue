@@ -10,54 +10,30 @@
         </div>
         <span class="header__position">QA engineer</span>
       </div>
-    
-      <div class="header__contacts contacts">
-        <div class="contacts__item item">
-          <span class="item__placeholder">
-            Email
-          </span>
-          <span class="item__value">
-            <a 
-              href="mailto:@hoock57@gmail.com"
-              target="_blank"
-            >
-              hoock57@gmail.com
-            </a>
-          </span>
-        </div>
-        <div class="contacts__item item">
-          <span class="item__placeholder">
-            Telegram
-          </span>
-          <span class="item__value">
-            <a 
-              href="https://telegram.me/aldronnikov"
-              target="_blank"
-            >
-              t.me/aldronnikov
-            </a>
-          </span>
-        </div>
-        <div class="contacts__item header__phone item">
-          <span class="item__placeholder">
-            Телефон
-          </span>
-          <span class="item__value">
-            <a 
-              href="tel:+79534773162"
-              target="_blank"
-            >
-              +7-(953)-477-31-62
-            </a>
-          </span>
-        </div>
-      </div>
+
+      <app-contacts 
+        class="header__contacts"
+        :contacts="contacts"
+        :source="header" 
+      />
     </div>
   </header>
 </template>
 
-<style scoped>
-.header__phone  {
-  padding: 0 !important
+<script>
+import AppContacts from '@/components/ui/AppContacts.vue'
+
+export default {
+  components: { AppContacts },
+
+  props: {
+    contacts: {
+      type: Object,
+      required: true,
+      default: function() {
+        return {}
+      }
+    },
+  }
 }
-</style>
+</script>
