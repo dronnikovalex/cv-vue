@@ -44,10 +44,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.btn:disabled {
-  opacity: 0.3;
-}
-
 .request-send {
   position: relative;
   border: none;
@@ -83,6 +79,19 @@ h2 {
   opacity: 1;
   transition: 0s
 }
+
+button:disabled  {
+  cursor: not-allowed;
+}
+
+button:disabled:active  {
+  transform: none;
+}
+
+.request-send:disabled::after {
+  display: none;
+}
+
 
 .app-container-fluid {
   background-color: #555555;

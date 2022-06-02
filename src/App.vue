@@ -100,6 +100,7 @@
               <button 
                 class="btn request-send"
                 @click="checkDescription"
+                :disabled="loading"
               >
                 <app-loader v-if="loading" />
                 <span v-else>Отправить</span>
@@ -111,7 +112,7 @@
     </teleport>
 
     <teleport to="body">
-      <app-toast v-if="hasError">
+      <app-toast v-if="toastVisibility">
         {{ toastMessage }}
       </app-toast>
     </teleport>
@@ -165,7 +166,7 @@ export default {
       contacts: 'a',
       schema,
       loading: false,
-      hasError: false,
+      toastVisibility: false,
       toastMessage: '',
     }
   },
@@ -223,10 +224,10 @@ export default {
 
         this.closeForm()   
       } catch (e) {
-        this.hasError = true
+        this.toastVisibility = true
         this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
 
-        setTimeout(() => this.hasError= false, 5000)
+        setTimeout(() => this.toastVisibility= false, 5000)
       }
 
       this.loading = false
