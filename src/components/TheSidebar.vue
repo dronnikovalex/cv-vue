@@ -18,13 +18,18 @@
 
     <div class="about__contacts contacts">
       <h2 class="sidebar__title">Контакты</h2>
-
+      <!-- TODO: Add icons and styling to links -->
       <div class="contacts__item item">
         <span class="item__placeholder">
           Email
         </span>
         <span class="item__value">
-          hoock57@gmail.com
+          <a 
+            href="mailto:@hoock57@gmail.com"
+            target="_blank"
+          >
+            hoock57@gmail.com
+          </a>
         </span>
       </div>
       <div class="contacts__item item">
@@ -32,7 +37,12 @@
           Telegram
         </span>
         <span class="item__value">
-          t.me/aldronnikov
+          <a 
+            href="https://telegram.me/aldronnikov"
+            target="_blank"
+          >
+            t.me/aldronnikov
+          </a>
         </span>
       </div>
       <div class="contacts__item item">
@@ -40,18 +50,24 @@
           Телефон
         </span>
         <span class="item__value">
-          +7-(953)-477-31-62
+          <a 
+            href="tel:+79534773162"
+            target="_blank"
+          >
+            +7-(953)-477-31-62
+          </a>
         </span>
       </div>
       <div class="contacts__item item">
-        <a 
+        <button 
           href="#"
           class="contacts__request"
+          @click.prevent="$emit('open-modal')"
         >
           <span class="text">
             Связаться
           </span>
-        </a>
+        </button>
       </div>
     </div>
 
@@ -65,7 +81,13 @@
           Project repo
         </span>
         <span class="link__value">
-          <font-awesome-icon :icon="[ 'fab', 'github' ]" /> <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
+          <font-awesome-icon :icon="[ 'fab', 'github' ]" />
+          <a 
+            href="https://github.com/dronnikovalex/cv-vue"
+            target="_blank"
+          >
+            github.com/dronnikovalex/cv-vue
+          </a>
         </span>
       </div>
       <div class="link__item">
@@ -78,58 +100,34 @@
             alt="cypress"
             class="cypress-icon"
           >
-          <a href="https://github.com/dronnikovalex/cv-vue/cypress">github.com/dronnikovalex/cv-vue/cypress</a>
+          <a 
+            href="https://github.com/dronnikovalex/cv-vue/cypress"
+            target="_blank"
+          >github.com/dronnikovalex/cv-vue/cypress</a>
+        </span>
+      </div>
+      <div class="link__item">
+        <span class="link__placeholder">
+          Habr career
+        </span>
+        <span class="link__value">
+          <font-awesome-icon :icon="[ 'fa', 'h-square' ]" />
+          <a 
+            href="https://career.habr.com/aleksey-dronnikov57"
+            target="_blank"
+          >
+            habr.com/aleksey-dronnikov57
+          </a>
         </span>
       </div>
     </div>
-
-    <teleport to="body">
-      <app-modal>
-        <template #body>
-          <div class="request-body">
-          
-          <div class="input-field">
-            <label for="name" class="inp">
-              <input type="text" id="name" placeholder="&nbsp;">
-              <span class="label">Имя</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="input-field">
-            <label for="position" class="inp">
-              <input type="text" id="position" placeholder="&nbsp;">
-              <span class="label">Должность</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="input-field">
-            <label for="contacts" class="inp">
-              <input type="text" id="contacts" placeholder="&nbsp;">
-              <span class="label">Контакты</span>
-              <span class="focus-bg"></span>
-            </label>
-          </div>
-
-          <div class="desription-field">
-            <label for="description">Описание</label>
-            <textarea id="description" type="text" name="description" />
-          </div>
-          
-          </div>
-        </template>
-        <template #footer>
-          <div class="reuqest-footer">
-            <button 
-              type="submit"
-              class="btn"
-            >
-              Отправить
-            </button>
-          </div>
-        </template>
-      </app-modal>
-    </teleport>
   </aside>
 </template>
+
+<script>
+export default {
+  emits: {
+    'open-modal': null
+  },
+}
+</script>

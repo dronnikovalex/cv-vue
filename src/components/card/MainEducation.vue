@@ -10,12 +10,19 @@
         <p class="study__years">2011 - 2017</p>
         <p class="study__description">Высшее образование. Магистр. ФГБОУ ВО «ОГУ имени И.С. Тургенева»</p>
       </div>
-      <a 
-        href="#" 
-        class="study__more"
-      >
-        Развернуть...
-      </a>
+      <details>
+        <summary 
+          class="study__details" 
+          @click="toggleDetails"
+        >
+          {{ summaryStatus === false ? 'Развернуть▼' : 'Свернуть▲' }}
+        </summary>
+        <div class="study__item">
+          <h3 class="study__title">Общее среднее образование</h3>
+          <p class="study__years">2000 - 2011</p>
+          <p class="study__description">Муниципальное бюджетное общеобразовательное учреждение - средняя общеобразовательная школа №2 г. Орла</p>
+        </div>
+      </details>
     </div>
   </section>
 </template>
@@ -28,6 +35,7 @@ export default {
 
   data() {
     return {
+      summaryStatus: false,
       stack: ['cypress', 'vue', 'postman', 'postgres', 'html', 'git', 'js'],
       mockExperience: [
         {
@@ -44,6 +52,12 @@ export default {
           descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
         },
       ]
+    }
+  },
+
+  methods: {
+    toggleDetails() {
+      this.summaryStatus = !this.summaryStatus
     }
   }
 }

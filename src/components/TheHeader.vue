@@ -17,7 +17,12 @@
             Email
           </span>
           <span class="item__value">
-            hoock57@gmail.com
+            <a 
+              href="mailto:@hoock57@gmail.com"
+              target="_blank"
+            >
+              hoock57@gmail.com
+            </a>
           </span>
         </div>
         <div class="contacts__item item">
@@ -25,7 +30,12 @@
             Telegram
           </span>
           <span class="item__value">
-            t.me/aldronnikov
+            <a 
+              href="https://telegram.me/aldronnikov"
+              target="_blank"
+            >
+              t.me/aldronnikov
+            </a>
           </span>
         </div>
         <div class="contacts__item header__phone item">
@@ -33,7 +43,12 @@
             Телефон
           </span>
           <span class="item__value">
-            +7-(953)-477-31-62
+            <a 
+              href="tel:+79534773162"
+              target="_blank"
+            >
+              +7-(953)-477-31-62
+            </a>
           </span>
         </div>
       </div>
