@@ -11,7 +11,8 @@
         class="experience__item"
       >
         <h3>{{ experience.name }} | {{ experience.dateFrom }} - {{ experience.dateTo }}</h3>
-        <p>{{ experience.descripton }}</p>
+        <p class="experience__position">Должность - QA</p>
+        <p class="experience__description">{{ experience.descripton }}</p>
       </div>
     </div>
   </section>

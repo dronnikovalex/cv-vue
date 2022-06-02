@@ -455,12 +455,7 @@ button:disabled:active  {
   margin-top: 20px;
 }
 
-.experience__item > p {
-  position: relative;
-  padding-top: 5px;
-}
-
-.experience__item > p::before {
+.experience__item > .experience__position::before {
   content: '';
   position: absolute;
   top: 0;
@@ -469,6 +464,10 @@ button:disabled:active  {
   height: 2px;
   background: #000;
 }
+
+.experience__item > .experience__position {
+  padding: 5px 0 10px 0;
+} 
 
 .postman {
   background-image: url(../images/postman.png);
