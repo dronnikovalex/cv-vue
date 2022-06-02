@@ -6,7 +6,13 @@
           Project repo
         </span>
         <span class="link__value">
-          <font-awesome-icon :icon="[ 'fab', 'github' ]" /> <a href="https://github.com/dronnikovalex/cv-vue">github.com/dronnikovalex/cv-vue</a>
+          <font-awesome-icon :icon="[ 'fab', 'github' ]" />
+          <a 
+            href="https://github.com/dronnikovalex/cv-vue"
+            target="_blank"
+          >
+            github.com/dronnikovalex/cv-vue
+          </a>
         </span>
       </div>
       <div class="link__item">
@@ -19,7 +25,12 @@
             alt="cypress"
             class="cypress-icon"
           >
-          <a href="https://github.com/dronnikovalex/cv-vue/cypress">github.com/dronnikovalex/cv-vue/cypress</a>
+          <a 
+            href="https://github.com/dronnikovalex/cv-vue/cypress"
+            target="_blank"
+          >
+            github.com/dronnikovalex/cv-vue/cypress
+          </a>
         </span>
       </div>
       <div class="link__item">
@@ -27,7 +38,13 @@
           VK
         </span>
         <span class="link__value">
-          <font-awesome-icon :icon="[ 'fab', 'vk' ]" /> <a href="https://vk.com/id38394670">vk.com/id38394670</a>
+          <font-awesome-icon :icon="[ 'fab', 'vk' ]" />
+          <a 
+            href="https://vk.com/id38394670"
+            target="_blank"
+          >
+            vk.com/id38394670
+          </a>
         </span>
       </div>
       <div class="link__item">
@@ -35,7 +52,13 @@
           Habr
         </span>
         <span class="link__value">
-          <font-awesome-icon :icon="[ 'fa', 'h-square' ]" /> <a href="https://career.habr.com/aleksey-dronnikov57">habr.com/aleksey-dronnikov57</a>
+          <font-awesome-icon :icon="[ 'fa', 'h-square' ]" />
+          <a 
+            href="https://career.habr.com/aleksey-dronnikov57"
+            target="_blank"
+          >
+            habr.com/aleksey-dronnikov57
+          </a>
         </span>
       </div>
     </div>
