@@ -1,6 +1,18 @@
 <template>
   <div class="app-container-fluid">
-    <div class="app-container">
+    <div 
+      v-if="loading" 
+      class="loading"
+    >
+      <app-loader 
+        type="bg"
+      />
+    </div>
+    
+    <div
+      v-else 
+      class="app-container"
+    >
       <the-sidebar 
         @open-modal="openModal"
       />
@@ -9,6 +21,7 @@
 
       <main class="card-container">
         <main-skills />
+
         <main-experience />
   
         <main-education />
@@ -99,10 +112,13 @@
             <div class="reuqest-footer">
               <button 
                 class="btn request-send"
+                :disabled="formSending"
                 @click="checkDescription"
-                :disabled="loading"
               >
-                <app-loader v-if="loading" />
+                <app-loader
+                  v-if="formSending" 
+                  type="sm"
+                />
                 <span v-else>Отправить</span>
               </button>
             </div>
@@ -165,6 +181,7 @@ export default {
       description: 'a',
       contacts: 'a',
       loading: false,
+      formSending: false,
       toastVisibility: false,
       toastMessage: '',
       schema,
@@ -181,7 +198,19 @@ export default {
     },
   },
   
-  mounted() {
+  async mounted() {
+    try {
+      this.loading = true
+
+      // async request to fetch profile data
+    }
+    catch(e) {
+      this.toastVisibility = true
+      this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
+    }
+
+    this.loading = false
+
     window.onresize = () => {
       this.wWidth = window.innerWidth
     }
@@ -218,7 +247,7 @@ export default {
       }
 
       try {
-        this.loading = true
+        this.formSending = true
 
         await sendFormRequest(payload)
 
@@ -231,7 +260,7 @@ export default {
       }
 
       setTimeout(() => this.toastVisibility= false, 5000)
-      this.loading = false
+      this.formSending = false
       
     },
   },
