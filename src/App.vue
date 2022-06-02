@@ -164,10 +164,10 @@ export default {
       position: 'a',
       description: 'a',
       contacts: 'a',
-      schema,
       loading: false,
       toastVisibility: false,
       toastMessage: '',
+      schema,
     }
   },
 
@@ -222,14 +222,15 @@ export default {
 
         await sendFormRequest(payload)
 
-        this.closeForm()   
+        this.closeForm()
+        this.toastVisibility = true
+        this.toastMessage = '[Успех] Сообщение успешно отправлено'
       } catch (e) {
         this.toastVisibility = true
         this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
-
-        setTimeout(() => this.toastVisibility= false, 5000)
       }
 
+      setTimeout(() => this.toastVisibility= false, 5000)
       this.loading = false
       
     },
