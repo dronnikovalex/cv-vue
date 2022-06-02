@@ -225,11 +225,12 @@ button:disabled:active  {
   text-align: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 18px;
 }
 
-.contacts__item:nth-child(3),
-.link__item:nth-child(3) {
-  padding: 18px 0
+.contacts__item:last-child,
+.link__item:last-child {
+  padding-bottom: 0
 }
 
 .contacts__item:nth-child(4) {
@@ -250,7 +251,11 @@ button:disabled:active  {
   font-weight: 300;
   font-size: 16px;
   color: #BEBEBE
-  
+}
+
+.item__value > svg,
+.link__value > svg {
+  margin-right: 5px;
 }
 
 .link__value > a,
