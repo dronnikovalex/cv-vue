@@ -8,7 +8,7 @@
           <span class="header__surname surname">Дронников&nbsp;</span>
           <span class="header__name name">Алексей</span>
         </div>
-        <span class="header__position">QA engineer</span>
+        <span class="header__position">QA ENGINEER</span>
       </div>
 
       <app-contacts 
