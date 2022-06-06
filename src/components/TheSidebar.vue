@@ -16,7 +16,11 @@
 
     <hr class="sidebar__divider">
 
-    <app-contacts :contacts="contacts" />
+    <contacts-list 
+      :contacts="contacts"
+      source="sidebar"
+      @open-modal="$emit('open-modal')"
+    />
 
     <hr class="sidebar__divider">
 
@@ -60,10 +64,10 @@
 </template>
 
 <script>
-import AppContacts from '@/components/ui/AppContacts'
+import ContactsList from '@/components/contacts/ContactsList'
 
 export default {
-  components: { AppContacts },
+  components: { ContactsList },
 
   props: {
     about: {

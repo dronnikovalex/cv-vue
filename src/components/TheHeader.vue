@@ -11,7 +11,7 @@
         <span class="header__position">QA ENGINEER</span>
       </div>
 
-      <app-contacts 
+      <contacts-list
         class="header__contacts"
         :contacts="contacts"
         source="header" 
@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import AppContacts from '@/components/ui/AppContacts.vue'
+import ContactsList from '@/components/contacts/ContactsList.vue'
 
 export default {
-  components: { AppContacts },
+  components: { ContactsList },
 
   props: {
     contacts: {

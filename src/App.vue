@@ -21,7 +21,7 @@
       />
   
       <the-header 
-        v-if="checkWindowsWidth" 
+        v-if="isMobileView" 
         :contacts="profile.contacts"
       />
 
@@ -34,7 +34,7 @@
       </main>
 
       <the-footer 
-        v-if="checkWindowsWidth" 
+        v-if="isMobileView" 
         @open-modal="openModal"
       />
     </div>
@@ -188,7 +188,7 @@ export default {
       description: '',
       contacts: '',
       loading: false,
-      formSending: true,
+      formSending: false,
       toastVisibility: false,
       toastMessage: '',
       schema,
@@ -196,12 +196,8 @@ export default {
   },
   //TODO: Use css display with media-query instead of this
   computed: {
-    checkWindowsWidth() {
-      if (this.wWidth <= 992) {
-        return true
-      } else {
-        return false
-      }
+    isMobileView() {
+      return this.wWidth <= 992 ? true : false
     },
   },
   
@@ -209,7 +205,6 @@ export default {
     try {
       this.loading = true
       this.profile = await fetchProfileInfo()
-      console.log(this.profile)
     }
     catch(e) {
       this.toastVisibility = true

@@ -1,9 +1,9 @@
 <template>
   <section class="skills">
-    <app-caption>
+    <app-heading>
       <span class="default-size-title">Профессиональные навыки</span>
       <span class="sm-size-title">Навыки</span>
-    </app-caption>
+    </app-heading>
 
     <div class="skills__banner banner">
       <a
@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import AppCaption from '@/components/ui/AppСaption'
+import AppHeading from '@/components/ui/AppHeading'
 
 export default {
-  components: { AppCaption },
+  components: { AppHeading },
 
   data() {
     return {
