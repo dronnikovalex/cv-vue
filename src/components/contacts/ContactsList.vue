@@ -24,7 +24,7 @@ import AppListTitle from '../ui/AppListTitle.vue'
 
 export default {
   components: { ContactsListItem, AppListTitle, ContactsRequestButton },
-
+  
   props: {
     contacts: {
       type: Object,

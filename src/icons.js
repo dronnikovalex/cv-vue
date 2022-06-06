@@ -2,22 +2,22 @@ export default {
   phone: {
     resource_type: 'icon',
     prefix: 'fa',
-    icon: 'phone'
+    icon: 'phone',
   },
   telegram: {
     resource_type: 'icon',
     prefix: 'fab',
-    icon: 'telegram'
+    icon: 'telegram',
   },
   envelope: {
     resource_type: 'icon',
     prefix: 'fa',
-    icon: 'envelope'
+    icon: 'envelope',
   },
   github: {
     resource_type: 'icon',
     prefix: 'fab',
-    icon: 'github'
+    icon: 'github',
   },
   cypress: {
     resource_type: 'image',
@@ -28,6 +28,11 @@ export default {
   habr: {
     resource_type: 'icon',
     prefix: 'fa',
-    icon: 'h-square'
+    icon: 'h-square',
   },
+  vk: {
+    resource_type: 'icon',
+    prefix: 'fab',
+    icon: 'vk',
+  }
 }
