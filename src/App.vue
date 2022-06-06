@@ -34,7 +34,8 @@
       </main>
 
       <the-footer 
-        v-if="isMobileView" 
+        v-if="isMobileView"
+        :links="profile.links"
         @open-modal="openModal"
       />
     </div>
