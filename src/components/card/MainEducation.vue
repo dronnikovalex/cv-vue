@@ -1,8 +1,8 @@
 <template>
   <section class="study">
-    <app-caption>
+    <app-heading>
       Обучение
-    </app-caption>
+    </app-heading>
 
     <div class="study__container">
       <div class="study__item">
@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import AppCaption from '@/components/ui/AppСaption'
+import AppHeading from '@/components/ui/AppHeading'
 
 export default {
-  components: { AppCaption },
+  components: { AppHeading },
 
   data() {
     return {
