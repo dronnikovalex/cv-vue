@@ -24,7 +24,10 @@
 
     <hr class="sidebar__divider">
     
-    <links-list :links="links" />
+    <links-list 
+      :links="links" 
+      source="sidebar"
+    />
   </aside>
 </template>
 

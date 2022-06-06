@@ -1,6 +1,6 @@
 <template>
-  <div class="about__links links">
-    <app-list-title v-if="isNotHeaderSource">Ссылки</app-list-title>
+  <div class="links">
+    <app-list-title v-if="isNotFooterSource">Ссылки</app-list-title>
     
     <links-list-item
       v-for="(link, idx) in links"
@@ -25,6 +25,17 @@ export default {
         return {}
       }
     },
+    source: {
+      type: String,
+      required: false,
+      default: 'footer',
+    }
   },
+
+  computed: {
+    isNotFooterSource() {
+      return this.source !== 'footer'
+    }
+  }
 }
 </script>
