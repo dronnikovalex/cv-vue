@@ -4,7 +4,7 @@
   </span>
 
   <span class="item__value">
-    <font-awesome-icon :icon="[ icons[contact.type]?.prefix, icons[contact.type]?.icon ]" />
+    <app-icon :type="contact.type" />
     <a 
       :href="contact.link"
       target="_blank" 
@@ -15,9 +15,11 @@
 </template>
 
 <script>
-import icons from '../../icons'
+import AppIcon from '@/components/ui/AppIcon'
 
 export default {
+  components: { AppIcon },
+
   props: {
     contact: {
       type: Object,
@@ -26,12 +28,6 @@ export default {
         return {}
       },
     },
-  },
-
-    data() {
-    return {
-      icons
-    }
   },
 }
 </script>
