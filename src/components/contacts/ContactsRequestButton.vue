@@ -1,5 +1,5 @@
 <template>
-  <div class="request-button">
+  <div class="request-btn">
     <button 
       class="contacts__request"
       @click.prevent="$emit('open-modal')"

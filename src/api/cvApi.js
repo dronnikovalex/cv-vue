@@ -6,7 +6,5 @@ export const sendFormRequest = async payload => {
 }
 
 export const fetchProfileInfo = async () => {
-  const res = await axios.get(`${baseUrl}/profile.json`)
-
-  return res.data
+  return await axios.get(`${baseUrl}/profile.json`).then(r => r.data)
 }

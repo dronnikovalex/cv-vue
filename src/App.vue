@@ -19,7 +19,7 @@
         :links="profile.links"
         @open-modal="openModal"
       />
-  
+
       <the-header 
         v-if="isMobileView" 
         :contacts="profile.contacts"
@@ -54,7 +54,8 @@
             <div class="input-field">
               <label for="name" class="inp">
                 <Field
-                  id="name" 
+                  id="name"
+                  ref="nameInput"
                   v-model="name"
                   type="text"
                   placeholder="&nbsp;"
@@ -208,17 +209,20 @@ export default {
       schema,
     }
   },
-  //TODO: Use css display with media-query instead of this
+
   computed: {
     isMobileView() {
       return this.wWidth <= 992 ? true : false
     },
   },
   
-  async mounted() {
+  mounted() {
     try {
       this.loading = true
-      this.profile = await fetchProfileInfo()
+
+      fetchProfileInfo().then(profileInfo => {
+        this.profile = profileInfo
+      })
     }
     catch(e) {
       this.toastVisibility = true
@@ -235,6 +239,9 @@ export default {
   methods: {
     openModal() {
       this.modalVisibility = true
+      this.$nextTick(() => {
+       this.$refs.nameInput.$el.focus()
+      })
     },
 
     closeForm() {

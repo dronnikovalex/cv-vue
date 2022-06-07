@@ -7,8 +7,9 @@
     <div 
       class="modal"
       @click.stop
+      @keydown.esc="closeForm"
     >
-      <h3  
+      <h3
         class="modal__title"
       >
         Контактная информация
@@ -44,6 +45,6 @@ export default {
     closeForm() {
       this.$emit('close-form')
     }
-  }
+  },
 }
 </script>
