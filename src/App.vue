@@ -26,15 +26,16 @@
       />
 
       <main class="card-container">
-        <main-skills />
+        <the-main-skills />
 
-        <main-experience />
+        <the-main-experience />
   
-        <main-education />
+        <the-main-education />
       </main>
 
       <the-footer 
-        v-if="isMobileView" 
+        v-if="isMobileView"
+        :links="profile.links"
         @open-modal="openModal"
       />
     </div>
@@ -143,9 +144,9 @@
 
 <script>
 import TheSidebar from '@/components/TheSidebar'
-import MainSkills from '@/components/card/MainSkills'
-import MainExperience from '@/components/card/MainExperience'
-import MainEducation from '@/components/card/MainEducation'
+import TheMainSkills from '@/components/card/TheMainSkills'
+import TheMainExperience from '@/components/card/TheMainExperience'
+import TheMainEducation from '@/components/card/TheMainEducation'
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
@@ -157,7 +158,20 @@ import * as yup from 'yup';
 import codes from './codes'
 
 export default {
-  components: { TheSidebar, MainSkills, MainExperience, MainEducation, TheHeader, TheFooter, AppModal, Form, Field, ErrorMessage, AppLoader, AppToast },
+  components: { 
+    TheSidebar, 
+    TheMainSkills, 
+    TheMainExperience, 
+    TheMainEducation, 
+    TheHeader, 
+    TheFooter, 
+    AppModal, 
+    AppLoader, 
+    AppToast,
+    Form, 
+    Field, 
+    ErrorMessage, 
+  },
 
   requiredFieldText: 'Обязательно для заполнения',
 

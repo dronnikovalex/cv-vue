@@ -7,7 +7,7 @@
       :key="idx"
       class="contacts__item item"
     >
-      <contacts-item :contact="contact" />
+      <contacts-list-item :contact="contact" />
     </div>
     
     <contacts-request-button 
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import ContactsItem from './ContactsItem.vue'
+import ContactsListItem from './ContactsListItem.vue'
 import ContactsRequestButton from './ContactsRequestButton.vue'
 import AppListTitle from '../ui/AppListTitle.vue'
 
 export default {
-  components: { ContactsItem, AppListTitle, ContactsRequestButton },
+  components: { ContactsListItem, AppListTitle, ContactsRequestButton },
 
   props: {
     contacts: {
@@ -37,7 +37,7 @@ export default {
       type: String,
       required: false,
       default: 'header',
-    }
+    },
   },
 
   emits: {
