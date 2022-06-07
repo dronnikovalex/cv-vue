@@ -3,13 +3,7 @@
     <div class="header__container">
       <div class="header__avatar avatar" />
 
-      <div class="header__info">
-        <div class="header__personal personal">
-          <span class="header__surname surname">Дронников&nbsp;</span>
-          <span class="header__name name">Алексей</span>
-        </div>
-        <span class="header__position">QA ENGINEER</span>
-      </div>
+      <app-about source="header" />
 
       <contacts-list
         class="header__contacts"
@@ -22,9 +16,10 @@
 
 <script>
 import ContactsList from '@/components/contacts/ContactsList.vue'
+import AppAbout from '@/components/ui/AppAbout'
 
 export default {
-  components: { ContactsList },
+  components: { ContactsList, AppAbout },
 
   props: {
     contacts: {
