@@ -1,7 +1,8 @@
 <template>
   <aside class="sidebar about">
-    <div class="about__avatar avatar" />
-    <app-about>
+    <div class="sidebar__avatar avatar" />
+
+    <app-about source="sidebar">
       {{ about }}
     </app-about>
 

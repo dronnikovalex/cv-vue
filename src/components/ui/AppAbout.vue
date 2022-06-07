@@ -1,13 +1,29 @@
 <template>
-  <div class="about__info">
-    <div class="about__personal personal">
-      <span class="about__surname surname">Дронников</span>
-      <span class="about__name name">Алексей</span>
+  <div :class="`${source}__info`">
+    <div 
+      :class="`${source}__personal`" 
+      class="personal"
+    >
+      <span 
+        :class="`${source}__surname`" 
+        class="surname"
+      >
+        Дронников
+      </span>
+      <span 
+        :class="`${source}__name`" 
+        class="name"
+      >
+        Алексей
+      </span>
     </div>
-    <span class="about__position">QA engineer</span>
+    <span :class="`${source}__position`">QA engineer</span>
   </div>
-  <div class="about__summary">
-    <h2 class="sidebar__title">Обо мне</h2>
+  <div
+    v-if="$slots.default"
+    :class="`${source}__summary`"
+  >
+    <h2 :class="`${source}__title`">Обо мне</h2>
     
     <p>
       <slot />
