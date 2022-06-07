@@ -155,8 +155,16 @@ import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
 import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
+import { configure } from 'vee-validate';
 import * as yup from 'yup';
 import codes from './codes'
+
+configure({
+  validateOnBlur: false,
+  validateOnChange: false,
+  validateOnInput: false,
+  validateOnModelUpdate: false,
+});
 
 export default {
   components: { 
