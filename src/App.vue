@@ -26,7 +26,10 @@
       />
 
       <main class="card-container">
-        <the-main-skills />
+        <the-main-skills
+          v-if="profile.stack"
+          :stack="profile.stack" 
+        />
 
         <the-main-experience />
   
@@ -225,19 +228,19 @@ export default {
   },
   
   mounted() {
-    try {
-      this.loading = true
+    this.loading = true
 
-      fetchProfileInfo().then(profileInfo => {
-        this.profile = profileInfo
-      })
+    try {
+      fetchProfileInfo()
+        .then(profileInfo => this.profile = profileInfo)
+        .then(() => this.loading = false)
     }
     catch(e) {
       this.toastVisibility = true
       this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
-    }
 
-    this.loading = false
+      this.loading = false
+    }
 
     window.onresize = () => {
       this.wWidth = window.innerWidth
