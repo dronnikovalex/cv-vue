@@ -1,18 +1,9 @@
 <template>
   <aside class="sidebar about">
     <div class="about__avatar avatar" />
-    <div class="about__info">
-      <div class="about__personal personal">
-        <span class="about__surname surname">Дронников</span>
-        <span class="about__name name">Алексей</span>
-      </div>
-      <span class="about__position">QA engineer</span>
-    </div>
-    <div class="about__summary">
-      <h2 class="sidebar__title">Обо мне</h2>
-      
-      <p>{{ about }}</p>
-    </div>
+    <app-about>
+      {{ about }}
+    </app-about>
 
     <hr class="sidebar__divider">
 
@@ -32,11 +23,12 @@
 </template>
 
 <script>
+import AppAbout from '@/components/ui/AppAbout'
 import ContactsList from '@/components/contacts/ContactsList'
 import LinksList from '@/components/links/LinksList'
 
 export default {
-  components: { ContactsList, LinksList },
+  components: { ContactsList, LinksList, AppAbout },
 
   props: {
     about: {
