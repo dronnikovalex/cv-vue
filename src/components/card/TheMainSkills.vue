@@ -4,6 +4,7 @@
       <span class="default-size-title">Профессиональные навыки</span>
       <span class="sm-size-title">Навыки</span>
     </app-heading>
+    
     <div class="skills__banner banner">
       <a
         v-for="(banner, idx) in bannerClasses"
@@ -15,23 +16,21 @@
     </div>
 
     <div class="skills__description">
-      <div 
+      <main-skills-item
         v-for="(technology, idx) in stack"
         :key="idx"
-        class="skills__item"
-      >
-        <h3>{{ technology.name }}</h3>
-        <p>{{ technology.description }}</p>
-      </div>
+        :technology="technology"
+      />
     </div>
   </section>
 </template>
 
 <script>
 import AppHeading from '@/components/ui/AppHeading'
+import MainSkillsItem from './MainSkillsItem'
 
 export default {
-  components: { AppHeading },
+  components: { AppHeading, MainSkillsItem },
 
   props: {
     stack: {
