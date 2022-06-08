@@ -31,7 +31,10 @@
           :stack="profile.stack" 
         />
 
-        <the-main-experience />
+        <the-main-experience 
+          v-if="profile.experience"
+          :experience="profile.experience" 
+        />
   
         <the-main-education />
       </main>
