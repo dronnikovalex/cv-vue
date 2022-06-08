@@ -482,7 +482,7 @@ button:disabled:active  {
   background-image: url(../images/vue.png);
 }
 
-.postgres {
+.postgresql {
   background-image: url(../images/postgres.png);
 }
 
@@ -498,7 +498,7 @@ button:disabled:active  {
   background-image: url(../images/charles.png);
 }
 
-.js {
+.javascript {
   background-image: url(../images/js.png);
 }
 

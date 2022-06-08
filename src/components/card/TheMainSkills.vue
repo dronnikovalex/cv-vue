@@ -4,78 +4,55 @@
       <span class="default-size-title">Профессиональные навыки</span>
       <span class="sm-size-title">Навыки</span>
     </app-heading>
-
+    
     <div class="skills__banner banner">
       <a
-        v-for="(item, idx) in stack"
+        v-for="(banner, idx) in bannerClasses"
         :key="idx"
-        :class="item"
+        :class="banner"
         class="banner__item" 
         href="#" 
       />
     </div>
 
     <div class="skills__description">
-      <div 
-        v-for="(technology, idx) in mockDescription"
+      <main-skills-item
+        v-for="(technology, idx) in stack"
         :key="idx"
-        class="skills__item"
-      >
-        <h3>{{ technology.name }}</h3>
-        <p>{{ technology.descripton }}</p>
-      </div>
+        :technology="technology"
+      />
     </div>
   </section>
 </template>
 
 <script>
 import AppHeading from '@/components/ui/AppHeading'
+import MainSkillsItem from './MainSkillsItem'
 
 export default {
-  components: { AppHeading },
+  components: { AppHeading, MainSkillsItem },
+
+  props: {
+    stack: {
+      type: Object,
+      required: true,
+      default: function() {
+        return {}
+      }
+    }
+  },
 
   data() {
     return {
-      stack: ['cypress', 'vue', 'postman', 'postgres', 'html', 'git', 'charles', 'js'],
-      mockDescription: [
-        {
-          name: 'Cypress',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'Vue',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'Postman',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'Postgres',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'HTML, CSS',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'Git',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'Charles',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'JavaScript',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-        {
-          name: 'ETC2',
-          descripton: 'Loadrem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, solu Loadrem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, solu Loadrem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, solu Loadrem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        }
-      ]
+      bannerClasses: [],
+    } 
+  },
+
+  mounted() {
+    this.bannerClasses = Object.keys(this.stack)
+      .map(item => this.stack[item].name.toLowerCase())
+      .map(item => item.includes(',') ? item.split(',')[0] : item)
+      .filter(item => item !== 'прочее')  
     }
-  }
 }
 </script>
