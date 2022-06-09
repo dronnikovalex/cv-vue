@@ -1,6 +1,6 @@
 <template>
   <div class="skills__item">
-    <h3>{{ technology.name }}</h3>
+    <h3>{{ technology.name === 'HTML' ? technology.name + ', CSS' : technology.name }}</h3>
     <p>{{ technology.description }}</p>
   </div>
 </template>

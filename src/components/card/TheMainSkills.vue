@@ -9,11 +9,10 @@
       <a
         v-for="(banner, idx) in bannerClasses"
         :key="idx"
-        :class="banner"
+        :class="banner.name"
         class="banner__item" 
         target="_blank"
-        @click.prevent
-        href="#" 
+        :href="banner.url" 
       />
     </div>
 
@@ -52,9 +51,13 @@ export default {
 
   mounted() {
     this.bannerClasses = Object.keys(this.stack)
-      .map(item => this.stack[item].name.toLowerCase())
-      .map(item => item.includes(',') ? item.split(',')[0] : item)
-      .filter(item => item !== 'прочее')  
+      .map(item => ({
+        name: this.stack[item].name.toLowerCase(),
+        url: this.stack[item].url
+      }))
+      .filter(item => item.name !== 'прочее')  
+      
+    console.log(this.bannerClasses)
     }
 }
 </script>
