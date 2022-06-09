@@ -1097,7 +1097,7 @@ small {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 784px) {
   .header__contacts {
     justify-content: space-around;
   }
