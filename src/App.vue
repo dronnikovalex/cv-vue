@@ -36,7 +36,10 @@
           :experience="profile.experience" 
         />
   
-        <the-main-education />
+        <the-main-education 
+          v-if="profile.study"
+          :study="profile.study" 
+        />
       </main>
 
       <the-footer 
