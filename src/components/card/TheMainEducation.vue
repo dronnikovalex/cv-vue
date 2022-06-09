@@ -5,11 +5,10 @@
     </app-heading>
 
     <div class="study__container">
-      <div class="study__item">
-        <h3 class="study__title">Прикладная информатика в экономике</h3>
-        <p class="study__years">2011 - 2017</p>
-        <p class="study__description">Высшее образование. Магистр. ФГБОУ ВО «ОГУ имени И.С. Тургенева»</p>
-      </div>
+      <main-education-item
+        :instance="university"
+      />
+
       <details>
         <summary 
           class="study__details" 
@@ -17,11 +16,10 @@
         >
           {{ summaryStatus === false ? 'Развернуть▼' : 'Свернуть▲' }}
         </summary>
-        <div class="study__item">
-          <h3 class="study__title">Общее среднее образование</h3>
-          <p class="study__years">2000 - 2011</p>
-          <p class="study__description">Муниципальное бюджетное общеобразовательное учреждение - средняя общеобразовательная школа №2 г. Орла</p>
-        </div>
+        
+        <main-education-item 
+          :instance="school"
+        />
       </details>
     </div>
   </section>
@@ -29,30 +27,39 @@
 
 <script>
 import AppHeading from '@/components/ui/AppHeading'
+import MainEducationItem from './MainEducationItem'
 
 export default {
-  components: { AppHeading },
+  components: { AppHeading, MainEducationItem },
+
+  props: {
+    study: {
+      type: Object,
+      required: true,
+      default: function() {
+        return {}
+      }
+    }
+  },
 
   data() {
     return {
       summaryStatus: false,
-      stack: ['cypress', 'vue', 'postman', 'postgres', 'html', 'git', 'js'],
-      mockExperience: [
-        {
-          name: 'ФГБОУ ВО «ОГУ имени И.С. Тургенева». 09.03.03 Прикладная информатика в экономике',
-          dateFrom: '08/2019',
-          dateTo: '02/2022',
-          grade: 'Магистр',
-          descripton: 'Высшее образование'
-        },
-        {
-          name: 'Docsvision',
-          dateFrom: '05/2019',
-          dateTo: '08/2019',
-          descripton: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, soluta!'
-        },
-      ]
+      school: {},
+      university: {},
     }
+  },
+
+  mounted() {
+
+    this.school = this.study[Object.keys(this.study)
+      .find(id => this.study[id].type === 'school')]
+
+    this.university = this.study[Object.keys(this.study)
+      .find(id => this.study[id].type === 'university')]
+
+    console.log(this.university)
+    console.log(this.school)
   },
 
   methods: {

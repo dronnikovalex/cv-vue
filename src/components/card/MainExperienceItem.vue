@@ -2,7 +2,7 @@
   <div class="experience__item">
     <h3 :class="{ experience__last: isLastJob }">{{ experienceItem.name }} | {{ experienceItem.dateFrom }} - {{ experienceItem.dateTo }}</h3>
     <p class="experience__position">Должность - {{ experienceItem.position }}</p>
-    <p class="experience__description">{{ experienceItem.descripton }}</p>
+    <p class="experience__description">{{ experienceItem.description }}</p>
   </div>
 </template>
 
