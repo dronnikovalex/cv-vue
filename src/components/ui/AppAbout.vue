@@ -20,14 +20,12 @@
     <span :class="`${source}__position`">QA engineer</span>
   </div>
   <div
-    v-if="$slots.default"
+    v-if="about"
     :class="`${source}__summary`"
   >
     <h2 :class="`${source}__title`">Обо мне</h2>
     
-    <p>
-      <slot />
-    </p>
+    <p v-html="about" />
   </div>
 </template>
 
@@ -38,7 +36,11 @@ export default {
       type: String,
       required: false,
       default: 'sidebar'
+    },
+    about: {
+      type: String,
     }
   },
+
 }
 </script>

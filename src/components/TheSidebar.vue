@@ -2,8 +2,10 @@
   <aside class="sidebar about">
     <div class="sidebar__avatar avatar" />
 
-    <app-about source="sidebar">
-      {{ about }}
+    <app-about 
+      source="sidebar"
+      :about="about"
+    >
     </app-about>
 
     <hr class="sidebar__divider">
