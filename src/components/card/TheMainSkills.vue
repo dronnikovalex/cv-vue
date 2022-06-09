@@ -11,6 +11,8 @@
         :key="idx"
         :class="banner"
         class="banner__item" 
+        target="_blank"
+        @click.prevent
         href="#" 
       />
     </div>
