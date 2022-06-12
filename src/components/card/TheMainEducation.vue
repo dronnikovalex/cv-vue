@@ -51,15 +51,11 @@ export default {
   },
 
   mounted() {
-
     this.school = this.study[Object.keys(this.study)
       .find(id => this.study[id].type === 'school')]
 
     this.university = this.study[Object.keys(this.study)
       .find(id => this.study[id].type === 'university')]
-
-    console.log(this.university)
-    console.log(this.school)
   },
 
   methods: {

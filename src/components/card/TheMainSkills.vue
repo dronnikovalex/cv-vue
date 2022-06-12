@@ -18,7 +18,7 @@
 
     <div class="skills__description">
       <main-skills-item
-        v-for="(technology, idx) in stack"
+        v-for="(technology, idx) in orderedStack"
         :key="idx"
         :technology="technology"
       />
@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       bannerClasses: [],
+      orderedStack: [],
     } 
   },
 
@@ -56,8 +57,21 @@ export default {
         url: this.stack[item].url
       }))
       .filter(item => item.name !== 'прочее')  
-      
-    console.log(this.bannerClasses)
+
+    for (const key in this.stack) {
+      this.orderedStack.push(this.stack[key])
     }
+
+    function swap(arr, a, b) {
+      arr[a] = arr.splice(b, 1, arr[a])[0];
+    }
+    const postman = this.orderedStack.findIndex(stackItem => stackItem.name === 'Postman')
+    const html = this.orderedStack.findIndex(stackItem => stackItem.name === 'HTML')
+    const postgres = this.orderedStack.findIndex(stackItem => stackItem.name === 'PostgreSQL')
+    const js = this.orderedStack.findIndex(stackItem => stackItem.name === 'JavaScript')
+
+    swap(this.orderedStack, postman, html)
+    swap(this.orderedStack, postgres, js)
+  },
 }
 </script>

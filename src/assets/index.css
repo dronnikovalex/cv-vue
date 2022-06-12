@@ -145,14 +145,14 @@ button:disabled:active  {
 
 .sidebar__divider {
   width: 50%;
-  margin: 25px 0 20px 0;
+  margin: 35px 0;
   color: #828282
 }
 
 .sidebar__avatar {
   width: 270px;
   height: 270px;
-  margin-top: 70px;
+  margin-top: 80px;
 }
 
 .avatar {
@@ -163,7 +163,7 @@ button:disabled:active  {
 }
 
 .sidebar__info {
-  margin: 35px 20px 0 20px;
+  margin: 45px 20px 0 20px;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -210,7 +210,7 @@ button:disabled:active  {
 
 .sidebar__summary {  
   padding: 0 50px;
-  margin-top: 35px;
+  margin-top: 45px;
   text-align: justify;
 }
 
@@ -228,8 +228,7 @@ button:disabled:active  {
   padding-bottom: 18px;
 }
 
-.contacts__item:last-child,
-.link__item:last-child {
+.contacts__item:last-child {
   padding-bottom: 0
 }
 
@@ -1025,14 +1024,18 @@ small {
     padding: 0 30px;
   }
   .banner__item {
-    margin-right: 60px;
+    margin-right: 45px;
+  }
+  .banner__item:first-child, 
+  .banner__item:nth-child(5) {
+    margin-left: 45px;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .banner__item:first-child,
   .banner__item {
-    margin: 0 10% ;
+    margin: 0 8% ;
   }
   .banner__item:nth-child(7), 
   .banner__item:nth-child(8) {
