@@ -34,5 +34,10 @@ export default {
     resource_type: 'icon',
     prefix: 'fab',
     icon: 'vk',
+  },
+  missedIcon: {
+    resource_type: 'icon',
+    prefix: 'fa',
+    icon: 'circle-question'
   }
 }
