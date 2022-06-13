@@ -15,13 +15,28 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import '../../src/assets/index.css'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faGithub, faVk, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { faHSquare, faEnvelope, faPhone, faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faGithub, faVk, faHSquare, faEnvelope, faPhone, faTelegram, faCircleQuestion);
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 import { mount } from 'cypress/vue'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  // Setup options object
+  options.global = options.global || {}
+  options.global.components = options.global.components || {}
 
+  // Register global components
+  options.global.components['FontAwesomeIcon'] = FontAwesomeIcon
+
+  return mount(component, options)
+})
 // Example use:
 // cy.mount(MyComponent)
