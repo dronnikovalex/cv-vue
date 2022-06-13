@@ -49,7 +49,13 @@ export default {
     }
   },
 
-  updated() {
+  watch: {
+    modalVisibility(newVal) {
+      this.showModal = newVal
+    }
+  },
+
+  mounted() {
     this.showModal = this.modalVisibility
   },
 
