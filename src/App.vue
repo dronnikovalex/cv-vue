@@ -127,17 +127,17 @@
             </div>
 
             <div class="reuqest-footer">
-              <button 
+              <app-button
                 class="btn request-send"
                 :disabled="formSending"
-                @click="checkDescription"
+                @action="checkDescription"
               >
                 <app-loader
                   v-if="formSending" 
                   type="sm"
                 />
                 <span v-else>Отправить</span>
-              </button>
+              </app-button>
             </div>
           </Form>
         </template>
@@ -162,6 +162,7 @@ import TheFooter from '@/components/TheFooter.vue'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
+import AppButton from '@/components/ui/AppButton'
 import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import { configure } from 'vee-validate';
@@ -186,6 +187,7 @@ export default {
     AppModal, 
     AppLoader, 
     AppToast,
+    AppButton,
     Form, 
     Field, 
     ErrorMessage, 

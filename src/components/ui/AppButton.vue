@@ -3,7 +3,9 @@
     :disabled="disabled"
     @click="$emit('action')"
   >
-    <slot />
+    <slot>
+      <span class="text"> Связаться</span>
+    </slot>
   </button>
 </template>
 
@@ -15,6 +17,10 @@ export default {
       required: false,
       default: false
     } 
+  },
+
+  emits: {
+    action: null
   }
 }
 </script>

@@ -6,18 +6,19 @@
       class="footer__links"
     />
 
-    <contacts-request-button 
-      @open-modal="$emit('open-modal')"
+    <app-button
+      class="contacts__request"
+      @action="$emit('open-modal')"
     />
   </footer>
 </template>
 
 <script>
 import LinksList from '@/components/links/LinksList'
-import ContactsRequestButton from './contacts/ContactsRequestButton.vue'
+import AppButton from './ui/AppButton.vue'
 
 export default {
-  components: { LinksList, ContactsRequestButton },
+  components: { LinksList, AppButton },
 
   props: {
     links: {

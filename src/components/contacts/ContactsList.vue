@@ -9,21 +9,22 @@
     >
       <contacts-list-item :contact="contact" />
     </div>
-    
-    <contacts-request-button 
+  
+    <app-button
       v-if="isNotHeaderSource" 
-      @open-modal="$emit('open-modal')"
+      class="contacts__request"
+      @action="$emit('open-modal')"
     />
   </div>
 </template>
 
 <script>
 import ContactsListItem from './ContactsListItem.vue'
-import ContactsRequestButton from './ContactsRequestButton.vue'
+import AppButton from '../ui/AppButton.vue'
 import AppListTitle from '../ui/AppListTitle.vue'
 
 export default {
-  components: { ContactsListItem, AppListTitle, ContactsRequestButton },
+  components: { ContactsListItem, AppListTitle, AppButton },
 
   props: {
     contacts: {
