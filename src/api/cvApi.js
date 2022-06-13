@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const baseUrl = 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app/'
+const baseUrl = 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app'
 
 export const sendFormRequest = async payload => {
   await axios.post(`${baseUrl}/request.json`, payload)
