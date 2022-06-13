@@ -1,11 +1,13 @@
 <template>
   <div
-    v-if="modalVisibility"
+    v-if="showModal"
     class="modal-backdrop"
+    data-testid="modal-backdrop"
     @click="closeForm"
   >
     <div 
       class="modal"
+      data-testid="modal"
       @click.stop
       @keydown.esc="closeForm"
     >
@@ -16,6 +18,7 @@
       </h3>
       <span 
         class="modal__close"
+        data-testid="close-button"
         @click="closeForm"
       >
         &times;
@@ -37,12 +40,22 @@ export default {
   },
 
   emits: {
-    'send-form': null,
     'close-form': null,
+  },
+
+  data() {
+    return {
+      showModal: false
+    }
+  },
+
+  updated() {
+    this.showModal = this.modalVisibility
   },
 
   methods: {
     closeForm() {
+      this.showModal = false
       this.$emit('close-form')
     }
   },

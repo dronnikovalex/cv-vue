@@ -1,5 +1,8 @@
 <template>
-  <div :class="['lds-ring-' + type, color]">
+  <div 
+    :class="['lds-ring-' + type, color]"
+    data-testid="loader"
+  >
     <div />
     <div />
     <div />
