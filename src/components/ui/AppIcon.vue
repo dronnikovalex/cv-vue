@@ -1,7 +1,8 @@
 <template>
   <font-awesome-icon
-    v-if="icons[type]?.resource_type === 'icon'"
-    :icon="[ icons[type]?.prefix, icons[type]?.icon ]"
+    v-if="!isImage"
+    :icon="iconData"
+    data-testid="icon"
   />
   <img
     v-else
@@ -28,5 +29,15 @@ export default {
       icons
     }
   },
+
+  computed: {
+    isImage() { 
+      return icons[this.type]?.resource_type === 'image' ? true : false
+    },
+
+    iconData() {
+      return icons[this.type] ? [ icons[this.type]?.prefix, icons[this.type]?.icon ] : [ icons.missedIcon.prefix, icons.missedIcon.icon]
+    }
+  }
 }
 </script>
