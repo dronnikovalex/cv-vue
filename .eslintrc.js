@@ -16,5 +16,5 @@ module.exports = {
     "vue/no-multiple-template-root": "off" ,
     "vue/no-v-model-argument": "off",
     "vue/singleline-html-element-content-newline": "off",
-  }
+  },
 }
