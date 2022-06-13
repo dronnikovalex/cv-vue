@@ -7,6 +7,7 @@ module.exports = defineConfig({
       bundler: "webpack",
     },
   },
+<<<<<<< HEAD
 
   e2e: {
     setupNodeEvents(on, config) {
@@ -19,4 +20,6 @@ module.exports = defineConfig({
       apiHost: 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app'
     }
   },
+=======
+>>>>>>> f1a3dfa (Add Cypress to project)
 });
