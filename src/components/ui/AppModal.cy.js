@@ -73,7 +73,7 @@ describe('Test AppModal component', () => {
       .should('be.calledOnce')
   })
 
-  it('should render given slot content', () => {
+  it.only('should render given slot content', () => {
     const slotContent = 'Sample text'
 
     cy.mount(AppModal, {

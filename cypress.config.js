@@ -8,6 +8,9 @@ module.exports = defineConfig({
     },
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1962a36 (Add:)
 
   e2e: {
     setupNodeEvents(on, config) {
@@ -20,6 +23,9 @@ module.exports = defineConfig({
       apiHost: 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app'
     }
   },
+<<<<<<< HEAD
 =======
 >>>>>>> f1a3dfa (Add Cypress to project)
+=======
+>>>>>>> 1962a36 (Add:)
 });
