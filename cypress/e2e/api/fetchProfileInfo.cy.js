@@ -10,8 +10,21 @@ describe('Test fetchProfileInfo method', () => {
       .should('eql', 'Complete')
   })
 
-  it.only('should return 200 OK', () => {
+  it('should return 200 OK', () => {
     cy.request(`${Cypress.env('apiHost')}/profile.json`)
       .its('status').should('eql', 200)
+  })
+
+  it('response should match expected schema', () => {
+    cy.request(`${Cypress.env('apiHost')}/profile.json`)
+      .its('body')
+      .should(spok({
+        about: spok.type('string'),
+        contacts: spok.type('object'),
+        experience: spok.type('object'),
+        links: spok.type('object'),
+        stack: spok.type('object'),
+        study: spok.type('object'),
+      }))
   })
 })
