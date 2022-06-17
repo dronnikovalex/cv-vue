@@ -13,27 +13,11 @@
       v-else-if="errOnLoadPage"
       class="error-container"
     >
-    <div class="error">
-      <div class="error__title">
-        <p>При загрузке страницы произошла ошибка:</p>
-        <small class="">{{ errorMessage }}</small>
-      </div>
-      <div class="error__image" />
-      <p class="error__subtitle">Пожалуйста, попробуйте снова</p>
-      <app-button 
-        class="btn error__button"
-        @action="fetchProfile"
-      >
-        <app-loader
-          v-if="waitingForRespose" 
-          type="sm"
-          color="black"
-        />
-        <span v-else>Повторить</span>
-      </app-button>
-    </div>
-    
-      
+      <the-placeholder 
+        :error-message="errorMessage"
+        :waiting-for-response="waitingForResponse"
+        @repeat-loading="fetchProfile"
+      />
     </div>
     
     <div
@@ -156,11 +140,11 @@
             <div class="reuqest-footer">
               <app-button
                 class="btn request-send"
-                :disabled="waitingForRespose"
+                :disabled="waitingForResponse"
                 @action="checkDescription"
               >
                 <app-loader
-                  v-if="waitingForRespose" 
+                  v-if="waitingForResponse" 
                   type="sm"
                 />
                 <span v-else>Отправить</span>
@@ -184,8 +168,9 @@ import TheSidebar from '@/components/TheSidebar'
 import TheMainSkills from '@/components/card/TheMainSkills'
 import TheMainExperience from '@/components/card/TheMainExperience'
 import TheMainEducation from '@/components/card/TheMainEducation'
-import TheHeader from '@/components/TheHeader.vue'
-import TheFooter from '@/components/TheFooter.vue'
+import TheHeader from '@/components/TheHeader'
+import TheFooter from '@/components/TheFooter'
+import ThePlaceholder from '@/components/ThePlaceholder'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
@@ -210,7 +195,8 @@ export default {
     TheMainExperience, 
     TheMainEducation, 
     TheHeader, 
-    TheFooter, 
+    TheFooter,
+    ThePlaceholder,
     AppModal, 
     AppLoader, 
     AppToast,
@@ -257,7 +243,7 @@ export default {
       description: '',
       contacts: '',
       loading: false,
-      waitingForRespose: false,
+      waitingForResponse: false,
       errOnLoadPage: false,
       errorMessage: '',
       toastVisibility: false,
@@ -325,7 +311,7 @@ export default {
       }
 
       try {
-        this.waitingForRespose = true
+        this.waitingForResponse = true
 
         await sendFormRequest(payload)
 
@@ -338,20 +324,20 @@ export default {
       }
 
       setTimeout(() => this.toastVisibility= false, 5000)
-      this.waitingForRespose = false
+      this.waitingForResponse = false
       
     },
 
     fetchProfile() {
-      this.waitingForRespose = true
+      this.waitingForResponse = true
 
       fetchProfileInfo()
         .then(profileInfo => this.profile = profileInfo)
-        .then(() => this.waitingForRespose = false)
+        .then(() => this.waitingForResponse = false)
         .then(() => this.errOnLoadPage = false)
         .catch(e => {
           this.errorMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
-          this.waitingForRespose = false
+          this.waitingForResponse = false
         })
     }
   },
