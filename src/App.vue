@@ -8,6 +8,22 @@
         type="bg"
       />
     </div>
+
+    <div 
+      v-else-if="errOnLoadPage"
+      class="error-container"
+    >
+    <div class="error">
+      <p class="error-container__text">При загрузке страницы произошла ошибка</p>
+      <div class="error-container__image" />
+      <p class="error-container__text">Пожалуйста, попробуйте снова</p>
+      <app-button class="error-container__button">
+        Повторить
+      </app-button>
+    </div>
+    
+      
+    </div>
     
     <div
       v-else 
@@ -223,7 +239,9 @@ export default {
       contacts: '',
       loading: false,
       formSending: false,
+      errOnLoadPage: false,
       toastVisibility: false,
+      fetchPorifleError: false,
       toastMessage: '',
       schema,
     }
@@ -242,6 +260,8 @@ export default {
       fetchProfileInfo()
         .then(profileInfo => this.profile = profileInfo)
         .then(() => this.loading = false)
+      
+      this.errOnLoadPage = true
     }
     catch(e) {
       this.toastVisibility = true

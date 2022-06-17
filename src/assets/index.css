@@ -68,8 +68,8 @@ h2 {
   transition: all 0.8s;
 }
 
-.request-send:active {
-  transition: 0s;
+.request-send:active,
+.error-container__button:active {
   transform: scale(0.98);
 }
 
@@ -548,7 +548,8 @@ button:disabled:active  {
   opacity: 0.5;
 }
 
-.contacts__request {
+.contacts__request,
+.error-container__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1008,6 +1009,23 @@ small {
 @-o-keyframes fadeout {
   from {top: 7%; opacity: 1;}
   from {top: 7%; opacity: 1;}
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  width: 30%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #fff;
 }
 
 @media only screen and (max-width: 1440px) {
