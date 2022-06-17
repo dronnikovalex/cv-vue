@@ -68,8 +68,8 @@ h2 {
   transition: all 0.8s;
 }
 
-.request-send:active {
-  transition: 0s;
+.request-send:active,
+.error__button:active {
   transform: scale(0.98);
 }
 
@@ -797,6 +797,12 @@ small {
   border-color: #fff transparent transparent transparent;
 }
 
+.lds-ring-sm.black div,
+.lds-ring-bg.black div {
+  border-color: #555555 transparent transparent transparent;
+}
+
+
 .lds-ring-bg div {
   width: 100px;
   height: 100px;
@@ -1008,6 +1014,52 @@ small {
 @-o-keyframes fadeout {
   from {top: 7%; opacity: 1;}
   from {top: 7%; opacity: 1;}
+}
+
+.error-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  padding: 35px 80px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(158, 153, 153);
+  border-radius: 5px;
+  color: #dbd4d4;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.error__image {
+  background-image: url(../images/network_err.png);
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.error__title {
+  margin-bottom: 20px;
+}
+
+.error__subtitle {
+  margin: 20px 0;
+}
+
+.error__button {
+  background-color: var(--base-color);
+  color: var(--hover-color);
+  font-size: 18px;
+  font-weight: 800;
 }
 
 @media only screen and (max-width: 1440px) {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="'lds-ring-' + type">
+  <div :class="['lds-ring-' + type, color]">
     <div />
     <div />
     <div />
@@ -14,7 +14,12 @@ export default {
       type: String,
       required: false,
       default: 'bg'
-    }
+    },
+    color: {
+      type: String,
+      required: false,
+      default: 'white'
+    },
   }
 }
 </script>

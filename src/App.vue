@@ -8,6 +8,33 @@
         type="bg"
       />
     </div>
+
+    <div 
+      v-else-if="errOnLoadPage"
+      class="error-container"
+    >
+    <div class="error">
+      <div class="error__title">
+        <p>При загрузке страницы произошла ошибка:</p>
+        <small class="">{{ errorMessage }}</small>
+      </div>
+      <div class="error__image" />
+      <p class="error__subtitle">Пожалуйста, попробуйте снова</p>
+      <app-button 
+        class="btn error__button"
+        @action="fetchProfile"
+      >
+        <app-loader
+          v-if="waitingForRespose" 
+          type="sm"
+          color="black"
+        />
+        <span v-else>Повторить</span>
+      </app-button>
+    </div>
+    
+      
+    </div>
     
     <div
       v-else 
@@ -129,11 +156,11 @@
             <div class="reuqest-footer">
               <app-button
                 class="btn request-send"
-                :disabled="formSending"
+                :disabled="waitingForRespose"
                 @action="checkDescription"
               >
                 <app-loader
-                  v-if="formSending" 
+                  v-if="waitingForRespose" 
                   type="sm"
                 />
                 <span v-else>Отправить</span>
@@ -196,20 +223,28 @@ export default {
   requiredFieldText: 'Обязательно для заполнения',
 
   data() {
+    const minInputLength = 2
+    const maxInputLength = 35
     const schema = yup.object({
       name: yup
         .string()
         .trim()
-        .required('Обязательно для заполнения'),
+        .test('len', `Минимум ${minInputLength} символа`, val => val.length >= minInputLength)
+        .test('len', 'Обязательно для заполнения', val => val.length > 0)
+        .test('len', `Максимум ${maxInputLength} символов`, val => val.length <= maxInputLength),
       position: yup
         .string()
         .matches(/^[A-Za-zА-Яа-я]+$/, "Поле должно содержать только буквы")
         .trim()
-        .required('Обязательно для заполнения'),
+        .test('len', `Минимум ${minInputLength} символа`, val => val.length >= minInputLength)
+        .test('len', 'Обязательно для заполнения', val => val.length > 0)
+        .test('len', `Максимум ${maxInputLength} символов`, val => val.length <= maxInputLength),
       contacts: yup
         .string()
         .trim()
-        .required('Обязательно для заполнения'),
+        .test('len', `Минимум ${minInputLength} символа`, val => val.length >= minInputLength)
+        .test('len', 'Обязательно для заполнения', val => val.length > 0)
+        .test('len', `Максимум ${maxInputLength} символов`, val => val.length <= maxInputLength),
     })
 
     return {
@@ -222,8 +257,11 @@ export default {
       description: '',
       contacts: '',
       loading: false,
-      formSending: false,
+      waitingForRespose: false,
+      errOnLoadPage: false,
+      errorMessage: '',
       toastVisibility: false,
+      fetchPorifleError: false,
       toastMessage: '',
       schema,
     }
@@ -238,17 +276,15 @@ export default {
   mounted() {
     this.loading = true
 
-    try {
-      fetchProfileInfo()
-        .then(profileInfo => this.profile = profileInfo)
-        .then(() => this.loading = false)
-    }
-    catch(e) {
-      this.toastVisibility = true
-      this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
-
-      this.loading = false
-    }
+    fetchProfileInfo()
+      .then(profileInfo => this.profile = profileInfo)
+      .then(() => this.loading = false)
+      .catch(e => {
+        console.log(e)
+        this.errOnLoadPage = true
+        this.errorMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
+        this.loading = false
+      }) 
 
     window.onresize = () => {
       this.wWidth = window.innerWidth
@@ -268,7 +304,7 @@ export default {
       this.name = ''
       this.position = ''
       this.contacts = ''
-      this.description = '',
+      this.description = ''
       this.isEmptyDescription = false
     },
 
@@ -289,7 +325,7 @@ export default {
       }
 
       try {
-        this.formSending = true
+        this.waitingForRespose = true
 
         await sendFormRequest(payload)
 
@@ -298,16 +334,28 @@ export default {
         this.toastMessage = '[Успех] Сообщение успешно отправлено'
       } catch (e) {
         this.toastVisibility = true
-        this.toastMessage = codes[e.message] || '[Ошибка] Что-то пошло не так.'
+        this.toastMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
       }
 
       setTimeout(() => this.toastVisibility= false, 5000)
-      this.formSending = false
+      this.waitingForRespose = false
       
     },
+
+    fetchProfile() {
+      this.waitingForRespose = true
+
+      fetchProfileInfo()
+        .then(profileInfo => this.profile = profileInfo)
+        .then(() => this.waitingForRespose = false)
+        .then(() => this.errOnLoadPage = false)
+        .catch(e => {
+          this.errorMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
+          this.waitingForRespose = false
+        })
+    }
   },
   
 }
-
 
 </script>
