@@ -25,7 +25,7 @@ export default {
     alt: 'cypress',
     class: 'cypress-icon',
   },
-  habr: {
+  square_h: {
     resource_type: 'icon',
     prefix: 'fa',
     icon: 'h-square',
