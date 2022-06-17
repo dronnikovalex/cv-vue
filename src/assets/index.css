@@ -69,7 +69,7 @@ h2 {
 }
 
 .request-send:active,
-.error-container__button:active {
+.error__button:active {
   transform: scale(0.98);
 }
 
@@ -549,7 +549,7 @@ button:disabled:active  {
 }
 
 .contacts__request,
-.error-container__button {
+.error__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -564,6 +564,10 @@ button:disabled:active  {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.error-container__button {
+  border: none;
 }
 
 .contacts__request > .text {
@@ -1012,20 +1016,42 @@ small {
 }
 
 .error-container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .error {
-  width: 30%;
-  height: 400px;
+  padding: 35px 80px;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  border: 1px solid #fff;
+  border: 1px solid rgb(158, 153, 153);
+  border-radius: 5px;
+  color: #dbd4d4;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.error__image {
+  background-image: url(../images/network_err.png);
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.error__text:first-child {
+  margin-top: 0;
+}
+
+.error__text {
+  margin: 20px 0;
 }
 
 @media only screen and (max-width: 1440px) {

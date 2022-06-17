@@ -14,10 +14,10 @@
       class="error-container"
     >
     <div class="error">
-      <p class="error-container__text">При загрузке страницы произошла ошибка</p>
-      <div class="error-container__image" />
-      <p class="error-container__text">Пожалуйста, попробуйте снова</p>
-      <app-button class="error-container__button">
+      <p class="error__text">При загрузке страницы произошла ошибка</p>
+      <div class="error__image" />
+      <p class="error__text">Пожалуйста, попробуйте снова</p>
+      <app-button class="error__button">
         Повторить
       </app-button>
     </div>
