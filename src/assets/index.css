@@ -548,8 +548,7 @@ button:disabled:active  {
   opacity: 0.5;
 }
 
-.contacts__request,
-.error__button {
+.contacts__request {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -564,10 +563,6 @@ button:disabled:active  {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.error-container__button {
-  border: none;
 }
 
 .contacts__request > .text {
@@ -801,6 +796,12 @@ small {
   animation: lds-ring-sm 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #fff transparent transparent transparent;
 }
+
+.lds-ring-sm.black div,
+.lds-ring-bg.black div {
+  border-color: #555555 transparent transparent transparent;
+}
+
 
 .lds-ring-bg div {
   width: 100px;
@@ -1046,12 +1047,19 @@ small {
   background-repeat: no-repeat;
 }
 
-.error__text:first-child {
-  margin-top: 0;
+.error__title {
+  margin-bottom: 20px;
 }
 
-.error__text {
+.error__subtitle {
   margin: 20px 0;
+}
+
+.error__button {
+  background-color: var(--base-color);
+  color: var(--hover-color);
+  font-size: 18px;
+  font-weight: 800;
 }
 
 @media only screen and (max-width: 1440px) {
