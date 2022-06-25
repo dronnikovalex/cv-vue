@@ -38,4 +38,27 @@ describe('Test AppLoader component', () => {
       .should('exist')
       .and('have.class', bigLoaderSelector)
   })
+  
+  const colors = ['black', 'white']
+  colors.forEach(color => {
+    it(`should render ${color} spinner by given props`, () => {
+      cy.mount(AppLoader, {
+        props: {
+          color
+        }
+      })
+  
+      cy.get(appLoaderSelector)
+        .should('exist')
+        .and('have.class', color)
+    })
+  })
+
+  it.only('should render white spinner when no props given', () => {
+    cy.mount(AppLoader)
+    
+    cy.get(appLoaderSelector)
+      .should('exist')
+      .and('have.class', 'white')
+  })
 })
