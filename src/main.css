@@ -156,7 +156,7 @@ button:disabled:active  {
 }
 
 .avatar {
-  background-image: url(../images/avatar.png);
+  background-image: url(./images/avatar.png);
   background-size: cover;
   border-radius: 50%;
   background-repeat: no-repeat;
@@ -389,7 +389,7 @@ button:disabled:active  {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  background-image: url(../images/blue_background.png);
+  background-image: url(./images/blue_background.png);
 }
 
 .banner__item {
@@ -471,35 +471,35 @@ button:disabled:active  {
 } 
 
 .postman {
-  background-image: url(../images/postman.png);
+  background-image: url(./images/postman.png);
 }
 
 .cypress {
-  background-image: url(../images/cypress.png);
+  background-image: url(./images/cypress.png);
 }
 
 .vue {
-  background-image: url(../images/vue.png);
+  background-image: url(./images/vue.png);
 }
 
 .postgresql {
-  background-image: url(../images/postgres.png);
+  background-image: url(./images/postgres.png);
 }
 
 .html {
-  background-image: url(../images/html.png);
+  background-image: url(./images/html.png);
 }
 
 .git {
-  background-image: url(../images/git.png);
+  background-image: url(./images/git.png);
 }
 
 .charles {
-  background-image: url(../images/charles.png);
+  background-image: url(./images/charles.png);
 }
 
 .javascript {
-  background-image: url(../images/js.png);
+  background-image: url(./images/js.png);
 }
 
 .study__container {
@@ -1040,7 +1040,7 @@ small {
 }
 
 .error__image {
-  background-image: url(../images/network_err.png);
+  background-image: url(./images/network_err.png);
   width: 150px;
   height: 150px;
   background-size: cover;
