@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const Ajv = require("ajv");
+
+//Schema validation custom command
+Cypress.Commands.add('validateSchema', (schema, response) => {
+  const ajv = new Ajv({ verbose: true });
+  const validate = ajv.compile(schema);
+  const isValid = validate(response);
+
+  if (!isValid) {
+    const { dataPath, keyword, message } = validate.errors[0]
+
+    throw new Error(`Field: ${dataPath} is invalid. Cause: requested ${keyword} ${message}`)
+  } else {
+    expect(isValid, 'Schema validated!').to.eq(true)
+  }
+});

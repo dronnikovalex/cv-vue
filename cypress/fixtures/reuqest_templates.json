@@ -1,0 +1,122 @@
+[
+  {
+    "status": "200",
+    "message": "request ID",
+    "description" : "success",
+    "formData": {},
+    "expectedStatus": 200,
+    "expectedMessage": "string"
+  },
+  {
+    "status": "200",
+    "message": "request ID",
+    "description" : "success with max values",
+    "formData": {
+      "name": "12345678912345678912345678912345678",
+      "position": "12345678912345678912345678912345678",
+      "contacts": "12345678912345678912345678912345678"
+    },
+    "expectedStatus": 200,
+    "expectedMessage": "string"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "short name length",
+    "formData": {
+      "name": "S"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "empty name",
+    "formData": {
+      "name": ""
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "short position length",
+    "formData": {
+      "position": "Q"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "empty position",
+    "formData": {
+      "position": ""
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "short phone length",
+    "formData": {
+      "contacts": "1"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "empty description",
+    "formData": {
+      "description": ""
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "empty description",
+    "formData": {
+      "description": ""
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "too long name",
+    "formData": {
+      "name": "123456789123456789123456789123456789"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "too long position",
+    "formData": {
+      "position": "123456789123456789123456789123456789"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  },
+  {
+    "status": "401",
+    "message": "error message",
+    "description" : "too long position",
+    "formData": {
+      "contacts": "123456789123456789123456789123456789"
+    },
+    "expectedStatus": 401,
+    "expectedMessage": "Permission denied"
+  }
+]

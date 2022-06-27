@@ -1,0 +1,17 @@
+[
+  {
+    "description": "links block",
+    "block": "links",
+    "blockKey": "link"
+  },
+  {
+    "description": "experience block",
+    "block": "experience",
+    "blockKey": "website"
+  },
+  {
+    "description": "stack block",
+    "block": "stack",
+    "blockKey": "url"
+  }
+]
