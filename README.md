@@ -22,3 +22,9 @@ npm install
 ```
 npm run serve
 ```
+
+### Собрать проект и запустить тесты
+```
+npm run start-tests
+```
+
