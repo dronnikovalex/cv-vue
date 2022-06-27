@@ -5,7 +5,8 @@ module.exports = {
   },
   'extends': [
     'plugin:vue/recommended',
-    'eslint:recommended'
+    'eslint:recommended',
+    'plugin:cypress/recommended',
   ],
   parserOptions: {
     parser: 'babel-eslint'
@@ -16,5 +17,5 @@ module.exports = {
     "vue/no-multiple-template-root": "off" ,
     "vue/no-v-model-argument": "off",
     "vue/singleline-html-element-content-newline": "off",
-  }
+  },
 }

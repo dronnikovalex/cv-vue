@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "properties": {
+    "about": {"type":"string"},
+    "contacts": {
+      "type" : "array",
+      "items" : {
+        "type":"object",
+        "properties": {
+          "link": {"type":"string"},
+          "name":{"type":"string"},
+          "type": {
+            "type":"string",
+            "enum": ["envelope", "telegram", "phone"]
+          },
+          "value": {"type":"string"}
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "experience": {
+      "type": "array",
+      "items" : {
+        "type":"object",
+        "properties": {
+          "dateFrom": {"type":"string"},
+          "dateTo": {"type":"string"},
+          "description": {"type":"string"},
+          "last": {"type":"boolean"},
+          "name": {"type":"string"},
+          "position": {"type":"string"},
+          "website": {"type":"string"}
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "links": {
+      "type": "array",
+      "items" : {
+        "type":"object",
+        "properties": {
+          "link": {"type":"string"},
+          "name": {"type":"string"},
+          "type": {
+            "type":"string",
+            "enum": ["cypress", "vk", "github", "square_h"]
+          },
+          "value": {"type":"string"}
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "stack": {
+      "type": "array",
+       "items" : {
+        "type":"object",
+            "properties": {
+                "description": {"type":"string"},
+                "name": {"type":"string"},
+                "url": {"type":"string"}
+            },
+            "additionalProperties": false
+        },
+        "minItems": 1,
+        "uniqueItems": true
+    },
+    "study": {
+      "type": "array",
+        "items" : {
+            "type":"object",
+            "properties": {
+                "dateFrom": {"type":"string"},
+                "dateTo": {"type":"string"},
+                "description": {"type":"string"},
+                "title": {"type":"string"},
+                "type": {
+                "type":"string",
+                "enum": ["university", "school"]
+                }
+            },
+            "additionalProperties": false
+        },
+        "minItems": 1,
+        "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

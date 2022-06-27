@@ -1,0 +1,30 @@
+[
+  {
+    "name": "phone",
+    "type": "phone"
+  },
+  {
+    "name": "telegram",
+    "type": "telegram"
+  },
+  {
+    "name": "envelope",
+    "type": "envelope"
+  },
+  {
+    "name": "github",
+    "type": "github"
+  },
+  {
+    "name": "square_h",
+    "type": "square-h"
+  },
+  {
+    "name": "vk",
+    "type": "vk"
+  },
+  {
+    "name": "missedIcon",
+    "type": "circle-question"
+  }
+]

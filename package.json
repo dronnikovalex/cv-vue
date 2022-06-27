@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
+    "test": "npx cypress open",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start-test": "start-test 8080 test"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
@@ -20,14 +22,19 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-plugin-eslint": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
+    "cy-spok": "^1.5.2",
+    "cypress": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-loader": "^4.0.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "start-server-and-test": "^1.14.0"
   },
   "eslintConfig": {
     "root": true,
