@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 15px;
+}
+
 body, p, h3, h4 {
   position: relative;
   margin: 0;
@@ -17,13 +21,13 @@ body, p, h3, h4 {
 
 h3 {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 h2 {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
   text-align: center;
@@ -139,7 +143,7 @@ button:disabled:active  {
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.3rem;
   line-height: 50px;
 }
 
@@ -195,16 +199,16 @@ button:disabled:active  {
 
 .sidebar__surname {
   margin-right: 10px;
-  font-size: 23px;
+  font-size: 1.6rem;
 } 
 
 .sidebar__name {
-  font-size: 25px;
+  font-size: 1.5rem;
 }
 
 .sidebar__position {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2rem;
   color: #B9B9B9
 }
 
@@ -212,6 +216,7 @@ button:disabled:active  {
   padding: 0 50px;
   margin-top: 45px;
   text-align: justify;
+  font-size: 1rem;
 }
 
 .sidebar__summary > p {
@@ -241,14 +246,14 @@ button:disabled:active  {
   padding-bottom: 10px;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.3rem;
   color: #C7C7C7
 }
 
 .item__value,
 .link__value {
   font-weight: 300;
-  font-size: 16px;
+  font-size: 1.05rem;
   color: #BEBEBE
 }
 
@@ -376,7 +381,7 @@ button:disabled:active  {
 }
 
 .link__item > .link__placeholder {
-  font-size: 15px;
+  font-size: 1rem;
   padding-bottom: 5px;
 }
 
@@ -459,7 +464,7 @@ button:disabled:active  {
 .skills__item > p {
   padding-top: 5px;
   border-top: 2px solid #000;
-  font-size: 15px;
+  font-size: 0.95rem;
 }
 
 .experience__container {
@@ -535,7 +540,7 @@ button:disabled:active  {
 
 .study__title {
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 1.05rem;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -543,14 +548,13 @@ button:disabled:active  {
 .study__years {
   margin: 10px 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 15px;
   font-weight: 600;
   color: #686767;
 }
 
 .study__description {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.05rem;
 }
 
 .study__more:active {
@@ -624,12 +628,13 @@ button:disabled:active  {
 .modal {
   position: fixed;
   top: 10%;
+  left: 50%;
   width: 700px;
-  height: fit-content;
-  padding: 1.5rem;
+  max-height: 80%;
+  padding: 1.5rem 1.5rem 0.3rem 1.5rem;
   background: #fff;
   z-index: 1000;
-  left: 50%;
+  overflow-y: auto;
   border-radius: 2px;
   transform: translateX(-50%);
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
@@ -1245,6 +1250,12 @@ small {
   }
   .toast {
     top: 3%;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  #description {
+    height: 140px;
   }
 }
 
