@@ -4,7 +4,12 @@
     @click="$emit('action')"
   >
     <slot>
-      <span class="text"> Связаться</span>
+      <span 
+        class="text"
+        data-cy="contact-me"
+      >
+        Связаться
+      </span>
     </slot>
   </button>
 </template>
