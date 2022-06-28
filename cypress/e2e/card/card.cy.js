@@ -1,11 +1,5 @@
 /// <reference types="cypress" />
 
-class HomePage {
-  static openPage() {
-    cy.visit('/')
-  }
-}
-
 beforeEach(() => {
   HomePage.openPage()
 })
