@@ -1,5 +1,8 @@
 <template>
-  <div :class="`${source}__info`">
+  <div 
+    :class="`${source}__info`"
+    data-cy="about" 
+  >
     <div 
       :class="`${source}__personal`" 
       class="personal"
@@ -40,6 +43,8 @@ export default {
     },
     about: {
       type: String,
+      required: true,
+      default: ''
     }
   },
 

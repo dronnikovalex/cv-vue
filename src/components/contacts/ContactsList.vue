@@ -1,5 +1,8 @@
 <template>
-  <div class="contacts">
+  <div 
+    class="contacts"
+    data-cy="contacts"
+  >
     <app-list-title v-if="isNotHeaderSource">Контакты</app-list-title>
 
     <div

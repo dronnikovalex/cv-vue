@@ -1,5 +1,8 @@
 <template>
-  <div class="skills__item">
+  <div 
+    class="skills__item"
+    data-cy="skills"
+  >
     <h3>{{ technology.name === 'HTML' ? technology.name + ', CSS' : technology.name }}</h3>
     <p>{{ technology.description }}</p>
   </div>

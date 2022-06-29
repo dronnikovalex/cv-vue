@@ -1,12 +1,17 @@
 <template>
-  <aside class="sidebar about">
-    <div class="sidebar__avatar avatar" />
+  <aside 
+    class="sidebar about"
+    data-cy="sidebar"
+  >
+    <div 
+      class="sidebar__avatar avatar"
+      data-cy="avatar" 
+    />
 
     <app-about 
       source="sidebar"
       :about="about"
-    >
-    </app-about>
+    />
 
     <hr class="sidebar__divider">
 

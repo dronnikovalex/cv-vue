@@ -1,5 +1,8 @@
 <template>
-  <div class="links">
+  <div 
+    class="links"
+    data-cy="links"
+  >
     <app-list-title v-if="isNotFooterSource">Ссылки</app-list-title>
     
     <links-list-item

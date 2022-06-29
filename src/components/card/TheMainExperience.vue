@@ -1,8 +1,6 @@
 <template>
   <section class="experience">
-    <app-heading>
-      Опыт работы
-    </app-heading>
+    <app-heading>Опыт работы</app-heading>
 
     <div class="experience__container">
       <main-experience-item 
