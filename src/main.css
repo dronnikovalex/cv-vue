@@ -1216,7 +1216,7 @@ small {
   .contacts__item > span:first-child::after {
     content: '\00a0 - \00a0';
   }
-  .default-size-title {
+  .xl-size-title {
     display: none;
   }
   .sm-size-title {

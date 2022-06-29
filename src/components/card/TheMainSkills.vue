@@ -1,11 +1,13 @@
 <template>
   <section class="skills">
     <app-heading>
-      <span class="default-size-title">Профессиональные навыки</span>
-      <span class="sm-size-title">Навыки</span>
+      <span :class="isShortTitle ? 'sm-size-title' : 'xl-size-title'">{{ isShortTitle ? 'Навыки' : 'Профессиональные навыки'}}</span>
     </app-heading>
     
-    <div class="skills__banner banner">
+    <div 
+      data-cy="skills_banner"
+      class="skills__banner banner" 
+    >
       <a
         v-for="(banner, idx) in bannerClasses"
         :key="idx"
@@ -40,6 +42,11 @@ export default {
       default: function() {
         return {}
       }
+    },
+    isShortTitle: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
 

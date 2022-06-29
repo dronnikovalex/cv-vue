@@ -12,6 +12,7 @@
     <div 
       v-else-if="errOnLoadPage"
       class="error-container"
+      data-cy="placeholder-container"
     >
       <the-placeholder 
         :error-message="errorMessage"
@@ -32,14 +33,18 @@
       />
 
       <the-header 
-        v-if="isMobileView" 
+        v-if="isTabletView" 
         :contacts="profile.contacts"
       />
 
-      <main class="card-container">
+      <main 
+        class="card-container"
+        data-cy="card-container"
+      >
         <the-main-skills
           v-if="profile.stack"
-          :stack="profile.stack" 
+          :stack="profile.stack"
+          :is-short-title="isMobileView"
         />
 
         <the-main-experience 
@@ -54,7 +59,7 @@
       </main>
 
       <the-footer 
-        v-if="isMobileView"
+        v-if="isTabletView"
         :links="profile.links"
         @open-modal="openModal"
       />
@@ -235,6 +240,7 @@ export default {
 
     return {
       wWidth: window.innerWidth,
+      
       modalVisibility: false,
       isEmptyDescription: false,
       profile: {},
@@ -254,8 +260,12 @@ export default {
   },
 
   computed: {
-    isMobileView() {
+    isTabletView() {
       return this.wWidth <= 992 ? true : false
+    },
+
+    isMobileView() {
+      return this.wWidth < 577 ? true : false
     },
   },
   
