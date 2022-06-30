@@ -8,9 +8,12 @@
     <div
       v-for="(contact, idx) in contacts"
       :key="idx"
-      class="contacts__item item"
+      :class="contactsListItemClasses"
     >
-      <contacts-list-item :contact="contact" />
+      <contacts-list-item 
+        :contact="contact" 
+        :is-mobile-view="isMobileView"
+      />
     </div>
   
     <app-button
@@ -42,6 +45,11 @@ export default {
       required: false,
       default: 'header',
     },
+    isMobileView: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
   },
 
   emits: {
@@ -51,6 +59,13 @@ export default {
   computed: {
     isNotHeaderSource() {
       return this.source !== 'header'
+    },
+
+    contactsListItemClasses() {
+      return [
+         `contacts__item-${this.isMobileView ? 'sm' : 'md'}`,
+         'item'
+      ]
     }
   }
 

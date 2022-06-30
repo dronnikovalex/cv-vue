@@ -1,8 +1,8 @@
 <template>
 
   <header class="header sticky">
-    <div 
-      class="header__container"
+    <div
+      :class="headerContainerClass"
     >   
     <div class="info-wrapper">
       <div class="header__avatar avatar" />
@@ -11,8 +11,9 @@
     </div>
 
       <contacts-list
-        class="header__contacts"
+        :class="contactsListClass"
         :contacts="contacts"
+        :is-mobile-view="isMobileView"
         source="header" 
       />
       </div>
@@ -39,6 +40,11 @@ export default {
         return {}
       }
     },
+    isMobileView: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
   },
 
   mounted() {
@@ -51,5 +57,15 @@ export default {
       document.getElementById("progress").style.width = scrolled + "%";
     }    
   },
+
+  computed: {
+    contactsListClass() {
+      return `header__contacts-${this.isMobileView ? 'sm' : 'md'}`
+    },
+
+    headerContainerClass() {
+      return`header__container-${this.isMobileView ? 'sm' : 'md'}`
+    }
+  }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section class="skills">
     <app-heading>
-      <span :class="isShortTitle ? 'sm-size-title' : 'xl-size-title'">{{ isShortTitle ? 'Навыки' : 'Профессиональные навыки'}}</span>
+      <span :class="isShortTitle ? 'sm-size-title' : 'xl-size-title'">{{ isShortTitle ? 'Навыки' : 'Профессиональные навыки' }}</span>
     </app-heading>
     
     <div 

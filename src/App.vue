@@ -33,7 +33,8 @@
       />
 
       <the-header 
-        v-if="isTabletView" 
+        v-if="isTabletView"
+        :is-mobile-view="isMobileView"
         :contacts="profile.contacts"
       />
 
