@@ -23,7 +23,6 @@
       <app-icon :type="contact.type" />
     </a>  
   </template>
-
 </template>
 
 <script>

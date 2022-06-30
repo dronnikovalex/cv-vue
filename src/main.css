@@ -254,6 +254,16 @@ button:disabled:active  {
   line-height: 50px;
 }
 
+.contacts__item-sm > a:hover {
+  background-color: rgba(255, 255, 255, .4);
+  transition: background-color .3s ease ;
+} 
+
+.contacts__item-sm > a:active {
+  background-color: rgba(255, 255, 255, .6);
+} 
+
+
 .item__placeholder,
 .link__placeholder {
   padding-bottom: 10px;
@@ -468,11 +478,14 @@ button:disabled:active  {
   transform: scale(1.1)
 }
 
+.banner__item:active {
+  transform: scale(1)
+}
+
 .banner__item {
   transition: all .2s ease;
   transform: scale(1)
 }
-
 
 .experience__item:first-child {
   padding: 0;
