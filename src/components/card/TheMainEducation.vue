@@ -16,9 +16,12 @@
           {{ summaryStatus === false ? 'Развернуть▼' : 'Свернуть▲' }}
         </summary>
         
-        <main-education-item 
-          :instance="school"
-        />
+        <Transition name="slide">
+          <main-education-item
+            v-if="summaryStatus" 
+            :instance="school"
+          />
+        </Transition>
       </details>
     </div>
   </section>

@@ -66,98 +66,100 @@
     </div>
 
     <teleport to="body">
-      <app-modal 
-        :modal-visibility="modalVisibility"
-        @close-form="closeForm"
-      >
-        <template #default>
-          <Form
-            class="request-body"
-            :validation-schema="schema"
-            @submit="sendForm"
-          > 
-            <div class="input-field">
-              <label for="name" class="inp">
-                <Field
-                  id="name"
-                  ref="nameInput"
-                  v-model="name"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="name"
-                />
-                <span class="label">Имя</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="name" />
-                </small>
-              </label>
-            </div>
+      <Transition name="fade">
+        <app-modal 
+          :modal-visibility="modalVisibility"
+          @close-form="closeForm"
+        >
+          <template #default>
+            <Form
+              class="request-body"
+              :validation-schema="schema"
+              @submit="sendForm"
+            > 
+              <div class="input-field">
+                <label for="name" class="inp">
+                  <Field
+                    id="name"
+                    ref="nameInput"
+                    v-model="name"
+                    type="text"
+                    placeholder="&nbsp;"
+                    name="name"
+                  />
+                  <span class="label">Имя</span>
+                  <span class="focus-bg" />
+                  <small>
+                    <ErrorMessage name="name" />
+                  </small>
+                </label>
+              </div>
 
-            <div class="input-field">
-              <label for="position" class="inp">
-                <Field
-                  id="position" 
-                  v-model="position"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="position"
-                />
-                <span class="label">Должность</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="position" />
-                </small>
-              </label>
-            </div>
+              <div class="input-field">
+                <label for="position" class="inp">
+                  <Field
+                    id="position" 
+                    v-model="position"
+                    type="text"
+                    placeholder="&nbsp;"
+                    name="position"
+                  />
+                  <span class="label">Должность</span>
+                  <span class="focus-bg" />
+                  <small>
+                    <ErrorMessage name="position" />
+                  </small>
+                </label>
+              </div>
 
-            <div class="input-field">
-              <label for="contacts" class="inp">
-                <Field
-                  id="contacts" 
-                  v-model="contacts"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="contacts"
-                />
-                <span class="label">Контакт для обратной связи</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="contacts" />
-                </small>
-              </label>
-            </div>
+              <div class="input-field">
+                <label for="contacts" class="inp">
+                  <Field
+                    id="contacts" 
+                    v-model="contacts"
+                    type="text"
+                    placeholder="&nbsp;"
+                    name="contacts"
+                  />
+                  <span class="label">Контакт для обратной связи</span>
+                  <span class="focus-bg" />
+                  <small>
+                    <ErrorMessage name="contacts" />
+                  </small>
+                </label>
+              </div>
 
-            <div class="desription-field">
-              <label for="description">Описание</label>
-              <textarea 
-                id="description" 
-                v-model="description"
-                type="text" 
-                name="description"
-                @input="checkDescription"
-              />    
-              <small v-if="isEmptyDescription">
-                {{ $options.requiredFieldText }}
-              </small>              
-            </div>
+              <div class="desription-field">
+                <label for="description">Описание</label>
+                <textarea 
+                  id="description" 
+                  v-model="description"
+                  type="text" 
+                  name="description"
+                  @input="checkDescription"
+                />    
+                <small v-if="isEmptyDescription">
+                  {{ $options.requiredFieldText }}
+                </small>              
+              </div>
 
-            <div class="reuqest-footer">
-              <app-button
-                class="btn request-send"
-                :disabled="waitingForResponse"
-                @action="checkDescription"
-              >
-                <app-loader
-                  v-if="waitingForResponse" 
-                  type="sm"
-                />
-                <span v-else>Отправить</span>
-              </app-button>
-            </div>
-          </Form>
-        </template>
-      </app-modal>
+              <div class="reuqest-footer">
+                <app-button
+                  class="btn request-send"
+                  :disabled="waitingForResponse"
+                  @action="checkDescription"
+                >
+                  <app-loader
+                    v-if="waitingForResponse" 
+                    type="sm"
+                  />
+                  <span v-else>Отправить</span>
+                </app-button>
+              </div>
+            </Form>
+          </template>
+        </app-modal>
+      </Transition>
     </teleport>
 
     <teleport to="body">
