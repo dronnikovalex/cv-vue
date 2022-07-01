@@ -18,5 +18,4 @@ export default class Card {
   static toggleStudyDetails() {
     return cy.get('[data-cy="study-details"]').click()
   }
-
 }

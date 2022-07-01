@@ -1,6 +1,7 @@
 <template>
   <div 
-    class="toast"
+    id="toast"
+    data-cy="toast"
   >
     <slot />
   </div>

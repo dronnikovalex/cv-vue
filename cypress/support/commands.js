@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import "cypress-real-events/support";
 const Ajv = require("ajv");
 
 //Schema validation custom command

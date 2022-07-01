@@ -996,7 +996,7 @@ small {
   }
 }
 
-.toast {
+#toast {
   position: fixed;
   z-index: 9999;
   right: 5%;
@@ -1238,7 +1238,7 @@ small {
     font-size: 15px;
     font-weight: 600;
   }
-  .toast {
+  #toast {
     top: 5%;
   }
   .contacts__item-md {
@@ -1301,7 +1301,7 @@ small {
     max-width: 95%;
     padding: 15px 10px 10px 10px;
   }
-  .toast {
+  #toast {
     top: 3%;
   }
 }
