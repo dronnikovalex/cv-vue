@@ -17,7 +17,7 @@
       <the-placeholder 
         :error-message="errorMessage"
         :waiting-for-response="waitingForResponse"
-        @repeat-loading="fetchProfile"
+        @repeat-loading="reFetchProfile"
       />
     </div>
     
@@ -147,6 +147,7 @@
               <div class="reuqest-footer">
                 <app-button
                   class="btn request-send"
+                  data-cy="send-form"
                   :disabled="waitingForResponse"
                   @action="checkDescription"
                 >
@@ -182,6 +183,7 @@ import ThePlaceholder from '@/components/ThePlaceholder'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
+import toast from './mixins/toast'
 import AppButton from '@/components/ui/AppButton'
 import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
 import { Form, Field, ErrorMessage } from 'vee-validate';
@@ -213,6 +215,8 @@ export default {
     Field, 
     ErrorMessage, 
   },
+
+  mixins: [toast],
 
   requiredFieldText: 'Обязательно для заполнения',
 
@@ -255,9 +259,7 @@ export default {
       waitingForResponse: false,
       errOnLoadPage: false,
       errorMessage: '',
-      toastVisibility: false,
       fetchPorifleError: false,
-      toastMessage: '',
       schema,
     }
   },
@@ -279,7 +281,6 @@ export default {
       .then(profileInfo => this.profile = profileInfo)
       .then(() => this.loading = false)
       .catch(e => {
-        console.log(e)
         this.errOnLoadPage = true
         this.errorMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
         this.loading = false
@@ -329,19 +330,15 @@ export default {
         await sendFormRequest(payload)
 
         this.closeForm()
-        this.toastVisibility = true
-        this.toastMessage = '[Успех] Сообщение успешно отправлено'
+        this.showToast('[Успех] Сообщение успешно отправлено')
       } catch (e) {
-        this.toastVisibility = true
-        this.toastMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
+        this.showToast(codes[e.code])
       }
 
-      setTimeout(() => this.toastVisibility= false, 5000)
       this.waitingForResponse = false
-      
     },
 
-    fetchProfile() {
+    reFetchProfile() {
       this.waitingForResponse = true
 
       fetchProfileInfo()

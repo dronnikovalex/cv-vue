@@ -998,7 +998,7 @@ small {
 
 .toast {
   position: fixed;
-  z-index: 1;
+  z-index: 9999;
   right: 5%;
   top: 5%;
   height: 50px;
