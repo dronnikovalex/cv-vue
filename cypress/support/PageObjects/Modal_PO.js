@@ -7,6 +7,10 @@ export default class Modal {
     return cy.get('[data-testid="modal-backdrop"]')
   }
 
+  static getCloseButton() {
+    return cy.get('[data-testid="close-button"]')
+  }
+
   static openModal() {
     cy.get('[data-cy="contact-me"]').click()
   }
