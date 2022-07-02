@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import AppModal from './AppModal.vue'
+import Modal from '../../../cypress/support/PageObjects/Modal_PO'
 
 describe('Test AppModal component', () => {
   const modalSelector = '[data-testid="modal"]'
@@ -57,8 +58,7 @@ describe('Test AppModal component', () => {
       .should('be.calledOnce')
   })
 
-  it('should emit close-form event when user clicks on backdrop', () => {
-    const backdropSelector = '[data-testid="modal-backdrop"]'
+  it.only('should emit close-form event when user clicks on backdrop', () => {
     const onCloseFormSpy = cy.spy().as('onCloseFormSpy')
 
     cy.mount(AppModal, {
@@ -68,7 +68,8 @@ describe('Test AppModal component', () => {
       }
     })
 
-    cy.get(backdropSelector).click({ force: true })
+    Modal.closeModal()
+      .click({ force: true })
     cy.get('@onCloseFormSpy')
       .should('be.calledOnce')
   })
