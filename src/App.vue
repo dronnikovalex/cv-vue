@@ -78,57 +78,27 @@
               :validation-schema="schema"
               @submit="sendForm"
             > 
-              <div class="input-field">
-                <label for="name" class="inp">
-                  <Field
-                    id="name"
-                    ref="nameInput"
-                    v-model="name"
-                    type="text"
-                    placeholder="&nbsp;"
-                    name="name"
-                  />
-                  <span class="label">Имя</span>
-                  <span class="focus-bg" />
-                  <small>
-                    <ErrorMessage name="name" />
-                  </small>
-                </label>
-              </div>
+              <app-input
+                ref="customInput"
+                label-text="Имя"
+                type="text"
+                placeholder="&nbsp;"
+                name="name"
+              />
 
-              <div class="input-field">
-                <label for="position" class="inp">
-                  <Field
-                    id="position" 
-                    v-model="position"
-                    type="text"
-                    placeholder="&nbsp;"
-                    name="position"
-                  />
-                  <span class="label">Должность</span>
-                  <span class="focus-bg" />
-                  <small>
-                    <ErrorMessage name="position" />
-                  </small>
-                </label>
-              </div>
+              <app-input
+                label-text="Должность"
+                type="text"
+                placeholder="&nbsp;"
+                name="position"
+              />
 
-              <div class="input-field">
-                <label for="contacts" class="inp">
-                  <Field
-                    id="contacts" 
-                    v-model="contacts"
-                    type="text"
-                    placeholder="&nbsp;"
-                    name="contacts"
-                  />
-                  <span class="label">Контакт для обратной связи</span>
-                  <span class="focus-bg" />
-                  <small>
-                    <ErrorMessage name="contacts" />
-                  </small>
-                </label>
-              </div>
+              <app-input
+                label-text="Контакт для обратной связи"
+                type="text"
+                placeholder="&nbsp;"
+                name="contacts"
+              />
 
               <div class="desription-field">
                 <label for="description">Описание</label>
@@ -183,20 +153,13 @@ import ThePlaceholder from '@/components/ThePlaceholder'
 import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
-import toast from './mixins/toast'
 import AppButton from '@/components/ui/AppButton'
+import AppInput from '@/components/ui/AppInput'
+import toast from './mixins/toast'
 import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
-import { Form, Field, ErrorMessage } from 'vee-validate';
-import { configure } from 'vee-validate';
+import { Form } from 'vee-validate';
 import * as yup from 'yup';
 import codes from './codes'
-
-configure({
-  validateOnBlur: false,
-  validateOnChange: false,
-  validateOnInput: false,
-  validateOnModelUpdate: false,
-});
 
 export default {
   components: { 
@@ -211,9 +174,8 @@ export default {
     AppLoader, 
     AppToast,
     AppButton,
+    AppInput,
     Form, 
-    Field, 
-    ErrorMessage, 
   },
 
   mixins: [toast],
@@ -250,11 +212,8 @@ export default {
       
       modalVisibility: false,
       isEmptyDescription: false,
+      description: '',  
       profile: {},
-      name: '',
-      position: '',
-      description: '',
-      contacts: '',
       loading: false,
       waitingForResponse: false,
       errOnLoadPage: false,
@@ -292,18 +251,19 @@ export default {
   },
 
   methods: {
+    updateName(text) {
+      this.name = text
+    },
+
     openModal() {
       this.modalVisibility = true
       this.$nextTick(() => {
-       this.$refs.nameInput.$el.focus()
+        this.$refs.customInput.$refs.input.focus()
       })
     },
 
     closeForm() {
       this.modalVisibility = false
-      this.name = ''
-      this.position = ''
-      this.contacts = ''
       this.description = ''
       this.isEmptyDescription = false
     },
@@ -313,6 +273,8 @@ export default {
     },
 
     async sendForm(values) {
+      console.log(values)
+
       if (this.description.length === 0) {
         return
       }
