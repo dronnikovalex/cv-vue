@@ -38,6 +38,22 @@ describe('Test AppModal component', () => {
     Modal.getModal()
       .should('not.exist')  
   })
+
+  it('should close when click "Esc" button', () => {
+    cy.mount(AppModal, {
+      props: { 
+        modalVisibility: true,
+      }
+    })
+    Modal.getModal()
+      .should('exist')  
+      .and('be.visible')
+    
+    cy.realPress('Escape')
+    
+    Modal.getModal()
+      .should('not.exist')  
+  })
   
   it('should emit close-form event when user clicks on close button', () => {
     const onCloseFormSpy = cy.spy().as('onCloseFormSpy')

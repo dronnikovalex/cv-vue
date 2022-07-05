@@ -6,8 +6,8 @@
     @click="closeForm"
   >
     <div 
-      tabindex="-1"
       ref="modalBody"
+      tabindex="-1"
       class="modal"
       data-testid="modal"
       @click.stop
@@ -65,7 +65,6 @@ export default {
 
   mounted() {
     this.showModal = this.modalVisibility
-    
   },
 
   methods: {

@@ -15,7 +15,10 @@
       >
       <span class="label">{{ labelText }}</span>
       <span class="focus-bg" />
-      <small v-show="errorMessage">
+      <small 
+        v-show="errorMessage"
+        data-cy="error-message"
+      >
         {{ errorMessage }}
       </small>
     </label>

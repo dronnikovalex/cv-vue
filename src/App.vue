@@ -108,7 +108,10 @@
                   name="description"
                   @input="checkDescription"
                 />    
-                <small v-if="isEmptyDescription">
+                <small 
+                  v-if="isEmptyDescription"
+                  data-cy="error-message"
+                >
                   {{ $options.requiredFieldText }}
                 </small>              
               </div>

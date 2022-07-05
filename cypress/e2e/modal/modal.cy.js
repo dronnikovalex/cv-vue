@@ -51,7 +51,7 @@ describe('Modal tests', () => {
       .should('not.exist')
   })
 
-  it.only('should have possibilty to close modal window by click on a backdrop', { retries: 5 }, () => {
+  it('should have possibilty to close modal window by click on a backdrop', () => {
     Modal.openModal()
     Modal.getModal()
       .should('be.visible')
@@ -79,13 +79,6 @@ describe('Modal tests', () => {
       .should('be.empty')
     Modal.getDescriptionArea()
       .should('be.empty')
-  })
-
-  it('name input should has focus on initialize modal', () => {
-    Modal.openModal()
-
-    Modal.getNameInput()
-      .should('be.focused')
   })
 
   it('should call request endpoint on form submission', () => {
@@ -176,7 +169,7 @@ describe('Modal tests', () => {
       })
   })
 
-  it.only('should appear error toast when network connection is offline', () => {
+  it('should appear error toast when network connection is offline', () => {
     const networkErrorRequest = '[Ошибка] Проблемы с сетью. Проверьте Ваше подключение'
 
     cy.intercept(requestEndpoint, { forceNetworkError: true }).as('networkErrorRequest')
@@ -191,6 +184,18 @@ describe('Modal tests', () => {
         .should('be.visible')
         .and('have.text', networkErrorRequest)
     })
+  })
+
+  it.only('should show error on empty required fields', () => {
+    const expectedError = 'Обязательно для заполнения'
+
+    Modal.openModal()
+    Modal.submitForm()
+
+    cy.get('[data-cy="error-message"]')
+      .each($error => {
+        expect($error.text()).to.eql(expectedError)
+      })
   })
 })
 
