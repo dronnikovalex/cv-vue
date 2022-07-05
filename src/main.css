@@ -681,6 +681,7 @@ button:disabled:active  {
   border-radius: 2px;
   transform: translateX(-50%);
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 .modal-backdrop {
   position: fixed;

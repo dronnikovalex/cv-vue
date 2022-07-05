@@ -79,7 +79,6 @@
               @submit="sendForm"
             > 
               <app-input
-                ref="customInput"
                 label-text="Имя"
                 type="text"
                 placeholder="&nbsp;"
@@ -257,9 +256,6 @@ export default {
 
     openModal() {
       this.modalVisibility = true
-      this.$nextTick(() => {
-        this.$refs.customInput.$refs.input.focus()
-      })
     },
 
     closeForm() {
