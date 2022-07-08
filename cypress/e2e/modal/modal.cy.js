@@ -6,10 +6,15 @@ import { faker } from '@faker-js/faker'
 
 beforeEach(() => {
   HomePage.openPage()
+  Modal.openModal()
 })
 
 describe('Modal tests', () => {
   const requestEndpoint = '/request.json'
+  const requeiredFieldErrorMessage = 'Обязательно для заполнения'
+  const shortTextErrorMessage = 'Минимум 2 символа'
+  const longTextErrorMessage = 'Максимум 35 символов'
+  const digitsTextErorrMessage = 'Поле должно содержать только буквы'
 
   const requestData = {
     name: faker.lorem.word(Cypress._.random(2, 7)),
@@ -20,17 +25,12 @@ describe('Modal tests', () => {
 
   it('should open modal by clicking "contact me" button', () => {
     Modal.getModal()
-      .should('not.exist')
-
-    Modal.openModal()
-
-    Modal.getModal()
       .should('exist')
       .and('be.visible')
   })
 
   it('should have possibilty to close modal window by close button', () => {
-    Modal.openModal()
+
     Modal.getModal()
       .should('be.visible')
 
@@ -41,7 +41,6 @@ describe('Modal tests', () => {
   })
 
   it('should have possibilty to close modal window by Esc key', () => {
-    Modal.openModal()
     Modal.getModal()
       .should('be.visible')
 
@@ -52,7 +51,6 @@ describe('Modal tests', () => {
   })
 
   it('should have possibilty to close modal window by click on a backdrop', () => {
-    Modal.openModal()
     Modal.getModal()
       .should('be.visible')
 
@@ -63,14 +61,11 @@ describe('Modal tests', () => {
   })
 
   it('should have correct title', () => {
-    Modal.openModal()
     cy.contains('.modal__title', 'Контактная информация')
       .should('be.visible')
   })
 
   it('should have empty inputs on start', () => {
-    Modal.openModal()
-
     Modal.getNameInput()
       .should('be.empty')
     Modal.getPositionInput()
@@ -84,7 +79,6 @@ describe('Modal tests', () => {
   it('should call request endpoint on form submission', () => {
     cy.intercept(requestEndpoint).as('submitRequest')
 
-    Modal.openModal()
     Modal.fillForm(requestData)
     Modal.submitForm()
 
@@ -95,7 +89,6 @@ describe('Modal tests', () => {
   })
 
   it('send button should change title to loader on form submission', () => {
-    Modal.openModal()
     Modal.fillForm(requestData)
 
     Modal.getSubmitButton()
@@ -110,7 +103,6 @@ describe('Modal tests', () => {
   })
 
   it('send button should be disabled when form is submitting', () => {
-    Modal.openModal()
     Modal.fillForm(requestData)
 
     Modal.submitForm()
@@ -122,7 +114,6 @@ describe('Modal tests', () => {
   it('form should close on success', () => {
     cy.intercept(requestEndpoint).as('submitRequest')
 
-    Modal.openModal()
     Modal.fillForm(requestData)
 
     Modal.submitForm()
@@ -137,7 +128,6 @@ describe('Modal tests', () => {
   it('should appear toast on success', () => {
     const toastMessage = '[Успех] Сообщение успешно отправлено'
 
-    Modal.openModal()
     Modal.fillForm(requestData)
 
     Modal.submitForm()
@@ -157,7 +147,6 @@ describe('Modal tests', () => {
 
     cy.intercept(requestEndpoint, staticResponse).as('fakeRequest')
 
-    Modal.openModal()
     Modal.fillForm(requestData)
     Modal.submitForm()
 
@@ -174,7 +163,6 @@ describe('Modal tests', () => {
 
     cy.intercept(requestEndpoint, { forceNetworkError: true }).as('networkErrorRequest')
 
-    Modal.openModal()
     Modal.fillForm(requestData)
     Modal.submitForm()
     
@@ -186,17 +174,54 @@ describe('Modal tests', () => {
     })
   })
 
-  it.only('should show error on empty required fields', () => {
-    const expectedError = 'Обязательно для заполнения'
-
-    Modal.openModal()
+  it('should show error on empty required fields', () => {
     Modal.submitForm()
 
     cy.get('[data-cy="error-message"]')
       .each($error => {
-        expect($error.text()).to.eql(expectedError)
+        expect($error.text()).to.eql(requeiredFieldErrorMessage)
       })
   })
+
+  const fields = ['name', 'position', 'contacts']
+
+  fields.forEach(field => {
+    it(`should show error when short ${field} given`, () => {
+      Modal[`get${Cypress._.startCase(field)}Input`]()
+        .type(Cypress._.random(1))
+        
+      Modal.submitForm()
+      
+      Modal[`get${Cypress._.startCase(field)}Input`]()
+        .siblings('small')
+        .should('have.text', shortTextErrorMessage)
+    })
+  })
+
+  fields.forEach(field => {
+    it.only(`should show error when long ${field} given`, () => {
+      Modal[`get${Cypress._.startCase(field)}Input`]()
+        .type(faker.lorem.words(35))
+        
+      Modal.submitForm()
+      
+      Modal[`get${Cypress._.startCase(field)}Input`]()
+        .siblings('small')
+        .should('have.text', longTextErrorMessage)
+    })
+  })
+
+  it('should show error when digits given to position field', () => {
+    Modal.getPositionInput()
+      .type('1234')
+
+    Modal.submitForm()
+
+    Modal.getPositionInput()
+      .siblings('small')
+      .and('have.text', digitsTextErorrMessage)
+  })
+
 })
 
 
