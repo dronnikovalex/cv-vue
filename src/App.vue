@@ -137,7 +137,9 @@
     </teleport>
 
     <teleport to="body">
-      <app-toast v-if="toastVisibility">
+      <app-toast 
+        :is-visible="toastVisibility"
+      >
         {{ toastMessage }}
       </app-toast>
     </teleport>
@@ -272,8 +274,6 @@ export default {
     },
 
     async sendForm(values) {
-      console.log(values)
-
       if (this.description.length === 0) {
         return
       }
