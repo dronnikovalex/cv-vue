@@ -1,5 +1,10 @@
 <template>
-  <h2 class="card__title">
-    <slot />
+  <h2
+    class="card__title"
+    data-cy="card-title"
+  >
+    <slot>
+      ---
+    </slot>
   </h2>
 </template>
