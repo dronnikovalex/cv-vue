@@ -6,7 +6,7 @@
     >
       <input
         :id="name" 
-        ref="input"
+        data-cy="input"
         :name="name"
         :type="type"
         placeholder="&nbsp;"
@@ -16,10 +16,10 @@
       <span class="label">{{ labelText }}</span>
       <span class="focus-bg" />
       <small 
-        v-show="errorMessage"
+        v-if="errorMessage || testError"
         data-cy="error-message"
       >
-        {{ errorMessage }}
+        {{ errorMessage ? errorMessage : 'Error' }}
       </small>
     </label>
   </div>
@@ -42,8 +42,13 @@ export default {
     labelText: {
       type: String,
       required: true,
+      default: 'Введите текст'
     },
-  
+    testError: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },  
 
   setup(props) {
@@ -59,6 +64,6 @@ export default {
       handleChange,
       inputValue,
     };
-  }
+  },
 }
 </script>
