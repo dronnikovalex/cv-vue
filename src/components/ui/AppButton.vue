@@ -2,6 +2,7 @@
   <button 
     :disabled="disabled"
     @click="$emit('action')"
+    data-cy="button"
   >
     <slot>
       <span 
@@ -19,7 +20,7 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      required: false,
+      required: true,
       default: false
     } 
   },
