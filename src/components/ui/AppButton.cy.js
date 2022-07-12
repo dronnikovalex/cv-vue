@@ -35,18 +35,6 @@ describe('Test AppButton component', () => {
     cy.get('@warnSpy')
   })
 
-  it('should retun warn message if requred prop not given', () => {
-    cy.stub(window.console, 'warn').as('warnSpy')
-
-    cy.mount(AppButton)
-      .get(buttonSelector)
-      .should('exist')
-      .and('not.be.disabled')
-    
-    cy.get('@warnSpy')
-      .should('be.calledWithMatch', 'Missing required prop: "disabled"')
-  })
-
   it('should be disabled due "disabled" prop given', () => {
     cy.mount(AppButton, {
       props: {
@@ -59,7 +47,7 @@ describe('Test AppButton component', () => {
       .and('be.disabled')
   })
 
-  it.only('should emit "action" when click on button', () => {
+  it('should emit "action" when click on button', () => {
     const onActionSpy = cy.spy().as('onActionSpy')
 
     cy.mount(AppButton, {

@@ -1,7 +1,7 @@
 <template>
   <div 
     :class="`${source}__info`"
-    data-cy="about" 
+    data-cy="info" 
   >
     <div 
       :class="`${source}__personal`" 
@@ -21,15 +21,20 @@
       </span>
     </div>
     <span :class="`${source}__position`">QA engineer</span>
+  
+  
   </div>
   
   <div
     v-if="about"
     :class="`${source}__summary`"
+    data-cy="about"
   >
     <h2 :class="`${source}__title`">Обо мне</h2>
     
-    <p v-html="about" />
+    <p 
+      v-html="about"
+    />
   </div>
 </template>
 

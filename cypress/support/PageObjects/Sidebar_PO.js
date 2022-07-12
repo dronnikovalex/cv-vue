@@ -7,6 +7,10 @@ export default class Sidebar {
     return cy.get('[data-cy="avatar"]')
   }
 
+  static getInfo() {
+    return cy.get('[data-cy="info"]')
+  }
+
   static getAbout() {
     return cy.get('[data-cy="about"]')
   }

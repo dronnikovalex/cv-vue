@@ -20,7 +20,7 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false
     } 
   },
