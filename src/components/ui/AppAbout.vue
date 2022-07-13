@@ -3,26 +3,12 @@
     :class="`${source}__info`"
     data-cy="info" 
   >
-    <div 
-      :class="`${source}__personal`" 
-      class="personal"
-    >
-      <span 
-        :class="`${source}__surname`" 
-        class="surname"
-      >
-        Дронников
-      </span>
-      <span 
-        :class="`${source}__name`" 
-        class="name"
-      >
-        Алексей
-      </span>
+    <div :class="[`${source}__personal`, 'personal']">
+      <span :class="[`${source}__surname`, 'surname']">Дронников</span>
+      <span :class="[`${source}__name`, 'name']">Алексей</span>
     </div>
+  
     <span :class="`${source}__position`">QA engineer</span>
-  
-  
   </div>
   
   <div
