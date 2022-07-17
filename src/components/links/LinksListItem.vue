@@ -1,5 +1,9 @@
 <template>
-  <div class="link__item">
+  <div 
+    v-if="Object.keys(link).length"
+    class="link__item"
+    data-cy="link-item"
+  >
     <span class="link__placeholder">{{ link.name }}</span>
     <span class="link__value">
       <app-icon :type="link.type" />

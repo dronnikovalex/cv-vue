@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 import LinksList from './LinksList'
 import Sidebar from '../../../cypress/support/PageObjects/Sidebar_PO'
 import { h } from 'vue'
@@ -80,7 +81,7 @@ describe('Test LinksList component', () => {
     .should('not.exist')
   })
 
-  it.only('should throw console.warn if "links" prop not given', () => {
+  it('should throw console.warn if "links" prop not given', () => {
     cy.stub(window.console, 'warn').as('missedProp')
 
     cy.mount(LinksList)
