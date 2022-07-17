@@ -4,7 +4,7 @@
     data-cy="links"
   >
     <app-list-title v-if="isNotFooterSource">Ссылки</app-list-title>
-    
+
     <links-list-item
       v-for="(link, idx) in links"
       :key="idx"
@@ -22,10 +22,10 @@ export default {
 
   props: {
     links: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     },
     source: {
