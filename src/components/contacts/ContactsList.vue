@@ -19,6 +19,7 @@
     <app-button
       v-if="isNotHeaderSource" 
       class="contacts__request"
+      data-cy="request-btn"
       @action="$emit('open-modal')"
     />
   </div>
@@ -34,10 +35,10 @@ export default {
 
   props: {
     contacts: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       },
     },
     source: {
