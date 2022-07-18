@@ -31,9 +31,7 @@ describe('Test AppButton component', () => {
       .get(buttonSelector)
       .should('exist')
       .and('not.be.disabled')
-    
-    cy.get('@warnSpy')
-  })
+    })
 
   it('should be disabled due "disabled" prop given', () => {
     cy.mount(AppButton, {

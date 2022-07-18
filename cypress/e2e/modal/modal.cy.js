@@ -199,7 +199,7 @@ describe('Modal tests', () => {
   })
 
   fields.forEach(field => {
-    it.only(`should show error when long ${field} given`, () => {
+    it(`should show error when long ${field} given`, () => {
       Modal[`get${Cypress._.startCase(field)}Input`]()
         .type(faker.lorem.words(35))
         

@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'hyrfv8',
   component: {
     devServer: {
       framework: "vue-cli",
@@ -16,6 +17,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     env: {
       apiHost: 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app'
-    }
+    },
+    video: false,
   },
 })

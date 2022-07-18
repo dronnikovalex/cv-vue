@@ -15,7 +15,7 @@ describe('Test main page', () => {
       .should('eq', '/cv-vue/')
   })
 
-  it.only('get contacts', () => {
+  it('get contacts', () => {
 
     const TODO_ITEM_ONE = "Buy Milk"
     const TODO_ITEM_TWO = "Pay Rent"
