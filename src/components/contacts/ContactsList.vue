@@ -35,10 +35,10 @@ export default {
 
   props: {
     contacts: {
-      type: Array,
+      type: Object,
       required: true,
       default: function() {
-        return []
+        return {}
       },
     },
     source: {

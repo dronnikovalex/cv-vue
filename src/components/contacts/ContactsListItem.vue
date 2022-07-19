@@ -8,7 +8,8 @@
       <app-icon :type="contact.type" />
       <a 
         :href="contact.link"
-        target="_blank" 
+        target="_blank"
+        data-cy="md-link"
       >
         {{ contact.value }}
       </a>  
@@ -18,7 +19,8 @@
   <template v-else>
     <a 
       :href="contact.link"
-      target="_blank" 
+      target="_blank"
+      data-cy="sm-link"
     >
       <app-icon :type="contact.type" />
     </a>  
@@ -41,7 +43,8 @@ export default {
     },
     isMobileView: {
       type: Boolean,
-      required: false,
+      required: true,
+      default: false
     }
   },
 }
