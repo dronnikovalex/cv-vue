@@ -37,10 +37,10 @@ export default {
 
   props: {
     stack: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     },
     isShortTitle: {
@@ -58,11 +58,13 @@ export default {
   },
 
   mounted() {
-    this.bannerClasses = this.stack.map(item => ({
-      name: item.name.toLowerCase(),
-      url: item.url
-    }))
-    .filter(item => item.name !== 'прочее')  
+    if (this.stack.length) {
+      this.bannerClasses = this.stack.map(item => ({
+        name: item.name.toLowerCase(),
+        url: item.url
+      }))
+      .filter(item => item.name !== 'прочее')  
+    }
   },
 
   computed: {
