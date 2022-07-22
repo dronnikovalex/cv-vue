@@ -54,7 +54,7 @@ describe('Test ContactsListItem component', () => {
       .and('be.visible')
   })
 
-  it.only('sholud throw console.warn error if prop "contact" was not provided', () => {
+  it('sholud throw console.warn error if prop "contact" was not provided', () => {
     cy.stub(window.console, 'warn').as('missedProp')
 
     cy.mount(ContactsListItem)

@@ -11,3 +11,6 @@ import './components/ui/AppAbout.cy'
 
 import './components/links/LinksList.cy'
 import './components/links/LinksListItem.cy'
+
+import './components/contacts/ContactsListItem.cy'
+import './components/contacts/ContactsList.cy'

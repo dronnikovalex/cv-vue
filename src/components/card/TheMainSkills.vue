@@ -5,7 +5,7 @@
     </app-heading>
     
     <div 
-      data-cy="skills_banner"
+      data-cy="skills-banner"
       class="skills__banner banner" 
     >
       <a

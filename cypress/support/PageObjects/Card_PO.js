@@ -4,7 +4,7 @@ export default class Card {
   }
 
   static getBanner() {
-    return cy.get('data-cy="skills_banner"')
+    return cy.get('[data-cy="skills-banner"]')
   }
 
   static getBannerItem(idx) {

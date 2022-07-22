@@ -30,7 +30,6 @@ describe('Modal tests', () => {
   })
 
   it('should have possibilty to close modal window by close button', () => {
-
     Modal.getModal()
       .should('be.visible')
 
