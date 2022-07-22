@@ -7,6 +7,7 @@ module.exports = defineConfig({
       framework: "vue-cli",
       bundler: "webpack",
     },
+    video: false,
   },
   e2e: {
     setupNodeEvents(on, config) {
