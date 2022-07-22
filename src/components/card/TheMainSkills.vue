@@ -1,7 +1,7 @@
 <template>
   <section class="skills">
     <app-heading>
-      <span :class="isShortTitle ? 'sm-size-title' : 'xl-size-title'">{{ isShortTitle ? 'Навыки' : 'Профессиональные навыки' }}</span>
+      <span :class="titleClass">{{ titleName }}</span>
     </app-heading>
     
     <div 
@@ -64,5 +64,15 @@ export default {
     }))
     .filter(item => item.name !== 'прочее')  
   },
+
+  computed: {
+    titleClass() {
+      return this.isShortTitle ? 'sm-size-title' : 'xl-size-title'
+    },
+
+    titleName() {
+      return this.isShortTitle ? 'Навыки' : 'Профессиональные навыки'
+    }
+  }
 }
 </script>
