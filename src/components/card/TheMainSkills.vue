@@ -13,12 +13,17 @@
         :key="idx"
         :class="banner.name"
         class="banner__item" 
+        data-cy="banner-item"
         target="_blank"
         :href="banner.url" 
       />
     </div>
 
-    <div class="skills__description">
+    <div
+      v-if="stack.length"
+      data-cy="skills-description"
+      class="skills__description"
+    >
       <main-skills-item
         v-for="(technology, idx) in stack"
         :key="idx"
@@ -53,18 +58,7 @@ export default {
   data() {
     return {
       bannerClasses: [],
-      orderedStack: [],
     } 
-  },
-
-  mounted() {
-    if (this.stack.length) {
-      this.bannerClasses = this.stack.map(item => ({
-        name: item.name.toLowerCase(),
-        url: item.url
-      }))
-      .filter(item => item.name !== 'прочее')  
-    }
   },
 
   computed: {
@@ -75,6 +69,16 @@ export default {
     titleName() {
       return this.isShortTitle ? 'Навыки' : 'Профессиональные навыки'
     }
-  }
+  },
+  
+  mounted() {
+    if (this.stack.length) {
+      this.bannerClasses = this.stack.map(item => ({
+        name: item.name.toLowerCase(),
+        url: item.url
+      }))
+      .filter(item => item.name !== 'прочее')  
+    }
+  },
 }
 </script>
