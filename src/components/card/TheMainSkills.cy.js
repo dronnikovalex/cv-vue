@@ -71,7 +71,7 @@ describe('Test TheMainSkills component', () => {
         .should('not.exist')
     })
 
-    it('should build bannerClasses array when prop "stack" given', () => {
+    it('should build "bannerClasses" array when prop "stack" given', () => {
       renderTheMainSkills(mockedStack)
         .then(wrapper => {
           function makeBannerItem(item) {
