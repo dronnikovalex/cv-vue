@@ -425,15 +425,15 @@ button:disabled:active  {
   padding-bottom: 5px;
 }
 
-.skills,
-.experience,
-.study {
+#skills,
+#experience,
+#study {
   margin: 7px 0 15px 0;
   width: 100%;
   max-width: 900px;
 }
 
-.study {
+#study {
   width: 100%;
 }
 
@@ -1232,7 +1232,7 @@ small {
   .app-container {
     flex-direction: column;
   }
-  .skills {
+  #skills {
     margin-top: 10px;
   }
   .item__placeholder {

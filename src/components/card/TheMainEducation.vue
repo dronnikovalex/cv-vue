@@ -1,5 +1,5 @@
 <template>
-  <section class="study">
+  <section id="study">
     <app-heading>Обучение</app-heading>
 
     <div class="study__container">

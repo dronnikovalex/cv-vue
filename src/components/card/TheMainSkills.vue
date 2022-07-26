@@ -1,5 +1,5 @@
 <template>
-  <section class="skills">
+  <section id="skills">
     <app-heading>
       <span :class="titleClass">{{ titleName }}</span>
     </app-heading>
