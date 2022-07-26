@@ -12,11 +12,12 @@
     <div 
       v-else-if="errOnLoadPage"
       class="error-container"
+      data-cy="placeholder-container"
     >
       <the-placeholder 
         :error-message="errorMessage"
         :waiting-for-response="waitingForResponse"
-        @repeat-loading="fetchProfile"
+        @repeat-loading="reFetchProfile"
       />
     </div>
     
@@ -32,14 +33,19 @@
       />
 
       <the-header 
-        v-if="isMobileView" 
+        v-if="isTabletView"
+        :is-mobile-view="isMobileView"
         :contacts="profile.contacts"
       />
 
-      <main class="card-container">
+      <main 
+        class="card-container"
+        data-cy="card-container"
+      >
         <the-main-skills
           v-if="profile.stack"
-          :stack="profile.stack" 
+          :stack="profile.stack"
+          :is-short-title="isMobileView"
         />
 
         <the-main-experience 
@@ -54,109 +60,86 @@
       </main>
 
       <the-footer 
-        v-if="isMobileView"
+        v-if="isTabletView"
         :links="profile.links"
         @open-modal="openModal"
       />
     </div>
 
     <teleport to="body">
-      <app-modal 
-        :modal-visibility="modalVisibility"
-        @close-form="closeForm"
-      >
-        <template #default>
-          <Form
-            class="request-body"
-            :validation-schema="schema"
-            @submit="sendForm"
-          > 
-            <div class="input-field">
-              <label for="name" class="inp">
-                <Field
-                  id="name"
-                  ref="nameInput"
-                  v-model="name"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="name"
-                />
-                <span class="label">Имя</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="name" />
-                </small>
-              </label>
-            </div>
+      <Transition name="fade">
+        <app-modal 
+          :modal-visibility="modalVisibility"
+          @close-form="closeForm"
+        >
+          <template #default>
+            <Form
+              class="request-body"
+              :validation-schema="schema"
+              @submit="sendForm"
+            > 
+              <app-input
+                label-text="Имя"
+                type="text"
+                placeholder="&nbsp;"
+                name="name"
+              />
 
-            <div class="input-field">
-              <label for="position" class="inp">
-                <Field
-                  id="position" 
-                  v-model="position"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="position"
-                />
-                <span class="label">Должность</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="position" />
-                </small>
-              </label>
-            </div>
+              <app-input
+                label-text="Должность"
+                type="text"
+                placeholder="&nbsp;"
+                name="position"
+              />
 
-            <div class="input-field">
-              <label for="contacts" class="inp">
-                <Field
-                  id="contacts" 
-                  v-model="contacts"
-                  type="text"
-                  placeholder="&nbsp;"
-                  name="contacts"
-                />
-                <span class="label">Контакт для обратной связи</span>
-                <span class="focus-bg" />
-                <small>
-                  <ErrorMessage name="contacts" />
-                </small>
-              </label>
-            </div>
+              <app-input
+                label-text="Контакт для обратной связи"
+                type="text"
+                placeholder="&nbsp;"
+                name="contacts"
+              />
 
-            <div class="desription-field">
-              <label for="description">Описание</label>
-              <textarea 
-                id="description" 
-                v-model="description"
-                type="text" 
-                name="description"
-                @input="checkDescription"
-              />    
-              <small v-if="isEmptyDescription">
-                {{ $options.requiredFieldText }}
-              </small>              
-            </div>
+              <div class="desription-field">
+                <label for="description">Описание</label>
+                <textarea 
+                  id="description" 
+                  v-model="description"
+                  type="text" 
+                  name="description"
+                  @input="checkDescription"
+                />    
+                <small 
+                  v-if="isEmptyDescription"
+                  data-cy="error-message"
+                >
+                  {{ $options.requiredFieldText }}
+                </small>              
+              </div>
 
-            <div class="reuqest-footer">
-              <app-button
-                class="btn request-send"
-                :disabled="waitingForResponse"
-                @action="checkDescription"
-              >
-                <app-loader
-                  v-if="waitingForResponse" 
-                  type="sm"
-                />
-                <span v-else>Отправить</span>
-              </app-button>
-            </div>
-          </Form>
-        </template>
-      </app-modal>
+              <div class="reuqest-footer">
+                <app-button
+                  class="btn request-send"
+                  data-cy="send-form"
+                  :disabled="waitingForResponse"
+                  @action="checkDescription"
+                >
+                  <app-loader
+                    v-if="waitingForResponse" 
+                    type="sm"
+                  />
+                  <span v-else>Отправить</span>
+                </app-button>
+              </div>
+            </Form>
+          </template>
+        </app-modal>
+      </Transition>
     </teleport>
 
     <teleport to="body">
-      <app-toast v-if="toastVisibility">
+      <app-toast 
+        :is-visible="toastVisibility"
+      >
         {{ toastMessage }}
       </app-toast>
     </teleport>
@@ -175,18 +158,12 @@ import AppModal from '@/components/ui/AppModal'
 import AppLoader from '@/components/ui/AppLoader'
 import AppToast from '@/components/ui/AppToast'
 import AppButton from '@/components/ui/AppButton'
+import AppInput from '@/components/ui/AppInput'
+import toast from './mixins/toast'
 import { sendFormRequest, fetchProfileInfo } from './api/cvApi'
-import { Form, Field, ErrorMessage } from 'vee-validate';
-import { configure } from 'vee-validate';
+import { Form } from 'vee-validate';
 import * as yup from 'yup';
 import codes from './codes'
-
-configure({
-  validateOnBlur: false,
-  validateOnChange: false,
-  validateOnInput: false,
-  validateOnModelUpdate: false,
-});
 
 export default {
   components: { 
@@ -201,10 +178,11 @@ export default {
     AppLoader, 
     AppToast,
     AppButton,
+    AppInput,
     Form, 
-    Field, 
-    ErrorMessage, 
   },
+
+  mixins: [toast],
 
   requiredFieldText: 'Обязательно для заполнения',
 
@@ -235,27 +213,27 @@ export default {
 
     return {
       wWidth: window.innerWidth,
+      
       modalVisibility: false,
       isEmptyDescription: false,
+      description: '',  
       profile: {},
-      name: '',
-      position: '',
-      description: '',
-      contacts: '',
       loading: false,
       waitingForResponse: false,
       errOnLoadPage: false,
       errorMessage: '',
-      toastVisibility: false,
       fetchPorifleError: false,
-      toastMessage: '',
       schema,
     }
   },
 
   computed: {
-    isMobileView() {
+    isTabletView() {
       return this.wWidth <= 992 ? true : false
+    },
+
+    isMobileView() {
+      return this.wWidth < 577 ? true : false
     },
   },
   
@@ -266,7 +244,6 @@ export default {
       .then(profileInfo => this.profile = profileInfo)
       .then(() => this.loading = false)
       .catch(e => {
-        console.log(e)
         this.errOnLoadPage = true
         this.errorMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
         this.loading = false
@@ -278,18 +255,16 @@ export default {
   },
 
   methods: {
+    updateName(text) {
+      this.name = text
+    },
+
     openModal() {
       this.modalVisibility = true
-      this.$nextTick(() => {
-       this.$refs.nameInput.$el.focus()
-      })
     },
 
     closeForm() {
       this.modalVisibility = false
-      this.name = ''
-      this.position = ''
-      this.contacts = ''
       this.description = ''
       this.isEmptyDescription = false
     },
@@ -316,19 +291,15 @@ export default {
         await sendFormRequest(payload)
 
         this.closeForm()
-        this.toastVisibility = true
-        this.toastMessage = '[Успех] Сообщение успешно отправлено'
+        this.showToast('[Успех] Сообщение успешно отправлено')
       } catch (e) {
-        this.toastVisibility = true
-        this.toastMessage = codes[e.code] || '[Ошибка] Что-то пошло не так.'
+        this.showToast(codes[e.code])
       }
 
-      setTimeout(() => this.toastVisibility= false, 5000)
       this.waitingForResponse = false
-      
     },
 
-    fetchProfile() {
+    reFetchProfile() {
       this.waitingForResponse = true
 
       fetchProfileInfo()

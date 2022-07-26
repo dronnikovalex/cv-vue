@@ -1,22 +1,29 @@
 <template>
-  <section class="skills">
+  <section id="skills">
     <app-heading>
-      <span class="default-size-title">Профессиональные навыки</span>
-      <span class="sm-size-title">Навыки</span>
+      <span :class="titleClass">{{ titleName }}</span>
     </app-heading>
     
-    <div class="skills__banner banner">
+    <div 
+      data-cy="skills-banner"
+      class="skills__banner banner" 
+    >
       <a
         v-for="(banner, idx) in bannerClasses"
         :key="idx"
         :class="banner.name"
         class="banner__item" 
+        data-cy="banner-item"
         target="_blank"
         :href="banner.url" 
       />
     </div>
 
-    <div class="skills__description">
+    <div
+      v-if="stack.length"
+      data-cy="skills-description"
+      class="skills__description"
+    >
       <main-skills-item
         v-for="(technology, idx) in stack"
         :key="idx"
@@ -35,27 +42,43 @@ export default {
 
   props: {
     stack: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
+    },
+    isShortTitle: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
 
   data() {
     return {
       bannerClasses: [],
-      orderedStack: [],
     } 
   },
 
+  computed: {
+    titleClass() {
+      return this.isShortTitle ? 'sm-size-title' : 'xl-size-title'
+    },
+
+    titleName() {
+      return this.isShortTitle ? 'Навыки' : 'Профессиональные навыки'
+    }
+  },
+  
   mounted() {
-    this.bannerClasses = this.stack.map(item => ({
-      name: item.name.toLowerCase(),
-      url: item.url
-    }))
-    .filter(item => item.name !== 'прочее')  
+    if (this.stack.length) {
+      this.bannerClasses = this.stack.map(item => ({
+        name: item.name.toLowerCase(),
+        url: item.url
+      }))
+      .filter(item => item.name !== 'прочее')  
+    }
   },
 }
 </script>

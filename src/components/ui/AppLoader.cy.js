@@ -54,7 +54,7 @@ describe('Test AppLoader component', () => {
     })
   })
 
-  it.only('should render white spinner when no props given', () => {
+  it('should render white spinner when no props given', () => {
     cy.mount(AppLoader)
     
     cy.get(appLoaderSelector)

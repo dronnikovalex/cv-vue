@@ -6,6 +6,8 @@
     @click="closeForm"
   >
     <div 
+      ref="modalBody"
+      tabindex="-1"
       class="modal"
       data-testid="modal"
       @click.stop
@@ -52,6 +54,12 @@ export default {
   watch: {
     modalVisibility(newVal) {
       this.showModal = newVal
+    },
+
+    showModal() {
+      this.$nextTick(() => {
+        this.showModal && this.$refs.modalBody.focus()
+      })
     }
   },
 

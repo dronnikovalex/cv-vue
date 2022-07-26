@@ -1,0 +1,27 @@
+[
+  {
+    "description": "Понимание базовых концепций работы фреймворка, Options и Compositions API. Умение работать с Vue CLI, Vue devtools. Знание экосистемы: Vue Router, Vuex.",
+    "name": "Vue",
+    "url": "https://ru.vuejs.org/index.html"
+  },
+  {
+    "description": "Понимание механизмов работы. Умение внедрения и настройки фреймворка в проекте. Применение Page objects/App actions/Cucumber для организации тестов.",
+    "name": "Cypress",
+    "url": "https://www.cypress.io/"
+  },
+  {
+    "description": "Практический навык верстки страниц. Знание принципов адаптивной верстки (Flexbox/Grid CSS). Понимание принципов работы CSS (Каскад, Наследование). Небольшой опыт применения БЭМ и CSS фреймворков (Tailwind, Materialize).",
+    "name": "HTML",
+    "url": "https://ru.wikipedia.org/wiki/HTML"
+  },
+  {
+    "description": "Практический опыт применения языка в Web frontend разработке, написании скриптов в Postman, реализации тестов Cypress. Понимание концепций event loop и асинхронности. Знание ES6.",
+    "name": "JavaScript",
+    "url": "https://developer.mozilla.org/ru/docs/Web/JavaScript"
+  },
+  {
+    "description": "Уверенное знание функций инструмента. Практический опыт работы с REST API. Написание спецификации по стандарту Open API 3.0. Реализация скриптов и подготовка flow для тест-раннера. Навык работы с newman.",
+    "name": "Postman",
+    "url": "https://www.postman.com/"
+  }
+]

@@ -1,17 +1,30 @@
 <template>
-  <span class="item__placeholder">
-    {{ contact.name }}
-  </span>
+  <template v-if="!isMobileView">
+    <span class="item__placeholder">
+      {{ contact.name }}
+    </span>
 
-  <span class="item__value">
-    <app-icon :type="contact.type" />
+    <span class="item__value">
+      <app-icon :type="contact.type" />
+      <a 
+        :href="contact.link"
+        target="_blank"
+        data-cy="md-link"
+      >
+        {{ contact.value }}
+      </a>  
+    </span>
+  </template>
+
+  <template v-else>
     <a 
       :href="contact.link"
-      target="_blank" 
+      target="_blank"
+      data-cy="sm-link"
     >
-      {{ contact.value }}
+      <app-icon :type="contact.type" />
     </a>  
-  </span>
+  </template>
 </template>
 
 <script>
@@ -28,6 +41,11 @@ export default {
         return {}
       },
     },
+    isMobileView: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   },
 }
 </script>

@@ -7,7 +7,8 @@
     "test": "npx cypress open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start-test": "start-test 8080 test"
+    "start-test": "start-test 8080 test",
+    "cy:run:component": "npx cypress run --component --spec src/allSpecs.cy.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
@@ -17,6 +18,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "cypress-real-events": "^1.7.1",
     "vee-validate": "^4.5.8",
     "vue": "^3.0.0",
     "yup": "^0.32.11"

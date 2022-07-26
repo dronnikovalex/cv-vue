@@ -1,8 +1,6 @@
 <template>
-  <section class="study">
-    <app-heading>
-      Обучение
-    </app-heading>
+  <section id="study">
+    <app-heading>Обучение</app-heading>
 
     <div class="study__container">
       <main-education-item
@@ -11,15 +9,19 @@
 
       <details>
         <summary 
-          class="study__details" 
+          class="study__details"
+          data-cy="study-details"
           @click="toggleDetails"
         >
           {{ summaryStatus === false ? 'Развернуть▼' : 'Свернуть▲' }}
         </summary>
         
-        <main-education-item 
-          :instance="school"
-        />
+        <Transition name="slide">
+          <main-education-item
+            v-if="summaryStatus" 
+            :instance="school"
+          />
+        </Transition>
       </details>
     </div>
   </section>

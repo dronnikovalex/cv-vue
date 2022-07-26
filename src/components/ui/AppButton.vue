@@ -2,6 +2,7 @@
   <button 
     :disabled="disabled"
     @click="$emit('action')"
+    data-cy="button"
   >
     <slot>
       <span 

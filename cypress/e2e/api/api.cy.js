@@ -142,7 +142,7 @@ describe('Test api methods', () => {
       })
     })
 
-    it.only('should not be able to read data', () => {
+    it('should not be able to read data', () => {
       cy.request({
         url: `${Cypress.env('apiHost')}${requestEndpoint}`,
         failOnStatusCode: false

@@ -1,10 +1,14 @@
 <template>
-  <section class="experience">
-    <app-heading>
-      Опыт работы
-    </app-heading>
+  <section 
+    v-if="experience.length"
+    id="experience"
+  >
+    <app-heading>Опыт работы</app-heading>
 
-    <div class="experience__container">
+    <div 
+      class="experience__container"
+      data-cy="experience-container"
+    >
       <main-experience-item 
         v-for="(experienceItem, idx) in experience"
         :key="idx"
@@ -23,10 +27,10 @@ export default {
 
   props: {
     experience: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     }
   }

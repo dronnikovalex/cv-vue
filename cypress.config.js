@@ -1,13 +1,14 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'hyrfv8',
   component: {
     devServer: {
       framework: "vue-cli",
       bundler: "webpack",
     },
+    video: false,
   },
-
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -17,6 +18,7 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     env: {
       apiHost: 'https://cv-vue-storage-default-rtdb.europe-west1.firebasedatabase.app'
-    }
+    },
+    video: false,
   },
-});
+})

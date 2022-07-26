@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import "cypress-real-events/support";
 const Ajv = require("ajv");
 
 //Schema validation custom command
@@ -38,4 +39,8 @@ Cypress.Commands.add('validateSchema', (schema, response) => {
   } else {
     expect(isValid, 'Schema validated!').to.eq(true)
   }
+})
+
+Cypress.Commands.add('vue', () => {
+  return cy.wrap(Cypress.vueWrapper);
 });
