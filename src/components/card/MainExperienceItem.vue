@@ -1,5 +1,8 @@
 <template>
-  <div class="experience__item">
+  <div 
+    class="experience__item"
+    data-cy="experience-item"
+  >
     <h3 :class="{ experience__last: isLastJob }">{{ experienceItem.name }} | {{ experienceItem.dateFrom }} - {{ experienceItem.dateTo }}</h3>
     <p class="experience__position">Должность - {{ experienceItem.position }}</p>
     <p class="experience__description">{{ experienceItem.description }}</p>
@@ -13,7 +16,12 @@ export default {
       type: Object,
       required: true,
       default: function() {
-        return {}
+        return {
+          name: 'Placeholder name',
+          position: 'Placeholder position',
+          description: 'Placeholder description',
+          last: false
+        }
       }
     }
   },
