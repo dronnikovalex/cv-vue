@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
-    "test": "npx cypress open",
+    "test": "cypress open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start-test": "start-test 8080 test",
-    "cy:run:component": "npx cypress run --component --spec src/allSpecs.cy.js"
+    "cy:e2e": "cypress open --e2e --browser electron",
+    "cy:run:component": "npx cypress run --component --spec src/allSpecs.cy.js",
+    "cy:run:e2e": "npx cypress run --e2e"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",

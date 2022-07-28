@@ -17,10 +17,12 @@ export default {
       required: true,
       default: function() {
         return {
+          dateFrom: '01/2020',
+          dateTo: '01/2021',
           name: 'Placeholder name',
           position: 'Placeholder position',
           description: 'Placeholder description',
-          last: false
+          last: true
         }
       }
     }
