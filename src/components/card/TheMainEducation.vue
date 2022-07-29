@@ -1,5 +1,8 @@
 <template>
-  <section id="study">
+  <section 
+    v-if="study.length"
+    id="study"
+  >
     <app-heading>Обучение</app-heading>
 
     <div class="study__container">
@@ -7,19 +10,19 @@
         :instance="university"
       />
 
-      <details>
+      <details v-if="study.length > 1">
         <summary 
           class="study__details"
           data-cy="study-details"
           @click="toggleDetails"
         >
-          {{ summaryStatus === false ? 'Развернуть▼' : 'Свернуть▲' }}
+          {{ summaryName }}
         </summary>
         
         <Transition name="slide">
-          <main-education-item
-            v-if="summaryStatus" 
-            :instance="school"
+          <main-education-item 
+            v-if="isOpen" 
+            :instance="school" 
           />
         </Transition>
       </details>
@@ -36,34 +39,44 @@ export default {
 
   props: {
     study: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     }
   },
 
   data() {
     return {
-      summaryStatus: false,
+      isOpen: false,
       school: {},
       university: {},
     }
   },
 
-  mounted() {
-    this.school = this.study[Object.keys(this.study)
-      .find(id => this.study[id].type === 'school')]
+  computed: {
+    summaryName() {
+      return this.isOpen === false ? 'Развернуть▼' : 'Свернуть▲'
+    }
+  },
 
-    this.university = this.study[Object.keys(this.study)
-      .find(id => this.study[id].type === 'university')]
+  mounted() {
+    if (this.study.length) {
+      this.school = this.study[Object.keys(this.study)
+        .findIndex(id => this.study[id].type === 'school')]
+
+      this.university = this.study[Object.keys(this.study)
+        .findIndex(id => this.study[id].type === 'university')]
+    }
   },
 
   methods: {
     toggleDetails() {
-      this.summaryStatus = !this.summaryStatus
+      this.isOpen = !this.isOpen
     }
-  }
+  },
+
+
 }
 </script>
