@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="study__item"
     data-cy="study-item"
   >
@@ -16,7 +16,12 @@ export default {
       type: Object,
       required: false,
       default: function() {
-        return {}
+        return {
+          title: 'Placeholder title',
+          dateFrom: '2001',
+          dateTo: '2020',
+          description: 'Placeholder description'
+        }
       }
     }
   }
