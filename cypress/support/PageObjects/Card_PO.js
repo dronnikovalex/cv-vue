@@ -1,3 +1,5 @@
+const silent = { log: false }
+
 export default class Card {
   static getCard() {
     return cy.get('[data-cy="card-container"]')
@@ -15,7 +17,23 @@ export default class Card {
     return cy.get('[data-cy="skills"]')
   }
 
+  static getStudy() {
+    return cy.get('#study')
+  }
+
+  static getStudyItems(number) {
+    if (number) {
+      return cy.get('[data-cy="study-item"]').eq(number, silent)
+    }
+    return cy.get('[data-cy="study-item"]')
+  }
+
+  static getSTudyDetails() {
+    return cy.get('[data-cy="study-details"]')
+  }
+
   static toggleStudyDetails() {
-    return cy.get('[data-cy="study-details"]').click()
+    this.getSTudyDetails()
+      .click()
   }
 }
