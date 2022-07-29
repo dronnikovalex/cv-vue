@@ -7,9 +7,10 @@
     "test": "cypress open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start-test": "start-test 8080 test",
+    "start-test": "start-test 8080 cy:open:component",
     "cy:e2e": "cypress open --e2e --browser electron",
     "cy:run:component": "npx cypress run --component --spec src/allSpecs.cy.js",
+    "cy:open:component": "cypress open --component --browser electron",
     "cy:run:e2e": "npx cypress run --e2e"
   },
   "dependencies": {
