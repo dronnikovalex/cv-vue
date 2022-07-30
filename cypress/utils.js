@@ -62,3 +62,12 @@ export function createRandomStudyItems(count = 2) {
 
   return studyItems
 }
+
+export function createRandomContactLinkObj() {
+  return {
+      link: faker.internet.domainName(),
+      name: faker.lorem.word(),
+      type: "cypress",
+      value: faker.internet.domainName(),
+    }
+}
