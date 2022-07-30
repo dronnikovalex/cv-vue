@@ -387,9 +387,10 @@ button:disabled:active  {
   color: var(--base-color);
 }
 
-.footer {
+#footer {
   display: flex;
   flex-wrap: wrap;
+  background-color: rgba(45, 45, 45, 1);
   align-items: center;
   justify-content: space-around;
 }
@@ -398,7 +399,7 @@ button:disabled:active  {
   flex-basis: 60%;
   display: flex;
   flex-wrap: wrap;
-  margin: 12px 0 20px 0;
+  margin: 12px 0
 }
 
 .footer__links > .link__item {
@@ -612,6 +613,7 @@ button:disabled:active  {
   position: relative;
   width: 170px;
   height: 40px;
+  margin: 8px 0;
   border: 2px solid #686767;
   background-color: var(--base-color);
   font-family: 'Poppins', sans-serif;
@@ -1284,10 +1286,10 @@ small {
   .skills__item {
     flex-basis: 100%;
   }
-  .footer {
+  #footer {
     flex-direction: column;
     align-items: center;
-    padding-bottom: 15px;
+    padding-bottom: 7px;
   }
   .footer__links {
     flex-basis:  none;
