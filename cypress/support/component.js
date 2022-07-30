@@ -29,4 +29,7 @@ Cypress.Commands.add('mount', (component, options = {}) => {
   options.global.components['FontAwesomeIcon'] = FontAwesomeIcon
 
   return mount(component, options)
+    .then((wrapper) => {
+      return cy.wrap(wrapper, { log: false }).as('vue')
+  })
 })

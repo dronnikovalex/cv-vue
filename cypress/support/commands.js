@@ -41,6 +41,3 @@ Cypress.Commands.add('validateSchema', (schema, response) => {
   }
 })
 
-Cypress.Commands.add('vue', () => {
-  return cy.wrap(Cypress.vueWrapper, { log: false });
-});
