@@ -1,6 +1,7 @@
 <template>
-  <footer class="footer"> 
-    <links-list 
+  <footer id="footer"> 
+    <links-list
+      v-if="links.length"
       :links="links" 
       source="footer"
       class="footer__links"
@@ -22,10 +23,10 @@ export default {
 
   props: {
     links: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     }
   },
