@@ -1,27 +1,32 @@
 <template>
-
-  <header class="header sticky">
+  <header 
+    class="header sticky"
+    data-cy="header"
+  >
     <div
       :class="headerContainerClass"
     >   
-    <div class="info-wrapper">
-      <div class="header__avatar avatar" />
+      <div class="info-wrapper">
+        <div class="header__avatar avatar" />
 
-      <app-about source="header" />
-    </div>
+        <app-about source="header" />
+      </div>
 
       <contacts-list
+        v-if="contacts.length"
         :class="contactsListClass"
         :contacts="contacts"
         :is-mobile-view="isMobileView"
         source="header" 
       />
-      </div>
+    </div>
 
-      <div class="progress-container">
-        <div class="progress-bar" id="progress"></div>
-      </div>  
-    
+    <div class="progress-container">
+      <div 
+        id="progress" 
+        class="progress-bar"
+      />
+    </div>  
   </header>
 </template>
 
@@ -34,10 +39,10 @@ export default {
 
   props: {
     contacts: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     },
     isMobileView: {
@@ -47,15 +52,19 @@ export default {
     }
   },
 
+  scrollProgress: function() {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    document.getElementById("progress").style.width = scrolled + "%";
+  },    
+
   mounted() {
-  window.addEventListener('scroll', scrollProgress) 
-    
-  function scrollProgress() {
-      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrolled = (winScroll / height) * 100;
-      document.getElementById("progress").style.width = scrolled + "%";
-    }    
+    window.addEventListener('scroll', this.$options.scrollProgress) 
+  },
+
+  unmounted() {
+    window.removeEventListener('scroll', this.$options.scrollProgress)
   },
 
   computed: {

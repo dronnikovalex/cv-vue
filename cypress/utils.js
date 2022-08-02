@@ -67,7 +67,7 @@ export function createRandomContactLinkObj() {
   return {
       link: faker.internet.domainName(),
       name: faker.lorem.word(),
-      type: "cypress",
+      type: ['envelope', 'phone', 'telegram'][Math.floor(Math.random() * 3)],
       value: faker.internet.domainName(),
     }
 }
