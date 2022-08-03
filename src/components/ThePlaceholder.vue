@@ -1,11 +1,22 @@
 <template>
-  <div class="error">
+  <div 
+    class="error"
+    data-cy="error"
+    >
     <div class="error__title">
       <p>При загрузке страницы произошла ошибка:</p>
-      <small class="">{{ errorMessage }}</small>
+      <small 
+        class="error__text"
+        data-cy="error-text"
+      >
+        {{ errorMessage }}
+      </small>
     </div>
+
     <div class="error__image" />
+
     <p class="error__subtitle">Пожалуйста, попробуйте снова</p>
+    
     <app-button 
       class="btn error__button"
       @action="$emit('repeat-loading')"
@@ -15,6 +26,7 @@
         type="sm"
         color="black"
       />
+
       <span v-else>Повторить</span>
     </app-button>
   </div>
