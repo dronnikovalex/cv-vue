@@ -8,7 +8,8 @@
       data-cy="avatar" 
     />
 
-    <app-about 
+    <app-about
+      v-if="about" 
       source="sidebar"
       :about="about"
     />
@@ -16,6 +17,7 @@
     <hr class="sidebar__divider">
 
     <contacts-list 
+      v-if="contacts.length" 
       :contacts="contacts"
       source="sidebar"
       @open-modal="$emit('open-modal')"
@@ -24,6 +26,7 @@
     <hr class="sidebar__divider">
     
     <links-list 
+      v-if="links.length" 
       :links="links" 
       source="sidebar"
     />
@@ -45,17 +48,17 @@ export default {
       default: ''
     },
     contacts: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     },
     links: {
-      type: Object,
+      type: Array,
       required: true,
       default: function() {
-        return {}
+        return []
       }
     },
   },
