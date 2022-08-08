@@ -25,7 +25,8 @@
       v-else 
       class="app-container"
     >
-      <the-sidebar 
+      <the-sidebar
+        v-if="isLaptopView"
         :about="profile.about"
         :contacts="profile.contacts"
         :links="profile.links"
@@ -228,6 +229,10 @@ export default {
   },
 
   computed: {
+    isLaptopView() {
+      return this.wWidth >= 993 ? true: false
+    },
+
     isTabletView() {
       return this.wWidth <= 992 ? true : false
     },

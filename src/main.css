@@ -1226,8 +1226,7 @@ small,
 }
 
 @media only screen and (max-width: 992px) {
-  .skills__banner, 
-  .sidebar {
+  .skills__banner {
     display: none;
   }
   .app-container-fluid {
