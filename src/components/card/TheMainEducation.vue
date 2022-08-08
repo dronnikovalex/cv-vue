@@ -74,9 +74,12 @@ export default {
   methods: {
     toggleDetails() {
       this.isOpen = !this.isOpen
-    }
-  },
 
+      setTimeout(() => {
+        window.scrollTo(0,document.body.scrollHeight);
+      }, 0)
+    }
+  }
 
 }
 </script>
