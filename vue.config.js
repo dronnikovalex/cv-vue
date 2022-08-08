@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: '/cv-vue/'
+  publicPath: '/cv-vue/',
+  runtimeCompiler: true,
 }
