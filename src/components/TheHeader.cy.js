@@ -88,7 +88,7 @@ describe('Test TheFooter component', { viewportWidth: 990 }, () => {
   const isMobileViewArray = [true, false]
 
   isMobileViewArray.forEach(isMobileProp => {
-    it.only('should calculate correct computed properties depending on "isMobileView" prop', () => {
+    it('should calculate correct computed properties depending on "isMobileView" prop', () => {
       renderHeader(randomContacts, isMobileProp)
       
       cy.get('@vue')

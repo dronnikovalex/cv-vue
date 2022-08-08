@@ -65,13 +65,13 @@ describe('Test MainSkillsItem component', () => {
       .and('be.calledWithMatch', 'Missing required prop: "technology"')
   })
 
-  it('should render correct technology name if given name equals "HTML', () => {
+  it.only('should render correct technology name if given name equals "HTML"', () => {
     const expectedTitle = 'HTML, CSS'
     testItem.name = 'HTML'
 
     renderSkillsItem(testItem)
 
-    cy.vue()
+    cy.get('@vue')
       .then(wrapper => {
         expect(wrapper.vm.technologyName, 'computed property should return expected title').to.eql(expectedTitle)
       })

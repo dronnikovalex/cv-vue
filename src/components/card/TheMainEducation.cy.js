@@ -99,7 +99,6 @@ describe('Test TheMainEducation component', () => {
     const testStudyItems = createRandomStudyItems()
 
     renderStudyComponent(testStudyItems)
-      .vue()
       .then(wrapper => {
         const studyInstances = [wrapper.vm.school, wrapper.vm.university]
 

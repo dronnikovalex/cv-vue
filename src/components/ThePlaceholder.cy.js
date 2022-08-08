@@ -56,7 +56,7 @@ describe('Test ThePlaceholder component', () => {
     cy.get('@repeatEventSpy').should('have.been.calledOnce')
   })
 
-  it.only('should have loader on button if prop "waitingForResponse" given', () => {
+  it('should have loader on button if prop "waitingForResponse" given', () => {
     renderPlaceholder(true)
 
     cy.get('.error__button')

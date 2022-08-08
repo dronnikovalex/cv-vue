@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 import AppInput from './AppInput'
 import { faker } from '@faker-js/faker'
-import { mount } from 'cypress/vue'
 
 describe('Test AppInput component', () => {
   const labelText = faker.lorem.word()
@@ -43,7 +42,7 @@ describe('Test AppInput component', () => {
       .should('have.text', 'Введите текст')
   })
 
-  it.only('should show error if testError props given', () => {
+  it('should show error if testError props given', () => {
     const errorMessage = 'Test error message'
 
     cy.mount(AppInput, {
