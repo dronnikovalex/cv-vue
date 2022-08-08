@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker'
 
+export const textAbout = 'Et nisi ratione rerum et consequatur est aut voluptatem. Quos repellendus eius enim corporis officia sit. Aut et eos et eaque expedita tempora aliquam optio. Reiciendis tempore optio est reprehenderit odit laudantium iusto eum sit. Et nisi ratione rerum et consequatur est aut voluptatem. Quos repellendus eius enim corporis officia sit. Aut et eos et eaque expedita tempora aliquam optio. Reiciendis tempore optio est reprehenderit odit laudantium iusto eum sit.'
+
 function getDates([ fromDate, toDate ], format = 'month') {
   switch (format) {
     case 'month':
@@ -70,4 +72,16 @@ export function createRandomContactLinkObj() {
       type: ['envelope', 'phone', 'telegram'][Math.floor(Math.random() * 3)],
       value: faker.internet.domainName(),
     }
+}
+
+export function createRandomContactLinks(count = 1) {
+  let linksItems = []
+
+  while (count > 0) {
+    linksItems.push(createRandomContactLinkObj())
+
+    count--
+  }
+
+  return linksItems
 }
