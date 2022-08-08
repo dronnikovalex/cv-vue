@@ -71,7 +71,6 @@ describe('Test AppIcon component', () => {
     const expectedData = [ 'fab', 'github' ]
 
     expect(AppIcon.computed.iconData.call(resource), `${resource} should has expected data`).to.deep.eql(expectedData)
-
   })
 
 })
