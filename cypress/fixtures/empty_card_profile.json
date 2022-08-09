@@ -1,0 +1,52 @@
+{
+  "about": "Занимаюсь&nbsp;ручным&nbsp;тестированием мобильных и веб приложений более 2.5 лет. Имею навыки организации и отладки процессов тестирования в проекте. В&nbsp;настоящее время, активно погружаюсь в мир веб frontend разработки на Vue.js, модульного, компонентного и End-2-End авто тестирования. Интересен переход в автоматизацию на стеке Vue + Jest/Cypress.",
+  "contacts": [
+    {
+      "link": "mailto:@hoock57@gmail.com",
+      "name": "Email",
+      "type": "envelope",
+      "value": "hoock57@gmail.com"
+    },
+    {
+      "link": "https://telegram.me/aldronnikov",
+      "name": "Telegram",
+      "type": "telegram",
+      "value": "t.me/aldronnikov"
+    },
+    {
+      "link": "tel:+79534773162",
+      "name": "Телефон",
+      "type": "phone",
+      "value": "+7-953-477-3162"
+    }
+  ],
+  "experience": [],
+  "links": [
+    {
+      "link": "https://github.com/dronnikovalex/cv-vue/tree/master/cypress/e2e",
+      "name": "Cypress tests",
+      "type": "cypress",
+      "value": "github.com/dronnikovalex/cv-vue/cypress"
+    },
+    {
+      "link": "https://github.com/dronnikovalex/cv-vue",
+      "name": "Project repo",
+      "type": "github",
+      "value": "github.com/dronnikovalex/cv-vue"
+    },
+    {
+      "link": "https://career.habr.com/aleksey-dronnikov57",
+      "name": "Habr career",
+      "type": "square_h",
+      "value": "habr.com/aleksey-dronnikov57"
+    },
+    {
+      "link": "https://vk.com/id38394670",
+      "name": "VK",
+      "type": "vk",
+      "value": "vk.com/id38394670"
+    }
+  ],
+  "stack": [],
+  "study": []
+}
