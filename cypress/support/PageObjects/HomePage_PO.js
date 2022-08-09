@@ -6,6 +6,10 @@ export default class HomePage {
     cy.visit('/')
   }
 
+  static getHomepage() {
+    return cy.get('.app-container')
+  }
+
   static getToast() {
     return cy.get('[data-cy="toast"]', silent)
   }
@@ -20,5 +24,13 @@ export default class HomePage {
 
   static getPlaceholderRepeatBtn() {
     return cy.contains('.error__button', 'Повторить')
+  }
+
+  static getLoader() {
+    return cy.get('[data-testid="loader"]', silent)
+  }
+
+  static getFooter() {
+    return cy.get('#footer')
   }
 }

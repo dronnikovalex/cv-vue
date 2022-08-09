@@ -11,8 +11,14 @@ export default class Modal {
     return cy.get('[data-testid="close-button"]')
   }
 
+  getRequestBtn() {
+    cy.get('[data-cy="contact-me"]')
+
+    return this
+  }
+
   static openModal() {
-    cy.get('[data-cy="contact-me"]').click()
+    return cy.get('[data-cy="contact-me"]').click()
   }
 
   static closeModal() {

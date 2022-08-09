@@ -14,7 +14,11 @@ export default class Card {
   }
 
   static getSkills() {
-    return cy.get('[data-cy="skills"]')
+    return cy.get('#skills')
+  }
+
+  static getExperience() {
+    return cy.get('[data-cy="experience-container"]')
   }
 
   static getStudy() {
