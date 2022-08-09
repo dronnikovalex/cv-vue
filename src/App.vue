@@ -9,18 +9,13 @@
       />
     </div>
 
-    <div 
+    <the-placeholder 
       v-else-if="errOnLoadPage"
-      class="error-container"
-      data-cy="placeholder-container"
-    >
-      <the-placeholder 
-        :error-message="errorMessage"
-        :waiting-for-response="waitingForResponse"
-        @repeat-loading="reFetchProfile"
-      />
-    </div>
-    
+      :error-message="errorMessage"
+      :waiting-for-response="waitingForResponse"
+      @repeat-loading="reFetchProfile"
+    />  
+
     <div
       v-else 
       class="app-container"

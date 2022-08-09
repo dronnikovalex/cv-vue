@@ -1,34 +1,40 @@
 <template>
   <div 
-    class="error"
-    data-cy="error"
-    >
-    <div class="error__title">
-      <p>При загрузке страницы произошла ошибка:</p>
-      <small 
-        class="error__text"
-        data-cy="error-text"
-      >
-        {{ errorMessage }}
-      </small>
-    </div>
-
-    <div class="error__image" />
-
-    <p class="error__subtitle">Пожалуйста, попробуйте снова</p>
     
-    <app-button 
-      class="btn error__button"
-      @action="$emit('repeat-loading')"
-    >
-      <app-loader
-        v-if="waitingForResponse" 
-        type="sm"
-        color="black"
-      />
+    class="error-container"
+    data-cy="placeholder-container"
+  >
+    <div 
+      class="error"
+      data-cy="error"
+      >
+      <div class="error__title">
+        <p>При загрузке страницы произошла ошибка:</p>
+        <small 
+          class="error__text"
+          data-cy="error-text"
+        >
+          {{ errorMessage }}
+        </small>
+      </div>
 
-      <span v-else>Повторить</span>
-    </app-button>
+      <div class="error__image" />
+
+      <p class="error__subtitle">Пожалуйста, попробуйте снова</p>
+      
+      <app-button 
+        class="btn error__button"
+        @action="$emit('repeat-loading')"
+      >
+        <app-loader
+          v-if="waitingForResponse" 
+          type="sm"
+          color="black"
+        />
+
+        <span v-else>Повторить</span>
+      </app-button>
+    </div>
   </div>
 </template>
 
