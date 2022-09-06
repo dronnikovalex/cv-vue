@@ -31,6 +31,7 @@
     "babel-eslint": "^10.1.0",
     "cy-spok": "^1.5.2",
     "cypress": "^10.1.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
     "eslint": "^6.8.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-cypress": "^2.12.1",
