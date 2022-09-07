@@ -16,16 +16,18 @@ run-e2e-tests:   # This job also runs in the test stage
     when: always
     paths:
       - "**/results/*"
+      - "cypress/screenshots"
 generate-report:
   stage: upload
   script:
     - npm install --save-dev mochawesome-merge mochawesome-report-generator cypress-slack-reporter
     - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
     - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports
-    - SLACK_WEBHOOK_URL=$SLACK_WEBHOOK_URL npx cypress-slack-reporter --ci-provider custom --custom-url=https://aldronnikov-projects.gitlab.io/-/cv-vue/-/jobs/$CI_JOB_ID/
+    - SLACK_WEBHOOK_URL=$SLACK_WEBHOOK_URL npx cypress-slack-reporter --ci-provider custom --custom-url=https://aldronnikov-projects.gitlab.io/-/cv-vue/-/jobs/$CI_JOB_ID/artifacts
   artifacts:
     name: "$CI_JOB_NAME-$CI_JOB_ID"
     when: always
     paths:
       - "**/mochareports/"
+      - "cypress/screenshots"
     expire_in: 30 days
