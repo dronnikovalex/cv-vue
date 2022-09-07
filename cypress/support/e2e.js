@@ -15,5 +15,18 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import addContext from "mochawesome/addContext";
+
+Cypress.on("test:after:run", (test, runnable) => {  
+  if (test.state === "failed") {    
+    const folderName = runnable.invocationDetails.relativeFile.replace('cypress/e2e/', '')
+    console.log('folderName', folderName)
+    console.log(runnable)
+    const screenshot =`assets/${folderName}/${runnable.parent.parent.title ? runnable.parent.parent.title + ' -- ': ''}${runnable.parent.title} -- ${test.title} (failed).png`;    
+    console.log(screenshot)
+    addContext({ test }, screenshot);  
+  }
+});
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

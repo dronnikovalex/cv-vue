@@ -2,8 +2,8 @@
 
 import spok from 'cy-spok'
 import { faker } from '@faker-js/faker'
-import requestTemplates from '../../../cypress/fixtures/reuqest_templates.json'
-import urlsBlocks from '../../../cypress/fixtures/url_items.json'
+import requestTemplates from '../../fixtures/reuqest_templates.json'
+import urlsBlocks from '../../fixtures/url_items.json'
 
 describe('Test api methods', () => {
   context('Test fetchProfileInfo method', () => {

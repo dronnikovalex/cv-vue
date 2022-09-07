@@ -16,8 +16,8 @@ module.exports = defineConfig({
       quiet: true,
       html: false,
       json: true,
-      embeddedScreenshots: true,
     },
+    screenshotsFolder: "mochareports/assets",
     setupNodeEvents(on, config) {
     },
     baseUrl: 'http://localhost:8080/cv-vue/',
