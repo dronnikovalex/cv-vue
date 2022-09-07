@@ -8,9 +8,10 @@ run-e2e-tests:   # This job also runs in the test stage
     - npm ci
     - npm run run:e2e
     - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report.json
+    - npx marge mochareports/*.json -f report -o mochareports
   artifacts:
     name: "$CI_JOB_NAME-$CI_JOB_ID"
     when: always
     paths:
-      - "**/mochareports/*"
+      - "**/mochareports/"
     expire_in: 30 days
