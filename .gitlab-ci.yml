@@ -8,7 +8,8 @@ run-e2e-tests:   # This job also runs in the test stage
     - npm ci
     - npm run run:e2e
   artifacts:
-    name: "$CI_JOB_NAME"
+    name: "$CI_JOB_NAME-$CI_JOB_ID"
+    when: always
     paths:
-      - "cypress/reports/html"
+      - "cypress/mochareports/report*.html"
     expire_in: 30 days
