@@ -5,10 +5,12 @@ run-e2e-tests:   # This job also runs in the test stage
   image: cypress/browsers:node14.19.0-chrome100-ff99-edge
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
+    - echo "$CI_JOB_ID"
     - npm ci
     - npm run run:e2e
     - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
     - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports
+
   artifacts:
     name: "$CI_JOB_NAME-$CI_JOB_ID"
     when: always
