@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start-test": "start-test 8080 test",
+    "run:e2e:mocha": "cypress run --e2e --reporter mochawesome",
     "run:e2e": "start-test 8080 'npx cypress run --e2e'"
   },
   "dependencies": {
@@ -32,10 +33,15 @@
     "cy-spok": "^1.5.2",
     "cypress": "^10.1.0",
     "cypress-mochawesome-reporter": "^3.2.2",
+    "cypress-multi-reporters": "^1.6.1",
+    "cypress-slack-reporter": "^1.5.0",
     "eslint": "^6.8.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^7.0.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
     "start-server-and-test": "^1.14.0"
   },
   "eslintConfig": {

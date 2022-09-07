@@ -9,16 +9,16 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    reporter: 'cypress-mochawesome-reporter',
+    reporter: 'mochawesome',
     reporterOptions: {
-      charts: true,
-      reportPageTitle: 'custom-title',
+      reportDir: 'cypress/results/mocha',
+      overwrite: false,
+      quiet: true,
+      html: false,
+      json: true,
       embeddedScreenshots: true,
-      inlineAssets: true,
-      saveAllAttempts: false,
     },
     setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
     },
     baseUrl: 'http://localhost:8080/cv-vue/',
     viewportHeight: 1080,
