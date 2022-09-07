@@ -29,5 +29,5 @@ generate-report:
     when: always
     paths:
       - "**/mochareports/"
-      - "cypress/screenshots"
+      - "mochareports/assets"
     expire_in: 30 days
