@@ -1,5 +1,6 @@
 stages:          # List of stages for jobs, and their order of execution
   - test
+  - upload
   
 run-e2e-tests:   # This job also runs in the test stage
   image: cypress/browsers:node14.19.0-chrome100-ff99-edge
@@ -12,7 +13,8 @@ run-e2e-tests:   # This job also runs in the test stage
     paths:
       - "**/results/*"
 generate-report:
-  stage: test
+  image: cypress/browsers:node14.19.0-chrome100-ff99-edge
+  stage: upload
   script:
     - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
     - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports
