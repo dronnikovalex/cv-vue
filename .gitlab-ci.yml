@@ -5,6 +5,7 @@ stages:          # List of stages for jobs, and their order of execution
 run-e2e-tests:   # This job also runs in the test stage
   image: cypress/browsers:node14.19.0-chrome100-ff99-edge
   stage: test    # It can run at the same time as unit-test-job (in parallel).
+  allow_failure: true
   script:
     - npm ci
     - npm run run:e2e
@@ -13,10 +14,9 @@ run-e2e-tests:   # This job also runs in the test stage
     paths:
       - "**/results/*"
 generate-report:
-  image: cypress/browsers:node14.19.0-chrome100-ff99-edge
   stage: upload
   script:
-    - npm ci
+    - npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
     - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
     - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports
   artifacts:
