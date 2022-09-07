@@ -8,8 +8,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start-test": "start-test 8080 test",
-    "run:e2e:mocha": "cypress run --e2e --reporter mochawesome",
-    "run:e2e": "start-test 8080 'npx cypress run --e2e'"
+    "delete:results": "rm cypress/results/mocha/* || true",
+    "delete:reports": "rm -rf mochareports || true",
+    "merge:reports": "mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json",
+    "generate:html": "npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports",
+    "prereport": "npm run delete:results && npm run delete:reports",
+    "run:e2e:mocha": "cypress run --e2e --reporter mochawesome",  
+    "run:e2e": "npm run prereport && start-test 8080 run:e2e:mocha & npm run merge:reports && npm run generate:html"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
