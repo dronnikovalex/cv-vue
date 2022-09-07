@@ -13,5 +13,5 @@ run-e2e-tests:   # This job also runs in the test stage
     name: "$CI_JOB_NAME-$CI_JOB_ID"
     when: always
     paths:
-      - "**/*.html"
+      - "**/report-*.html"
     expire_in: 30 days
