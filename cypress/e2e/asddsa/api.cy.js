@@ -148,7 +148,7 @@ describe('Test api methods', () => {
         failOnStatusCode: false
       })
         .then(response => {
-          expect(response.status, 'Should have correct status').to.eql(401)
+          expect(response.status, 'Should have correct status').to.eql(200)
           expect(response.body, 'Should have error with correct message').to.deep.eql({ error: 'Permission denied' })
         })
     })
