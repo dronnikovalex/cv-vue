@@ -30,4 +30,6 @@ generate-report:
     paths:
       - "**/mochareports/"
       - "mochareports/assets"
+    reports:
+      junit: combined-report.xml
     expire_in: 30 days
