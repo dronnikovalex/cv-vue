@@ -6,6 +6,8 @@ variables:
   SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
   
 run-e2e-tests:   # This job also runs in the test stage
+  only:
+    - /^prod-.*$/
   image: cypress/browsers:node14.19.0-chrome100-ff99-edge
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   allow_failure: true
@@ -18,10 +20,12 @@ run-e2e-tests:   # This job also runs in the test stage
       - "**/results/*"
       - "mochareports/assets"
 generate-report:
+  only:
+  - /^prod-.*$/
   stage: upload
   script:
     - npm install --save-dev mochawesome-merge mochawesome-report-generator cypress-slack-reporter
-    - mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
+    - npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
     - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports --inline
     - SLACK_WEBHOOK_URL=$SLACK_WEBHOOK_URL npx cypress-slack-reporter --ci-provider custom --custom-url=https://aldronnikov-projects.gitlab.io/-/cv-vue/-/jobs/$CI_JOB_ID/artifacts --screenshot-dir mochareports/assets
   artifacts:
