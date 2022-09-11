@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
 
+mochareports
+cypress/results
+
+
 # local env files
 .env.local
 .env.*.local
