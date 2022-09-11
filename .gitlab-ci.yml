@@ -22,6 +22,7 @@ generate-report:
   stage: upload
   script:
     - npm install --save-dev mochawesome-merge mochawesome-report-generator cypress-slack-reporter mocha-junit-reporter junit-report-merger
+    - mkdir mochareports || true
     - npm run merge:reports
     - npm run generate:html
     - npm run combine:junit:reports
