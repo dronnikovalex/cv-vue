@@ -1,22 +1,37 @@
-stages:         
+stages:          # List of stages for jobs, and their order of execution
   - test
   - upload
 
+variables:
+  SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
+  
 run-e2e-tests:   # This job also runs in the test stage
-
+  image: cypress/browsers:node14.19.0-chrome100-ff99-edge
   stage: test    # It can run at the same time as unit-test-job (in parallel).
   allow_failure: true
   script:
-    - echo cat > cat.js
+    - npm ci
+    - npm run run:e2e
   artifacts:
     when: always
     paths:
-      - "cat.js"
+      - "**/results/*"
+      - "mochareports/assets"
 generate-report:
-  stage: test
-  needs: ["run-e2e-tests"]
+  stage: upload
   script:
-    - cat cat.js
-
+    - npm install --save-dev mochawesome-merge mochawesome-report-generator cypress-slack-reporter
+    - mkdir mochareports & npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json
+    - npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports --inline
+    - SLACK_WEBHOOK_URL=$SLACK_WEBHOOK_URL npx cypress-slack-reporter --ci-provider custom --custom-url=https://aldronnikov-projects.gitlab.io/-/cv-vue/-/jobs/$CI_JOB_ID/artifacts --screenshot-dir mochareports/assets
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_JOB_ID"
+    when: always
+    paths:
+      - "**/mochareports/"
+      - "mochareports/assets"
+    reports:
+      junit: cypress/results_junit/combined-report.xml
+    expire_in: 30 days
 
 
