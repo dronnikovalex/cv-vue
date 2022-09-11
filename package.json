@@ -10,7 +10,7 @@
     "start-test": "start-test 8080 test",
     "delete:results": "rm cypress/results/mocha/* || true",
     "delete:reports": "rm -rf mochareports || true",
-    "merge:reports": "mkdir mochareports && npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json",
+    "merge:reports": "mkdir mochareports & npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json",
     "generate:html": "npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports",
     "prereport": "npm run delete:results && npm run delete:reports",
     "run:e2e:mocha": "cypress run --e2e --reporter mochawesome",  
