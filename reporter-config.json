@@ -1,0 +1,9 @@
+{
+  "reporterEnabled": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results/mocha",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
+}

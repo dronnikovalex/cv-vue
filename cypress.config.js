@@ -9,13 +9,9 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    reporter: 'mochawesome',
+    reporter: 'cypress-multi-reporters',
     reporterOptions: {
-      reportDir: 'cypress/results/mocha',
-      overwrite: false,
-      quiet: true,
-      html: false,
-      json: true,
+      configFile: 'reporter-config.json'
     },
     screenshotsFolder: "mochareports/assets",
     setupNodeEvents(on, config) {
