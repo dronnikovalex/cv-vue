@@ -32,6 +32,6 @@ generate-report:
       - "**/mochareports/"
       - "mochareports/assets"
     reports:
-      junit: cypress/results_junit/combined-report.xml
+      junit: combined-report.xml
     expire_in: 30 days
 

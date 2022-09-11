@@ -12,6 +12,7 @@
     "delete:reports": "rm -rf mochareports || true",
     "merge:reports": "mkdir mochareports & npx mochawesome-merge cypress/results/mocha/*.json > mochareports/report-$(date +'%d-%m-%Y'_%H-%M).json",
     "generate:html": "npx marge mochareports/*.json -f report-$(date +'%d-%m-%Y'_%H-%M) -o mochareports",
+    "combine:junit:reports": "jrm combined-report.xml \"cypress/results/junit/*.xml\"",
     "prereport": "npm run delete:results && npm run delete:reports",
     "run:e2e:mocha": "cypress run --e2e --reporter cypress-multi-reporters",
     "run:e2e": "npm run prereport && start-test 8080 run:e2e:mocha",
