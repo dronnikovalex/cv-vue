@@ -9,3 +9,4 @@ run-e2e-tests:   # This job also runs in the test stage
   allow_failure: true
   script:
     - echo "Hello world"
+    - npm install cypress
