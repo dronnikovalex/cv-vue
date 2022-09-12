@@ -1,16 +1,14 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-
-before_script:
-  - docker
-
 variables:
   SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL
 
 build:   # This job also runs in the test stage
   stage: build    # It can run at the same time as unit-test-job (in parallel).
   allow_failure: true
+  before_script:
+  - docker
   script:
     - echo "Hello world"
 
